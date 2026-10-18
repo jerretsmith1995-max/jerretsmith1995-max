@@ -1,0 +1,54 @@
+logdrift  baseline ../../examples/good-1.log, ../../examples/good-2.log (2 runs · 2,451 lines)   target ../../examples/bad.log (682 lines · 27 templates)
+
+  DRIFT   9 novel · 5 vanished · 2 shifted · 3 param drift · 1 stall
+          first divergence ../../examples/bad.log:8  first template never seen in baseline
+          progress         reached 13/18 baseline milestones
+            got as far as  L7 INFO connecting to redis addr=<IP> tls=true
+            never reached  INFO redis connected in <DUR>
+          sequence         20 adjacent template pairs never seen in baseline (weak signal)
+
+▌ NOVEL templates the baseline never produced
+  L8       ×1  ✖ WARN redis tls handshake failed: x509: certificate has expired or is not yet valid
+  L9       ×1    WARN cache disabled, falling back to direct postgres reads
+  L34    ×291    WARN db pool exhausted, waiting for connection (waiters=<NUM>)
+  L62      ×1  ✖ ERROR circuit breaker open for processor=stripe after <NUM> consecutive failures
+  L677     ×1  ✖ ERROR panic: runtime error: invalid memory address or nil pointer dereference
+  L678     ×1    goroutine <NUM> [running]:
+  L679     ×1    github.com/acme/payments/internal/charge.(*Service).Authorize(<HEX>, {<HEX>, <HEX>})
+  L680     ×2    <*> +<HEX>
+  L681     ×1    github.com/acme/payments/internal/http.(*Handler).Charges(<HEX>)
+
+▌ VANISHED every baseline run produced these; the target never did
+  @1%       ×1  INFO redis connected in <DUR>
+  @1%     ×400  DEBUG cache <*> key=customer:<NUM>
+  @100%     ×1  INFO received SIGTERM, draining connections
+  @100%     ×1  INFO drained <NUM> in-flight requests
+  @100%     ×1  INFO graceful shutdown complete in <DUR>
+
+▌ SHIFTED frequency outside the baseline envelope
+  ▼ ×13 vs 400  INFO charge authorized amount=<NUM> currency=USD processor=stripe
+  ▲ ×54 vs 2–3  WARN retrying charge attempt=<NUM> backoff=<DUR>
+
+▌ PARAMETER DRIFT same message, different values
+  L11     INFO request id=<UUID> method=POST path=/v1/charges status=<NUM> latency=<DUR>
+          latency: baseline p50 27ms · p95 55ms → target p50 4.75s · p95 5.63s (×176)
+  L38     INFO request id=<UUID> method=POST path=/v1/charges status=<NUM> latency=<DUR>
+          status: baseline {200 ×800} → new 503 ×287
+  L127    INFO healthcheck ok uptime=<DUR> goroutines=<NUM>
+          goroutines: baseline p50 46.5 · p95 52 → target p50 653 · p95 1029 (×14)
+
+▌ STALLS silences far longer than any baseline gap at that point
+  L62     +30.1s   ERROR circuit breaker open for processor=stripe after <NUM> consecutive failures (baseline ≤59ms)
+
+▌ AT THE DIVERGENCE ../../examples/bad.log
+   4 │   2026-10-17T12:00:00.065Z INFO  postgres connected in 47ms
+   5 │   2026-10-17T12:00:00.065Z INFO  running migrations
+   6 │   2026-10-17T12:00:00.145Z INFO  migrations complete: 0 pending, schema version 118
+   7 │   2026-10-17T12:00:00.145Z INFO  connecting to redis addr=10.0.4.20:6379 tls=true
+▶  8 │ N 2026-10-17T12:00:00.149Z WARN  redis tls handshake failed: x509: certificate has expired or is not yet valid
+   9 │ N 2026-10-17T12:00:00.150Z WARN  cache disabled, falling back to direct postgres reads
+  10 │   2026-10-17T12:00:00.150Z INFO  http server listening on :8080
+  11 │ P 2026-10-17T12:00:00.155Z INFO  request id=f75860b7-2bbe-f593-3647-1c22e5d677c5 method=POST path=/v1/charges s…
+  12 │   2026-10-17T12:00:00.155Z INFO  charge authorized amount=279.82 currency=USD processor=stripe
+       N novel · P param drift · S stall · F frequency · T new sequence
+

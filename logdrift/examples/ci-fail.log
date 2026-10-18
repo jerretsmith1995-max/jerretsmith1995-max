@@ -1,0 +1,32 @@
+2026-10-17T12:00:00.0000000Z ##[group]Run actions/setup-node@v4
+2026-10-17T12:00:00.6780000Z Found in cache @ /opt/hostedtoolcache/node/22.11.0/x64
+2026-10-17T12:00:00.6780000Z ##[endgroup]
+2026-10-17T12:00:00.6780000Z ##[group]Run npm ci
+2026-10-17T12:00:14.1090000Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory.
+2026-10-17T12:00:14.1090000Z added 812 packages, and audited 813 packages in 9s
+2026-10-17T12:00:14.1090000Z found 0 vulnerabilities
+2026-10-17T12:00:14.1090000Z ##[endgroup]
+2026-10-17T12:00:14.1090000Z ##[group]Run npm test -- --ci
+2026-10-17T12:00:14.1090000Z > shop@3.2.0 test
+2026-10-17T12:00:14.1090000Z > jest --ci
+2026-10-17T12:00:14.9140000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/cart/cart.test.ts (3.177 s)
+2026-10-17T12:00:15.3830000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/cart/pricing.test.ts (3.316 s)
+2026-10-17T12:00:16.8210000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/auth/session.test.ts (0.544 s)
+2026-10-17T12:00:19.7700000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/auth/tokens.test.ts (1.266 s)
+2026-10-17T12:00:21.9730000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/catalog/search.test.ts (3.381 s)
+2026-10-17T12:00:23.9720000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/catalog/facets.test.ts (2.206 s)
+2026-10-17T12:00:27.3560000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/payments/charge.test.ts (2.074 s)
+2026-10-17T12:00:33.0700000Z [0m[7m[1m[31m FAIL [39m[22m[27m[0m src/payments/refund.test.ts (5.474 s)
+2026-10-17T12:00:33.0700000Z   [1m● refund › issues a partial refund after settlement[22m
+2026-10-17T12:00:33.0700000Z     thrown: "Exceeded timeout of 5000 ms for a test.
+2026-10-17T12:00:33.0700000Z     Add a timeout value to this test to increase the timeout, if this is a long-running test."
+2026-10-17T12:00:33.0700000Z       at Object.<anonymous> (src/payments/refund.test.ts:88:3)
+2026-10-17T12:00:36.5680000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/orders/checkout.test.ts (2.833 s)
+2026-10-17T12:00:37.3630000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/orders/history.test.ts (1.209 s)
+2026-10-17T12:00:39.4940000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/users/profile.test.ts (0.641 s)
+2026-10-17T12:00:40.8770000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/users/addresses.test.ts (1.447 s)
+2026-10-17T12:00:41.1360000Z [1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[32m11 passed[39m[22m, 12 total
+2026-10-17T12:00:41.1360000Z [1mTests:       [22m[1m[31m1 failed[39m[22m, [1m[32m215 passed[39m[22m, 216 total
+2026-10-17T12:00:41.1360000Z [1mTime:[22m        26.608 s
+2026-10-17T12:00:41.1360000Z Ran all test suites.
+2026-10-17T12:00:41.1360000Z ##[error]Process completed with exit code 1.

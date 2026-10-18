@@ -1,0 +1,1227 @@
+2026-10-17T10:00:00.000Z INFO  starting payments-api version=2.14.1 commit=8f3a2c1d pid=7081
+2026-10-17T10:00:00.005Z INFO  loaded config from /etc/payments/config.yaml (37 keys)
+2026-10-17T10:00:00.019Z INFO  connecting to postgres host=10.0.4.12:5432 db=payments pool=20
+2026-10-17T10:00:00.062Z INFO  postgres connected in 31ms
+2026-10-17T10:00:00.062Z INFO  running migrations
+2026-10-17T10:00:00.148Z INFO  migrations complete: 0 pending, schema version 118
+2026-10-17T10:00:00.148Z INFO  connecting to redis addr=10.0.4.20:6379 tls=true
+2026-10-17T10:00:00.159Z INFO  redis connected in 8ms
+2026-10-17T10:00:00.159Z INFO  http server listening on :8080
+2026-10-17T10:00:00.196Z DEBUG cache miss key=customer:4162
+2026-10-17T10:00:00.196Z INFO  request id=99eb9d18-a447-8404-5d87-f3c67cf22746 method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:00.196Z INFO  charge authorized amount=250.37 currency=USD processor=stripe
+2026-10-17T10:00:00.232Z DEBUG cache hit key=customer:5258
+2026-10-17T10:00:00.232Z INFO  request id=e995af5a-2544-8615-bbda-08313f6a8eb6 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:00.232Z INFO  charge authorized amount=93.90 currency=USD processor=stripe
+2026-10-17T10:00:00.258Z DEBUG cache hit key=customer:3831
+2026-10-17T10:00:00.258Z INFO  request id=68d20b3b-525d-a178-6f9f-ff094279db19 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:00.258Z INFO  charge authorized amount=236.85 currency=USD processor=stripe
+2026-10-17T10:00:00.276Z DEBUG cache miss key=customer:1433
+2026-10-17T10:00:00.276Z INFO  request id=447c8d01-9192-c242-24e2-cafccae3a61f method=POST path=/v1/charges status=200 latency=53ms
+2026-10-17T10:00:00.276Z INFO  charge authorized amount=158.57 currency=USD processor=stripe
+2026-10-17T10:00:00.286Z DEBUG cache miss key=customer:5705
+2026-10-17T10:00:00.286Z INFO  request id=b586b143-23a6-289a-266f-97647981998e method=POST path=/v1/charges status=200 latency=43ms
+2026-10-17T10:00:00.286Z INFO  charge authorized amount=56.10 currency=USD processor=stripe
+2026-10-17T10:00:00.343Z DEBUG cache hit key=customer:6561
+2026-10-17T10:00:00.343Z INFO  request id=bea89c0b-b048-83e5-6a15-6a8de563afa4 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:00.343Z INFO  charge authorized amount=368.76 currency=USD processor=stripe
+2026-10-17T10:00:00.378Z DEBUG cache hit key=customer:1577
+2026-10-17T10:00:00.378Z INFO  request id=67d47f3d-fd25-67c1-8979-e4d60f26686d method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:00.378Z INFO  charge authorized amount=228.53 currency=USD processor=stripe
+2026-10-17T10:00:00.428Z DEBUG cache hit key=customer:2643
+2026-10-17T10:00:00.428Z INFO  request id=ff571642-8953-bb68-65fc-f92b0c3a17c9 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:00.428Z INFO  charge authorized amount=141.46 currency=USD processor=stripe
+2026-10-17T10:00:00.485Z DEBUG cache miss key=customer:4843
+2026-10-17T10:00:00.485Z INFO  request id=028be991-4e8a-e151-c007-55925836b707 method=POST path=/v1/charges status=200 latency=37ms
+2026-10-17T10:00:00.485Z INFO  charge authorized amount=320.57 currency=USD processor=stripe
+2026-10-17T10:00:00.500Z DEBUG cache miss key=customer:8590
+2026-10-17T10:00:00.500Z INFO  request id=588565bc-ea40-6b32-d610-8bd68584f57e method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:00.500Z INFO  charge authorized amount=187.84 currency=USD processor=stripe
+2026-10-17T10:00:00.532Z DEBUG cache hit key=customer:6726
+2026-10-17T10:00:00.532Z INFO  request id=376b41d6-31f9-2b9a-8d12-f41257325fff method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:00.532Z INFO  charge authorized amount=71.70 currency=USD processor=stripe
+2026-10-17T10:00:00.583Z DEBUG cache hit key=customer:3052
+2026-10-17T10:00:00.583Z INFO  request id=332f7576-b062-ba53-ab70-5b18db94b4d3 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:00.583Z INFO  charge authorized amount=192.49 currency=USD processor=stripe
+2026-10-17T10:00:00.614Z DEBUG cache hit key=customer:8224
+2026-10-17T10:00:00.614Z INFO  request id=38a5143e-cf53-c3f5-20c8-89b79bf504cf method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:00.614Z INFO  charge authorized amount=21.39 currency=USD processor=stripe
+2026-10-17T10:00:00.661Z DEBUG cache hit key=customer:4640
+2026-10-17T10:00:00.661Z INFO  request id=b57ceae0-ec55-eb23-3a9b-5394cb3c7856 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:00.661Z INFO  charge authorized amount=310.83 currency=USD processor=stripe
+2026-10-17T10:00:00.708Z DEBUG cache hit key=customer:4231
+2026-10-17T10:00:00.708Z INFO  request id=348f8921-a266-b11d-0f33-4c62fe52ba53 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:00.708Z INFO  charge authorized amount=28.42 currency=USD processor=stripe
+2026-10-17T10:00:00.720Z DEBUG cache hit key=customer:2710
+2026-10-17T10:00:00.720Z INFO  request id=af19779c-b27f-f4b6-f440-90a32711f320 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:00.720Z INFO  charge authorized amount=367.57 currency=USD processor=stripe
+2026-10-17T10:00:00.768Z DEBUG cache miss key=customer:1513
+2026-10-17T10:00:00.768Z INFO  request id=8e4e4b5c-47a5-3dbf-8e7d-cafc9e138647 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:00.768Z INFO  charge authorized amount=75.84 currency=USD processor=stripe
+2026-10-17T10:00:00.815Z DEBUG cache hit key=customer:5920
+2026-10-17T10:00:00.815Z INFO  request id=a458250d-8fb5-0e77-f2bf-4f0152e5d494 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:00.815Z INFO  charge authorized amount=271.00 currency=USD processor=stripe
+2026-10-17T10:00:00.873Z DEBUG cache hit key=customer:1577
+2026-10-17T10:00:00.873Z INFO  request id=35807f9d-4b97-5a6e-d92d-a482caa9568e method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:00.873Z INFO  charge authorized amount=367.47 currency=USD processor=stripe
+2026-10-17T10:00:00.894Z DEBUG cache hit key=customer:7888
+2026-10-17T10:00:00.894Z INFO  request id=5b6fe9d8-415a-761f-03ab-aa40abc9448f method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:00.894Z INFO  charge authorized amount=212.57 currency=USD processor=stripe
+2026-10-17T10:00:00.934Z DEBUG cache hit key=customer:5795
+2026-10-17T10:00:00.934Z INFO  request id=ddeb93fa-b7e1-25dd-ebaf-e65a31bd5d41 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:00.934Z INFO  charge authorized amount=201.86 currency=USD processor=stripe
+2026-10-17T10:00:00.963Z DEBUG cache hit key=customer:8661
+2026-10-17T10:00:00.963Z INFO  request id=da538101-6440-2104-e648-b6226a1b7802 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:00.963Z INFO  charge authorized amount=159.64 currency=USD processor=stripe
+2026-10-17T10:00:00.983Z DEBUG cache miss key=customer:4516
+2026-10-17T10:00:00.983Z INFO  request id=1851f5d9-ac3d-1676-c1bd-d19ab8e2925c method=POST path=/v1/charges status=200 latency=44ms
+2026-10-17T10:00:00.983Z INFO  charge authorized amount=366.04 currency=USD processor=stripe
+2026-10-17T10:00:01.041Z DEBUG cache hit key=customer:7014
+2026-10-17T10:00:01.041Z INFO  request id=6daee48a-4b21-c86f-bc23-d728b45347ea method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:01.041Z INFO  charge authorized amount=5.84 currency=USD processor=stripe
+2026-10-17T10:00:01.097Z DEBUG cache hit key=customer:2574
+2026-10-17T10:00:01.097Z INFO  request id=da77d904-2c5b-ce26-b163-defde5ee6a0f method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:01.097Z INFO  charge authorized amount=143.72 currency=USD processor=stripe
+2026-10-17T10:00:01.129Z DEBUG cache hit key=customer:5524
+2026-10-17T10:00:01.129Z INFO  request id=bb3e9346-cef8-7e23-9832-2eb5cf43d72b method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:01.129Z INFO  charge authorized amount=157.20 currency=USD processor=stripe
+2026-10-17T10:00:01.153Z DEBUG cache miss key=customer:8265
+2026-10-17T10:00:01.153Z INFO  request id=d2e5b887-6549-1622-558f-df297b9fa007 method=POST path=/v1/charges status=200 latency=46ms
+2026-10-17T10:00:01.153Z INFO  charge authorized amount=236.21 currency=USD processor=stripe
+2026-10-17T10:00:01.165Z DEBUG cache hit key=customer:9166
+2026-10-17T10:00:01.165Z INFO  request id=864b6030-22c1-dfc5-79b9-9ed9d20d573a method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:01.165Z INFO  charge authorized amount=213.28 currency=USD processor=stripe
+2026-10-17T10:00:01.216Z DEBUG cache hit key=customer:1106
+2026-10-17T10:00:01.216Z INFO  request id=e7aa1cc8-4c88-7e1f-7c31-e927dfe52a5f method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:01.216Z INFO  charge authorized amount=119.58 currency=USD processor=stripe
+2026-10-17T10:00:01.223Z DEBUG cache hit key=customer:4587
+2026-10-17T10:00:01.223Z INFO  request id=8f46627e-b533-2de1-448b-35507c7c8a09 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:01.223Z INFO  charge authorized amount=136.46 currency=USD processor=stripe
+2026-10-17T10:00:01.244Z DEBUG cache hit key=customer:5477
+2026-10-17T10:00:01.244Z INFO  request id=c4db0798-0630-f34c-e001-c0ab7ac65e50 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:01.244Z INFO  charge authorized amount=310.62 currency=USD processor=stripe
+2026-10-17T10:00:01.291Z DEBUG cache hit key=customer:2128
+2026-10-17T10:00:01.291Z INFO  request id=2de3f8e7-8487-0fd8-7a36-cc0d163833df method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:01.291Z INFO  charge authorized amount=223.45 currency=USD processor=stripe
+2026-10-17T10:00:01.325Z DEBUG cache hit key=customer:4081
+2026-10-17T10:00:01.325Z INFO  request id=636613a9-cc94-d94d-1159-00b90ae703b9 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:01.325Z INFO  charge authorized amount=271.56 currency=USD processor=stripe
+2026-10-17T10:00:01.334Z DEBUG cache hit key=customer:6267
+2026-10-17T10:00:01.334Z INFO  request id=7d9856d2-611f-c73c-82a4-91bfabd7a19d method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:01.334Z INFO  charge authorized amount=185.08 currency=USD processor=stripe
+2026-10-17T10:00:01.380Z DEBUG cache hit key=customer:3442
+2026-10-17T10:00:01.380Z INFO  request id=f50fec11-89fb-2e36-973c-ef09ff14be23 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:01.380Z INFO  charge authorized amount=177.53 currency=USD processor=stripe
+2026-10-17T10:00:01.392Z DEBUG cache hit key=customer:1731
+2026-10-17T10:00:01.392Z INFO  request id=69c2ec7f-4057-b335-93bc-84888c970fd5 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:01.392Z INFO  charge authorized amount=136.32 currency=USD processor=stripe
+2026-10-17T10:00:01.399Z DEBUG cache hit key=customer:2330
+2026-10-17T10:00:01.399Z INFO  request id=28d4a99a-1e90-ac20-25a6-0c7db15e0501 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:01.399Z INFO  charge authorized amount=209.21 currency=USD processor=stripe
+2026-10-17T10:00:01.434Z DEBUG cache hit key=customer:6922
+2026-10-17T10:00:01.434Z INFO  request id=ebc34bb4-53ec-049c-9e7a-5cf944232d10 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:01.434Z INFO  charge authorized amount=204.24 currency=USD processor=stripe
+2026-10-17T10:00:01.443Z DEBUG cache hit key=customer:4357
+2026-10-17T10:00:01.443Z INFO  request id=3569120c-e80f-2007-cd42-a708a721aa29 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:01.443Z INFO  charge authorized amount=145.89 currency=USD processor=stripe
+2026-10-17T10:00:01.465Z DEBUG cache hit key=customer:6131
+2026-10-17T10:00:01.465Z INFO  request id=987b45d4-e428-0152-b953-e3bf9d19f825 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:01.465Z INFO  charge authorized amount=208.95 currency=USD processor=stripe
+2026-10-17T10:00:01.490Z DEBUG cache hit key=customer:6262
+2026-10-17T10:00:01.490Z INFO  request id=c3dd54ae-3300-2736-8b34-f9c69776b459 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:01.490Z INFO  charge authorized amount=212.80 currency=USD processor=stripe
+2026-10-17T10:00:01.501Z DEBUG cache hit key=customer:1723
+2026-10-17T10:00:01.501Z INFO  request id=1532ef00-2d82-ca35-2592-b8d8f2a8df3b method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:01.501Z INFO  charge authorized amount=379.10 currency=USD processor=stripe
+2026-10-17T10:00:01.541Z DEBUG cache hit key=customer:3909
+2026-10-17T10:00:01.541Z INFO  request id=76fd8a56-da8b-b07d-aa8e-b4eb8f7334f9 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:01.541Z INFO  charge authorized amount=13.98 currency=USD processor=stripe
+2026-10-17T10:00:01.553Z DEBUG cache hit key=customer:7587
+2026-10-17T10:00:01.553Z INFO  request id=9256e276-6a6b-b5a6-017a-578a27cbdc20 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:01.553Z INFO  charge authorized amount=72.01 currency=USD processor=stripe
+2026-10-17T10:00:01.590Z DEBUG cache hit key=customer:2401
+2026-10-17T10:00:01.590Z INFO  request id=a1759f27-ec09-7710-954f-42158bdba66d method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:01.590Z INFO  charge authorized amount=271.75 currency=USD processor=stripe
+2026-10-17T10:00:01.619Z DEBUG cache hit key=customer:5325
+2026-10-17T10:00:01.619Z INFO  request id=480f44fc-d629-f08d-c1ef-53c9ae0d8869 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:01.619Z INFO  charge authorized amount=268.36 currency=USD processor=stripe
+2026-10-17T10:00:01.664Z DEBUG cache hit key=customer:9026
+2026-10-17T10:00:01.664Z INFO  request id=fe67fdc7-a2c6-e284-c4be-8fa60c1a478d method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:01.664Z INFO  charge authorized amount=335.76 currency=USD processor=stripe
+2026-10-17T10:00:01.712Z DEBUG cache hit key=customer:9666
+2026-10-17T10:00:01.712Z INFO  request id=6bd55dd2-3f84-1753-ba7c-27f3619f387b method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:01.712Z INFO  charge authorized amount=47.39 currency=USD processor=stripe
+2026-10-17T10:00:01.738Z DEBUG cache miss key=customer:4750
+2026-10-17T10:00:01.738Z INFO  request id=6b1a2e1d-4ba1-8e17-a521-64418bfd1a93 method=POST path=/v1/charges status=200 latency=41ms
+2026-10-17T10:00:01.738Z INFO  charge authorized amount=221.19 currency=USD processor=stripe
+2026-10-17T10:00:01.771Z DEBUG cache hit key=customer:7301
+2026-10-17T10:00:01.771Z INFO  request id=e7c3b041-1d7e-145f-96eb-9654ab94913d method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:01.771Z INFO  charge authorized amount=222.58 currency=USD processor=stripe
+2026-10-17T10:00:01.771Z INFO  healthcheck ok uptime=19s goroutines=44
+2026-10-17T10:00:01.795Z DEBUG cache hit key=customer:4627
+2026-10-17T10:00:01.795Z INFO  request id=da503a50-f98e-4fdf-36e5-91568c41d105 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:01.795Z INFO  charge authorized amount=242.47 currency=USD processor=stripe
+2026-10-17T10:00:01.824Z DEBUG cache hit key=customer:9104
+2026-10-17T10:00:01.824Z INFO  request id=2cad0f42-134a-8daa-ef14-98069ba581ef method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:01.824Z INFO  charge authorized amount=28.42 currency=USD processor=stripe
+2026-10-17T10:00:01.864Z DEBUG cache hit key=customer:3360
+2026-10-17T10:00:01.864Z INFO  request id=1d65e34d-31f2-4d6f-56ee-85092314a4d7 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:01.864Z INFO  charge authorized amount=218.01 currency=USD processor=stripe
+2026-10-17T10:00:01.882Z DEBUG cache hit key=customer:1283
+2026-10-17T10:00:01.882Z INFO  request id=656205c1-5322-7fd1-fa23-f830058208ff method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:01.882Z INFO  charge authorized amount=345.92 currency=USD processor=stripe
+2026-10-17T10:00:01.910Z DEBUG cache hit key=customer:8707
+2026-10-17T10:00:01.910Z INFO  request id=1a063b41-417d-2d31-ea35-99d405ff4b59 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:01.910Z INFO  charge authorized amount=57.83 currency=USD processor=stripe
+2026-10-17T10:00:01.932Z DEBUG cache hit key=customer:1098
+2026-10-17T10:00:01.932Z INFO  request id=99a8cdb3-fd88-e48b-2e7e-b7ae5dae994c method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:01.932Z INFO  charge authorized amount=219.70 currency=USD processor=stripe
+2026-10-17T10:00:01.965Z DEBUG cache hit key=customer:3825
+2026-10-17T10:00:01.965Z INFO  request id=b76ed554-fc99-1776-20b2-8ca6f56a716f method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:01.965Z INFO  charge authorized amount=56.21 currency=USD processor=stripe
+2026-10-17T10:00:02.023Z DEBUG cache hit key=customer:2937
+2026-10-17T10:00:02.023Z INFO  request id=8cb38481-1ca6-5bb6-edb5-08c3680b14c1 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:02.023Z INFO  charge authorized amount=403.85 currency=USD processor=stripe
+2026-10-17T10:00:02.062Z DEBUG cache hit key=customer:3735
+2026-10-17T10:00:02.062Z INFO  request id=76c327de-cdeb-8a8e-0c27-929927249010 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:02.062Z INFO  charge authorized amount=361.17 currency=USD processor=stripe
+2026-10-17T10:00:02.086Z DEBUG cache hit key=customer:4460
+2026-10-17T10:00:02.086Z INFO  request id=6d661376-67bd-6661-660c-43b75b63390b method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:02.086Z INFO  charge authorized amount=123.63 currency=USD processor=stripe
+2026-10-17T10:00:02.111Z DEBUG cache hit key=customer:1652
+2026-10-17T10:00:02.111Z INFO  request id=514bbe49-1aa4-6f10-4255-761aee1b8a23 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:02.111Z INFO  charge authorized amount=365.94 currency=USD processor=stripe
+2026-10-17T10:00:02.139Z DEBUG cache hit key=customer:9722
+2026-10-17T10:00:02.139Z INFO  request id=2d703585-49cc-959a-227d-cdd3aca677e9 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:02.139Z INFO  charge authorized amount=167.98 currency=USD processor=stripe
+2026-10-17T10:00:02.197Z DEBUG cache hit key=customer:9218
+2026-10-17T10:00:02.197Z INFO  request id=6ce8c8d2-50aa-28a6-df44-c0c265156deb method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:02.197Z INFO  charge authorized amount=376.77 currency=USD processor=stripe
+2026-10-17T10:00:02.211Z DEBUG cache hit key=customer:8907
+2026-10-17T10:00:02.211Z INFO  request id=fd12576f-3fbb-9a8e-0588-3ccc51c9a126 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:02.211Z INFO  charge authorized amount=53.30 currency=USD processor=stripe
+2026-10-17T10:00:02.218Z DEBUG cache hit key=customer:5114
+2026-10-17T10:00:02.218Z INFO  request id=9b6d8e9d-2797-db96-9e00-3947f08bad8f method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:02.218Z INFO  charge authorized amount=378.01 currency=USD processor=stripe
+2026-10-17T10:00:02.265Z DEBUG cache miss key=customer:9299
+2026-10-17T10:00:02.265Z INFO  request id=a731f114-f66e-aa45-8442-29ecc35abb26 method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:02.265Z INFO  charge authorized amount=148.40 currency=USD processor=stripe
+2026-10-17T10:00:02.281Z DEBUG cache hit key=customer:7778
+2026-10-17T10:00:02.281Z INFO  request id=375f7097-edc1-6927-c245-1c4cd7e53f23 method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:02.281Z INFO  charge authorized amount=220.85 currency=USD processor=stripe
+2026-10-17T10:00:02.286Z DEBUG cache hit key=customer:2836
+2026-10-17T10:00:02.286Z INFO  request id=9aa4f4c8-3241-4c1d-27e5-0a1116d2ce16 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:02.286Z INFO  charge authorized amount=311.83 currency=USD processor=stripe
+2026-10-17T10:00:02.308Z DEBUG cache hit key=customer:6563
+2026-10-17T10:00:02.308Z INFO  request id=c8f5eb21-015d-6eeb-84cb-ccbd3fffa63b method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:02.308Z INFO  charge authorized amount=328.23 currency=USD processor=stripe
+2026-10-17T10:00:02.359Z DEBUG cache miss key=customer:6501
+2026-10-17T10:00:02.359Z INFO  request id=de89f174-489e-7514-0f84-e842040141cc method=POST path=/v1/charges status=200 latency=56ms
+2026-10-17T10:00:02.359Z INFO  charge authorized amount=19.96 currency=USD processor=stripe
+2026-10-17T10:00:02.400Z DEBUG cache hit key=customer:9192
+2026-10-17T10:00:02.400Z INFO  request id=30a73a9b-3c2c-bc93-bd29-6cd5f48c9df0 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:02.400Z INFO  charge authorized amount=149.78 currency=USD processor=stripe
+2026-10-17T10:00:02.460Z DEBUG cache hit key=customer:1352
+2026-10-17T10:00:02.460Z INFO  request id=22b6c82b-b757-bfff-cfe7-428b4703144b method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:02.460Z INFO  charge authorized amount=77.88 currency=USD processor=stripe
+2026-10-17T10:00:02.494Z DEBUG cache hit key=customer:8314
+2026-10-17T10:00:02.494Z INFO  request id=d6d7fed8-99e9-7727-b7ea-1d95d7c62171 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:02.494Z INFO  charge authorized amount=389.44 currency=USD processor=stripe
+2026-10-17T10:00:02.537Z DEBUG cache miss key=customer:8362
+2026-10-17T10:00:02.537Z INFO  request id=7c4a3dcf-2ccb-c148-fd3d-b506e28d24f6 method=POST path=/v1/charges status=200 latency=44ms
+2026-10-17T10:00:02.537Z INFO  charge authorized amount=87.95 currency=USD processor=stripe
+2026-10-17T10:00:02.564Z DEBUG cache hit key=customer:4141
+2026-10-17T10:00:02.564Z INFO  request id=c55544cb-3980-4542-40ae-3d37640996f2 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:02.564Z INFO  charge authorized amount=325.89 currency=USD processor=stripe
+2026-10-17T10:00:02.581Z DEBUG cache hit key=customer:5879
+2026-10-17T10:00:02.581Z INFO  request id=96781045-8654-4ade-34c9-35182843f6b4 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:02.581Z INFO  charge authorized amount=403.63 currency=USD processor=stripe
+2026-10-17T10:00:02.591Z DEBUG cache hit key=customer:6332
+2026-10-17T10:00:02.591Z INFO  request id=d1c97735-d114-4348-e22b-e5b75724d8f1 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:02.591Z INFO  charge authorized amount=69.38 currency=USD processor=stripe
+2026-10-17T10:00:02.600Z DEBUG cache miss key=customer:5587
+2026-10-17T10:00:02.600Z INFO  request id=a18eb3b8-a161-2aad-5d3e-a7e8e35f325c method=POST path=/v1/charges status=200 latency=53ms
+2026-10-17T10:00:02.600Z INFO  charge authorized amount=151.43 currency=USD processor=stripe
+2026-10-17T10:00:02.614Z DEBUG cache hit key=customer:5800
+2026-10-17T10:00:02.614Z INFO  request id=9168ac49-0fbd-84d9-22f8-5b6021b28aac method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:02.614Z INFO  charge authorized amount=183.91 currency=USD processor=stripe
+2026-10-17T10:00:02.623Z DEBUG cache hit key=customer:6444
+2026-10-17T10:00:02.623Z INFO  request id=c5264fe7-def7-a288-24f3-dfda259a86c3 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:02.623Z INFO  charge authorized amount=216.35 currency=USD processor=stripe
+2026-10-17T10:00:02.651Z DEBUG cache hit key=customer:8583
+2026-10-17T10:00:02.651Z INFO  request id=de77182a-b5fe-e30a-278b-08c44c988a8f method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:02.651Z INFO  charge authorized amount=361.89 currency=USD processor=stripe
+2026-10-17T10:00:02.701Z DEBUG cache hit key=customer:7203
+2026-10-17T10:00:02.701Z INFO  request id=925af299-7883-f13c-6609-36a5ddb29a0a method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:02.701Z INFO  charge authorized amount=128.29 currency=USD processor=stripe
+2026-10-17T10:00:02.729Z DEBUG cache hit key=customer:6762
+2026-10-17T10:00:02.729Z INFO  request id=e791fbf5-5e51-c1f1-607d-7e87740702f2 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:02.729Z INFO  charge authorized amount=142.64 currency=USD processor=stripe
+2026-10-17T10:00:02.743Z DEBUG cache hit key=customer:2638
+2026-10-17T10:00:02.743Z INFO  request id=44bfaf98-5258-d3d1-cfe1-616cec3d6a77 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:02.743Z INFO  charge authorized amount=171.35 currency=USD processor=stripe
+2026-10-17T10:00:02.797Z DEBUG cache miss key=customer:2763
+2026-10-17T10:00:02.797Z INFO  request id=b3f1ff5b-21f2-485d-9c86-241fb56cdd67 method=POST path=/v1/charges status=200 latency=38ms
+2026-10-17T10:00:02.797Z INFO  charge authorized amount=241.10 currency=USD processor=stripe
+2026-10-17T10:00:02.820Z DEBUG cache miss key=customer:7672
+2026-10-17T10:00:02.820Z INFO  request id=96245d31-12f9-93bb-410f-ffa4eb57518a method=POST path=/v1/charges status=200 latency=42ms
+2026-10-17T10:00:02.820Z INFO  charge authorized amount=342.72 currency=USD processor=stripe
+2026-10-17T10:00:02.862Z DEBUG cache hit key=customer:7289
+2026-10-17T10:00:02.862Z INFO  request id=531ecf2b-5dbb-1b9c-8cd0-2a18fd7b5661 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:02.862Z INFO  charge authorized amount=55.80 currency=USD processor=stripe
+2026-10-17T10:00:02.868Z DEBUG cache hit key=customer:7135
+2026-10-17T10:00:02.868Z INFO  request id=d2d38cc2-6465-0e7c-a416-835ded0953f3 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:02.868Z INFO  charge authorized amount=277.09 currency=USD processor=stripe
+2026-10-17T10:00:02.892Z DEBUG cache miss key=customer:2118
+2026-10-17T10:00:02.892Z INFO  request id=9e29b01d-3a33-f99f-046c-4c3c66158554 method=POST path=/v1/charges status=200 latency=38ms
+2026-10-17T10:00:02.892Z INFO  charge authorized amount=298.74 currency=USD processor=stripe
+2026-10-17T10:00:02.906Z DEBUG cache hit key=customer:3004
+2026-10-17T10:00:02.906Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T10:00:02.969Z INFO  request id=f61af2ed-4f0c-7bf0-9865-85f535b6e292 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:02.969Z INFO  charge authorized amount=337.97 currency=USD processor=stripe
+2026-10-17T10:00:03.005Z DEBUG cache hit key=customer:7783
+2026-10-17T10:00:03.005Z INFO  request id=e5b3c19d-1a67-779a-9b2d-2b379665e0e9 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:03.005Z INFO  charge authorized amount=122.02 currency=USD processor=stripe
+2026-10-17T10:00:03.033Z DEBUG cache hit key=customer:4605
+2026-10-17T10:00:03.033Z INFO  request id=e7b085e5-7cc4-6528-638d-efacc1e70c3a method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:03.033Z INFO  charge authorized amount=153.25 currency=USD processor=stripe
+2026-10-17T10:00:03.053Z DEBUG cache hit key=customer:8481
+2026-10-17T10:00:03.053Z INFO  request id=ceab82a9-faf9-d082-f5a7-47afb0f62eb2 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:03.053Z INFO  charge authorized amount=369.58 currency=USD processor=stripe
+2026-10-17T10:00:03.064Z DEBUG cache hit key=customer:4444
+2026-10-17T10:00:03.064Z INFO  request id=9c89d961-0a7e-2dcd-b10b-5d7842328550 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:03.064Z INFO  charge authorized amount=216.33 currency=USD processor=stripe
+2026-10-17T10:00:03.091Z DEBUG cache hit key=customer:6570
+2026-10-17T10:00:03.091Z INFO  request id=6b83e3b1-1a82-3a67-f23f-ec099a033f12 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:03.091Z INFO  charge authorized amount=168.22 currency=USD processor=stripe
+2026-10-17T10:00:03.121Z DEBUG cache hit key=customer:3452
+2026-10-17T10:00:03.121Z INFO  request id=7ebe8626-a89f-2bb7-3fe6-04646c10ba4c method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:03.121Z INFO  charge authorized amount=134.85 currency=USD processor=stripe
+2026-10-17T10:00:03.139Z DEBUG cache hit key=customer:6496
+2026-10-17T10:00:03.139Z INFO  request id=572ab13a-6a33-cabe-6f4d-617b549d28ad method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:03.139Z INFO  charge authorized amount=375.98 currency=USD processor=stripe
+2026-10-17T10:00:03.153Z DEBUG cache hit key=customer:6142
+2026-10-17T10:00:03.153Z INFO  request id=1cc44855-cd9e-b997-9c74-3783aa26e633 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:03.153Z INFO  charge authorized amount=96.27 currency=USD processor=stripe
+2026-10-17T10:00:03.177Z DEBUG cache hit key=customer:7610
+2026-10-17T10:00:03.177Z INFO  request id=5095fefc-aca5-751c-a793-da63c89428f3 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:03.177Z INFO  charge authorized amount=222.04 currency=USD processor=stripe
+2026-10-17T10:00:03.202Z DEBUG cache hit key=customer:1882
+2026-10-17T10:00:03.202Z INFO  request id=717306b9-7288-7e2e-3774-19bcafa377d0 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:03.202Z INFO  charge authorized amount=250.26 currency=USD processor=stripe
+2026-10-17T10:00:03.202Z INFO  healthcheck ok uptime=29s goroutines=46
+2026-10-17T10:00:03.240Z DEBUG cache miss key=customer:8192
+2026-10-17T10:00:03.240Z INFO  request id=1514973d-8f85-ed5a-87af-dccf6dedd299 method=POST path=/v1/charges status=200 latency=52ms
+2026-10-17T10:00:03.240Z INFO  charge authorized amount=43.84 currency=USD processor=stripe
+2026-10-17T10:00:03.291Z DEBUG cache hit key=customer:2306
+2026-10-17T10:00:03.291Z INFO  request id=2daa49f0-1233-c9c4-b79f-90fa3d1433d1 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:03.291Z INFO  charge authorized amount=347.71 currency=USD processor=stripe
+2026-10-17T10:00:03.350Z DEBUG cache hit key=customer:4055
+2026-10-17T10:00:03.350Z INFO  request id=8cdc4979-1404-0851-4a30-57db007e9650 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:03.350Z INFO  charge authorized amount=65.75 currency=USD processor=stripe
+2026-10-17T10:00:03.383Z DEBUG cache hit key=customer:5129
+2026-10-17T10:00:03.383Z INFO  request id=7745bd4a-9d0d-d150-a020-8978c41de28a method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:03.383Z INFO  charge authorized amount=88.90 currency=USD processor=stripe
+2026-10-17T10:00:03.417Z DEBUG cache hit key=customer:5359
+2026-10-17T10:00:03.417Z INFO  request id=d6cae1ff-3733-982c-8c46-0eeeff2bca46 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:03.417Z INFO  charge authorized amount=296.13 currency=USD processor=stripe
+2026-10-17T10:00:03.457Z DEBUG cache hit key=customer:3205
+2026-10-17T10:00:03.457Z INFO  request id=4b94e776-a939-5303-2883-492da900b2a6 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:03.457Z INFO  charge authorized amount=197.74 currency=USD processor=stripe
+2026-10-17T10:00:03.481Z DEBUG cache hit key=customer:6680
+2026-10-17T10:00:03.481Z INFO  request id=c3e73d7a-6f12-9de1-1bd7-0af5eb8fe350 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:03.481Z INFO  charge authorized amount=229.33 currency=USD processor=stripe
+2026-10-17T10:00:03.496Z DEBUG cache miss key=customer:8222
+2026-10-17T10:00:03.496Z INFO  request id=af2c2743-d8e4-37cc-4bef-13a3edaa205f method=POST path=/v1/charges status=200 latency=53ms
+2026-10-17T10:00:03.496Z INFO  charge authorized amount=348.62 currency=USD processor=stripe
+2026-10-17T10:00:03.548Z DEBUG cache hit key=customer:9062
+2026-10-17T10:00:03.548Z INFO  request id=c4c50bef-576e-eb19-b3b1-5b2c2b454dfc method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:03.548Z INFO  charge authorized amount=383.15 currency=USD processor=stripe
+2026-10-17T10:00:03.593Z DEBUG cache miss key=customer:8991
+2026-10-17T10:00:03.593Z INFO  request id=ef2b1816-1a14-da8a-b1c0-8aaed2f56d6f method=POST path=/v1/charges status=200 latency=52ms
+2026-10-17T10:00:03.593Z INFO  charge authorized amount=49.61 currency=USD processor=stripe
+2026-10-17T10:00:03.602Z DEBUG cache hit key=customer:7932
+2026-10-17T10:00:03.602Z INFO  request id=26649036-359a-1048-8469-9d628020173e method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:03.602Z INFO  charge authorized amount=89.40 currency=USD processor=stripe
+2026-10-17T10:00:03.608Z DEBUG cache hit key=customer:2849
+2026-10-17T10:00:03.608Z INFO  request id=dbcc2836-fff3-d37e-4773-340e592e5695 method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:03.608Z INFO  charge authorized amount=171.87 currency=USD processor=stripe
+2026-10-17T10:00:03.642Z DEBUG cache hit key=customer:1409
+2026-10-17T10:00:03.642Z INFO  request id=996af0a1-f1a6-fbcd-8704-e119196fcc28 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:03.642Z INFO  charge authorized amount=352.58 currency=USD processor=stripe
+2026-10-17T10:00:03.687Z DEBUG cache hit key=customer:9792
+2026-10-17T10:00:03.687Z INFO  request id=9a6db6a4-17f3-fbde-10f4-0c620840ec4d method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:03.687Z INFO  charge authorized amount=35.53 currency=USD processor=stripe
+2026-10-17T10:00:03.725Z DEBUG cache hit key=customer:4048
+2026-10-17T10:00:03.725Z INFO  request id=f9943253-bac2-7294-2cbd-f8864f3747ff method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:03.725Z INFO  charge authorized amount=163.84 currency=USD processor=stripe
+2026-10-17T10:00:03.754Z DEBUG cache hit key=customer:7197
+2026-10-17T10:00:03.754Z INFO  request id=7f4c089a-d2b2-c745-f5a0-33cee1429c5b method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:03.754Z INFO  charge authorized amount=123.03 currency=USD processor=stripe
+2026-10-17T10:00:03.781Z DEBUG cache hit key=customer:3774
+2026-10-17T10:00:03.781Z INFO  request id=855581ee-2852-c1a4-b74c-bf53586e5df0 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:03.781Z INFO  charge authorized amount=361.42 currency=USD processor=stripe
+2026-10-17T10:00:03.798Z DEBUG cache hit key=customer:9753
+2026-10-17T10:00:03.798Z INFO  request id=4369b35f-c8b4-eddb-b41c-a33dd6e49791 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:03.798Z INFO  charge authorized amount=378.41 currency=USD processor=stripe
+2026-10-17T10:00:03.798Z WARN  slow query took 225ms: SELECT * FROM charges WHERE customer_id = $1
+2026-10-17T10:00:03.840Z DEBUG cache miss key=customer:5876
+2026-10-17T10:00:03.840Z INFO  request id=875de695-5889-361a-2a00-a1b24e62bda7 method=POST path=/v1/charges status=200 latency=56ms
+2026-10-17T10:00:03.840Z INFO  charge authorized amount=36.60 currency=USD processor=stripe
+2026-10-17T10:00:03.879Z DEBUG cache hit key=customer:4309
+2026-10-17T10:00:03.879Z INFO  request id=522dd92f-4718-cd9f-8c64-9ac226745ca2 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:03.879Z INFO  charge authorized amount=344.60 currency=USD processor=stripe
+2026-10-17T10:00:03.908Z DEBUG cache hit key=customer:3500
+2026-10-17T10:00:03.908Z INFO  request id=fa169644-27ee-d52a-7b96-250d723155aa method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:03.908Z INFO  charge authorized amount=52.73 currency=USD processor=stripe
+2026-10-17T10:00:03.921Z DEBUG cache miss key=customer:5053
+2026-10-17T10:00:03.921Z INFO  request id=39a8ae14-96e8-b8d6-db75-ec0afbe1cd33 method=POST path=/v1/charges status=200 latency=38ms
+2026-10-17T10:00:03.921Z INFO  charge authorized amount=365.99 currency=USD processor=stripe
+2026-10-17T10:00:03.938Z DEBUG cache hit key=customer:7519
+2026-10-17T10:00:03.938Z INFO  request id=6c3fdf14-954a-03ec-1a93-0e9a954424ef method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:03.938Z INFO  charge authorized amount=397.47 currency=USD processor=stripe
+2026-10-17T10:00:03.956Z DEBUG cache hit key=customer:2116
+2026-10-17T10:00:03.956Z INFO  request id=f030e3f1-5357-3654-bafd-3dcc7de9c77a method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:03.956Z INFO  charge authorized amount=142.08 currency=USD processor=stripe
+2026-10-17T10:00:03.998Z DEBUG cache hit key=customer:9323
+2026-10-17T10:00:03.998Z INFO  request id=0a9d1d98-0e40-b983-381e-9b8d35a26abe method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:03.998Z INFO  charge authorized amount=324.75 currency=USD processor=stripe
+2026-10-17T10:00:04.018Z DEBUG cache hit key=customer:2260
+2026-10-17T10:00:04.018Z INFO  request id=302446af-eeb0-a6ca-db49-5c909a7fe671 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:04.018Z INFO  charge authorized amount=95.83 currency=USD processor=stripe
+2026-10-17T10:00:04.071Z DEBUG cache hit key=customer:3322
+2026-10-17T10:00:04.071Z INFO  request id=dcc9ee75-362a-b4aa-eb76-0e170fdc6a23 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:04.071Z INFO  charge authorized amount=396.38 currency=USD processor=stripe
+2026-10-17T10:00:04.114Z DEBUG cache hit key=customer:1591
+2026-10-17T10:00:04.114Z INFO  request id=c038d45f-46da-4d24-1e12-b0c519910d4e method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:04.114Z INFO  charge authorized amount=272.31 currency=USD processor=stripe
+2026-10-17T10:00:04.123Z DEBUG cache hit key=customer:9002
+2026-10-17T10:00:04.123Z INFO  request id=31de331c-bd29-abf8-fbbd-264dd57ba21a method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:04.123Z INFO  charge authorized amount=196.24 currency=USD processor=stripe
+2026-10-17T10:00:04.160Z DEBUG cache miss key=customer:7754
+2026-10-17T10:00:04.160Z INFO  request id=38ee394e-b927-b3d6-b3a3-c42fa2576dcc method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:04.160Z INFO  charge authorized amount=337.63 currency=USD processor=stripe
+2026-10-17T10:00:04.178Z DEBUG cache hit key=customer:4666
+2026-10-17T10:00:04.178Z INFO  request id=6efd1259-b681-5d87-4d2e-863fb0a01cbd method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:04.178Z INFO  charge authorized amount=212.70 currency=USD processor=stripe
+2026-10-17T10:00:04.204Z DEBUG cache hit key=customer:5634
+2026-10-17T10:00:04.204Z INFO  request id=3e1f5b0f-d43b-7d8e-8c2f-26672a916321 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:04.204Z INFO  charge authorized amount=28.16 currency=USD processor=stripe
+2026-10-17T10:00:04.258Z DEBUG cache hit key=customer:9597
+2026-10-17T10:00:04.258Z INFO  request id=b4825fa4-0759-9ae4-0a79-5226513153f8 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:04.258Z INFO  charge authorized amount=234.86 currency=USD processor=stripe
+2026-10-17T10:00:04.297Z DEBUG cache hit key=customer:7490
+2026-10-17T10:00:04.297Z INFO  request id=2c3bcc17-bcaa-5fec-d6c1-dbbf6ef8272d method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:04.297Z INFO  charge authorized amount=399.95 currency=USD processor=stripe
+2026-10-17T10:00:04.352Z DEBUG cache miss key=customer:3950
+2026-10-17T10:00:04.352Z INFO  request id=9269e7f0-baab-bb99-8b3e-1bf42771b4d4 method=POST path=/v1/charges status=200 latency=38ms
+2026-10-17T10:00:04.352Z INFO  charge authorized amount=200.24 currency=USD processor=stripe
+2026-10-17T10:00:04.377Z DEBUG cache hit key=customer:9977
+2026-10-17T10:00:04.377Z INFO  request id=e52330bc-8786-ee42-cf06-904d017e4051 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:04.377Z INFO  charge authorized amount=380.41 currency=USD processor=stripe
+2026-10-17T10:00:04.383Z DEBUG cache hit key=customer:8311
+2026-10-17T10:00:04.383Z INFO  request id=443cc4cc-d6b2-4961-0837-56f86ffa1073 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:04.383Z INFO  charge authorized amount=353.19 currency=USD processor=stripe
+2026-10-17T10:00:04.422Z DEBUG cache miss key=customer:2612
+2026-10-17T10:00:04.422Z INFO  request id=22c5c7dd-8d2e-a3d4-8b48-34b4312a17e9 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:04.422Z INFO  charge authorized amount=249.81 currency=USD processor=stripe
+2026-10-17T10:00:04.453Z DEBUG cache hit key=customer:9965
+2026-10-17T10:00:04.453Z INFO  request id=9b3d8882-b49b-7712-cf5d-619ea9da100f method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:04.453Z INFO  charge authorized amount=278.88 currency=USD processor=stripe
+2026-10-17T10:00:04.500Z DEBUG cache hit key=customer:8715
+2026-10-17T10:00:04.500Z INFO  request id=c230ca81-48c5-11ca-6bba-e57572394a3c method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:04.500Z INFO  charge authorized amount=292.55 currency=USD processor=stripe
+2026-10-17T10:00:04.537Z DEBUG cache hit key=customer:6725
+2026-10-17T10:00:04.537Z INFO  request id=42530fed-f355-f718-8ef0-1756384760c8 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:04.537Z INFO  charge authorized amount=323.54 currency=USD processor=stripe
+2026-10-17T10:00:04.544Z DEBUG cache hit key=customer:1684
+2026-10-17T10:00:04.544Z INFO  request id=0afb61ad-9038-e3dc-8b16-590cac9b7ec2 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:04.544Z INFO  charge authorized amount=154.96 currency=USD processor=stripe
+2026-10-17T10:00:04.599Z DEBUG cache miss key=customer:2009
+2026-10-17T10:00:04.599Z INFO  request id=94da0a41-921d-cd8e-1e54-caf4936dfc7e method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:04.599Z INFO  charge authorized amount=295.65 currency=USD processor=stripe
+2026-10-17T10:00:04.637Z DEBUG cache miss key=customer:9412
+2026-10-17T10:00:04.637Z INFO  request id=1f4c9a1d-1db4-a18f-8fa3-6c55e52d0342 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:04.637Z INFO  charge authorized amount=37.11 currency=USD processor=stripe
+2026-10-17T10:00:04.672Z DEBUG cache miss key=customer:9921
+2026-10-17T10:00:04.672Z INFO  request id=35205203-2fb6-3dc5-b1a5-0677971223dc method=POST path=/v1/charges status=200 latency=40ms
+2026-10-17T10:00:04.672Z INFO  charge authorized amount=392.37 currency=USD processor=stripe
+2026-10-17T10:00:04.712Z DEBUG cache hit key=customer:8592
+2026-10-17T10:00:04.712Z INFO  request id=316d2d32-7b75-954e-f182-7c7718aab24d method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:04.712Z INFO  charge authorized amount=164.03 currency=USD processor=stripe
+2026-10-17T10:00:04.725Z DEBUG cache hit key=customer:3951
+2026-10-17T10:00:04.725Z INFO  request id=353e7513-9b61-b1a9-9fb9-ec694f928ab1 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:04.725Z INFO  charge authorized amount=179.05 currency=USD processor=stripe
+2026-10-17T10:00:04.771Z DEBUG cache hit key=customer:1689
+2026-10-17T10:00:04.771Z INFO  request id=3c935fc6-99eb-5616-ccd3-cac56b5f8a53 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:04.771Z INFO  charge authorized amount=375.07 currency=USD processor=stripe
+2026-10-17T10:00:04.785Z DEBUG cache hit key=customer:5576
+2026-10-17T10:00:04.785Z INFO  request id=ed9e6c47-baae-8489-6890-b283da61d8ec method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:04.785Z INFO  charge authorized amount=181.20 currency=USD processor=stripe
+2026-10-17T10:00:04.798Z DEBUG cache hit key=customer:1154
+2026-10-17T10:00:04.798Z INFO  request id=4f56ee3a-3a65-6e33-c87b-02a682658b6c method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:04.798Z INFO  charge authorized amount=111.32 currency=USD processor=stripe
+2026-10-17T10:00:04.798Z INFO  healthcheck ok uptime=39s goroutines=52
+2026-10-17T10:00:04.813Z DEBUG cache hit key=customer:5831
+2026-10-17T10:00:04.813Z INFO  request id=d2015328-b284-ae7b-d89a-5f763ceaf5ca method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:04.813Z INFO  charge authorized amount=51.68 currency=USD processor=stripe
+2026-10-17T10:00:04.844Z DEBUG cache hit key=customer:9142
+2026-10-17T10:00:04.844Z INFO  request id=3e647a9f-5bff-32bb-b2b2-61f0e83f3526 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:04.844Z INFO  charge authorized amount=131.34 currency=USD processor=stripe
+2026-10-17T10:00:04.890Z DEBUG cache miss key=customer:9196
+2026-10-17T10:00:04.890Z INFO  request id=c5e8e0c2-3c39-6820-b303-f6941e3fd85b method=POST path=/v1/charges status=200 latency=40ms
+2026-10-17T10:00:04.890Z INFO  charge authorized amount=176.76 currency=USD processor=stripe
+2026-10-17T10:00:04.898Z DEBUG cache hit key=customer:8500
+2026-10-17T10:00:04.898Z INFO  request id=5ed21282-1670-9df2-5879-b0ce894ac4f1 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:04.898Z INFO  charge authorized amount=289.21 currency=USD processor=stripe
+2026-10-17T10:00:04.937Z DEBUG cache hit key=customer:9524
+2026-10-17T10:00:04.937Z INFO  request id=a5660e47-3f80-4942-36a6-8e84ea31aad7 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:04.937Z INFO  charge authorized amount=28.22 currency=USD processor=stripe
+2026-10-17T10:00:04.950Z DEBUG cache hit key=customer:7657
+2026-10-17T10:00:04.950Z INFO  request id=1348e450-5554-c425-d008-4fdb3925e296 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:04.950Z INFO  charge authorized amount=164.91 currency=USD processor=stripe
+2026-10-17T10:00:04.956Z DEBUG cache hit key=customer:8000
+2026-10-17T10:00:04.956Z INFO  request id=dd6cdd42-ea8b-304f-e105-9f180ff83d14 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:04.956Z INFO  charge authorized amount=67.88 currency=USD processor=stripe
+2026-10-17T10:00:04.999Z DEBUG cache hit key=customer:8375
+2026-10-17T10:00:04.999Z INFO  request id=a024217e-3136-4b18-204e-9681dd8e84ae method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:04.999Z INFO  charge authorized amount=212.04 currency=USD processor=stripe
+2026-10-17T10:00:05.052Z DEBUG cache hit key=customer:8641
+2026-10-17T10:00:05.052Z INFO  request id=2678aad1-55b2-1a7b-8d60-a2b97f18487f method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:05.052Z INFO  charge authorized amount=82.41 currency=USD processor=stripe
+2026-10-17T10:00:05.074Z DEBUG cache hit key=customer:3831
+2026-10-17T10:00:05.074Z INFO  request id=6fff4c77-9104-1091-7916-4346e8eb27ac method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:05.074Z INFO  charge authorized amount=207.03 currency=USD processor=stripe
+2026-10-17T10:00:05.131Z DEBUG cache hit key=customer:4366
+2026-10-17T10:00:05.131Z INFO  request id=fdc82ed5-a15c-fdc5-8071-204573c18ab0 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:05.131Z INFO  charge authorized amount=383.40 currency=USD processor=stripe
+2026-10-17T10:00:05.151Z DEBUG cache hit key=customer:1437
+2026-10-17T10:00:05.151Z INFO  request id=9bfa2a81-bc9e-04fd-0f83-448143276647 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:05.151Z INFO  charge authorized amount=215.55 currency=USD processor=stripe
+2026-10-17T10:00:05.205Z DEBUG cache miss key=customer:8219
+2026-10-17T10:00:05.205Z INFO  request id=c08bfadc-fe7f-4096-d6c5-5d8417002d36 method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:05.205Z INFO  charge authorized amount=21.36 currency=USD processor=stripe
+2026-10-17T10:00:05.260Z DEBUG cache miss key=customer:4227
+2026-10-17T10:00:05.260Z INFO  request id=189b045e-fc8c-2577-fe6d-9872a985ee12 method=POST path=/v1/charges status=200 latency=39ms
+2026-10-17T10:00:05.260Z INFO  charge authorized amount=325.63 currency=USD processor=stripe
+2026-10-17T10:00:05.285Z DEBUG cache hit key=customer:8587
+2026-10-17T10:00:05.285Z INFO  request id=9ee725d5-6280-e59e-66dc-a025a18d4616 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:05.285Z INFO  charge authorized amount=236.05 currency=USD processor=stripe
+2026-10-17T10:00:05.342Z DEBUG cache miss key=customer:3996
+2026-10-17T10:00:05.342Z INFO  request id=e81abd98-0183-8295-5c59-1882715148a8 method=POST path=/v1/charges status=200 latency=40ms
+2026-10-17T10:00:05.342Z INFO  charge authorized amount=257.10 currency=USD processor=stripe
+2026-10-17T10:00:05.399Z DEBUG cache miss key=customer:2675
+2026-10-17T10:00:05.399Z INFO  request id=26586f68-971a-ed1b-6325-9dd5cd4f9585 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:05.399Z INFO  charge authorized amount=228.54 currency=USD processor=stripe
+2026-10-17T10:00:05.415Z DEBUG cache miss key=customer:4147
+2026-10-17T10:00:05.415Z INFO  request id=4a71224f-1134-8fe2-a05d-1e5885f1317f method=POST path=/v1/charges status=200 latency=39ms
+2026-10-17T10:00:05.415Z INFO  charge authorized amount=225.60 currency=USD processor=stripe
+2026-10-17T10:00:05.437Z DEBUG cache hit key=customer:3673
+2026-10-17T10:00:05.437Z INFO  request id=8389d976-aa61-8b47-96ac-bfe8aa356ecd method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:05.437Z INFO  charge authorized amount=322.56 currency=USD processor=stripe
+2026-10-17T10:00:05.492Z DEBUG cache hit key=customer:1202
+2026-10-17T10:00:05.492Z INFO  request id=ce1f7786-bf1b-9852-e4fc-a6a9291e9060 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:05.492Z INFO  charge authorized amount=152.36 currency=USD processor=stripe
+2026-10-17T10:00:05.523Z DEBUG cache miss key=customer:7589
+2026-10-17T10:00:05.523Z INFO  request id=154bc3a6-1936-c226-d810-086c04a35e86 method=POST path=/v1/charges status=200 latency=41ms
+2026-10-17T10:00:05.523Z INFO  charge authorized amount=179.58 currency=USD processor=stripe
+2026-10-17T10:00:05.572Z DEBUG cache hit key=customer:9616
+2026-10-17T10:00:05.572Z INFO  request id=544c1135-4d26-6ed9-c2f7-06269c43cd90 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:05.572Z INFO  charge authorized amount=50.16 currency=USD processor=stripe
+2026-10-17T10:00:05.615Z DEBUG cache miss key=customer:3970
+2026-10-17T10:00:05.615Z INFO  request id=504997d9-3a17-ab28-197f-e617e5f88afa method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:05.615Z INFO  charge authorized amount=153.15 currency=USD processor=stripe
+2026-10-17T10:00:05.668Z DEBUG cache miss key=customer:9646
+2026-10-17T10:00:05.668Z INFO  request id=5cbe003c-32a3-8486-5a4c-cb02351dbc55 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:05.668Z INFO  charge authorized amount=353.88 currency=USD processor=stripe
+2026-10-17T10:00:05.680Z DEBUG cache hit key=customer:1469
+2026-10-17T10:00:05.680Z INFO  request id=ec92e785-cde7-28fd-bf50-54060e4c89fa method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:05.680Z INFO  charge authorized amount=308.01 currency=USD processor=stripe
+2026-10-17T10:00:05.695Z DEBUG cache hit key=customer:8546
+2026-10-17T10:00:05.695Z INFO  request id=c90b0141-8e22-426d-0401-a2c8fd02cb31 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:05.695Z INFO  charge authorized amount=130.68 currency=USD processor=stripe
+2026-10-17T10:00:05.707Z DEBUG cache hit key=customer:6320
+2026-10-17T10:00:05.707Z INFO  request id=29a14fdf-a6b4-a8b8-9110-a97cf38c781a method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:05.707Z INFO  charge authorized amount=397.08 currency=USD processor=stripe
+2026-10-17T10:00:05.762Z DEBUG cache hit key=customer:4349
+2026-10-17T10:00:05.762Z INFO  request id=d758bd1d-bc0b-6308-56cb-9d7e18cdc96b method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:05.762Z INFO  charge authorized amount=314.88 currency=USD processor=stripe
+2026-10-17T10:00:05.792Z DEBUG cache hit key=customer:5733
+2026-10-17T10:00:05.792Z INFO  request id=3c9e4108-69b2-1009-d944-3204213f7bce method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:05.792Z INFO  charge authorized amount=121.43 currency=USD processor=stripe
+2026-10-17T10:00:05.819Z DEBUG cache hit key=customer:5789
+2026-10-17T10:00:05.819Z INFO  request id=b880ccf1-f61e-7420-9c79-bf81a930b302 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:05.819Z INFO  charge authorized amount=361.46 currency=USD processor=stripe
+2026-10-17T10:00:05.852Z DEBUG cache hit key=customer:4433
+2026-10-17T10:00:05.852Z INFO  request id=bd0f1425-436c-64cd-411d-335623ff4f5d method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:05.852Z INFO  charge authorized amount=225.01 currency=USD processor=stripe
+2026-10-17T10:00:05.886Z DEBUG cache hit key=customer:4210
+2026-10-17T10:00:05.886Z INFO  request id=167f6291-92c5-8e6f-d73e-83812f084ef5 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:05.886Z INFO  charge authorized amount=131.92 currency=USD processor=stripe
+2026-10-17T10:00:05.908Z DEBUG cache miss key=customer:7637
+2026-10-17T10:00:05.908Z INFO  request id=e36b9208-221b-2b8e-f073-fbf5a57f5190 method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:05.908Z INFO  charge authorized amount=363.20 currency=USD processor=stripe
+2026-10-17T10:00:05.931Z DEBUG cache hit key=customer:9941
+2026-10-17T10:00:05.931Z INFO  request id=e19cb86c-496d-4930-5360-b31011b48537 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:05.931Z INFO  charge authorized amount=351.52 currency=USD processor=stripe
+2026-10-17T10:00:05.942Z DEBUG cache hit key=customer:4999
+2026-10-17T10:00:05.942Z INFO  request id=157d0f44-0a59-c7e0-be3a-8e461c4f15b6 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:05.942Z INFO  charge authorized amount=246.20 currency=USD processor=stripe
+2026-10-17T10:00:05.983Z DEBUG cache miss key=customer:4854
+2026-10-17T10:00:05.983Z INFO  request id=b1fdc549-22cd-f5d7-715f-b43e9b5a5942 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:05.983Z INFO  charge authorized amount=199.40 currency=USD processor=stripe
+2026-10-17T10:00:06.023Z DEBUG cache hit key=customer:2820
+2026-10-17T10:00:06.023Z INFO  request id=cb8950ea-de14-5909-9a3e-d096f482a1fa method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:06.023Z INFO  charge authorized amount=39.56 currency=USD processor=stripe
+2026-10-17T10:00:06.052Z DEBUG cache miss key=customer:1559
+2026-10-17T10:00:06.052Z INFO  request id=322b15ff-e98b-bc41-1052-d58ffec9ee94 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:06.052Z INFO  charge authorized amount=12.77 currency=USD processor=stripe
+2026-10-17T10:00:06.080Z DEBUG cache hit key=customer:7301
+2026-10-17T10:00:06.080Z INFO  request id=8e283f7d-6dc9-a946-5ea1-f945295f16ee method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:06.080Z INFO  charge authorized amount=152.64 currency=USD processor=stripe
+2026-10-17T10:00:06.095Z DEBUG cache hit key=customer:1874
+2026-10-17T10:00:06.095Z INFO  request id=388e1a73-d070-1d85-4bfa-aa86165a5aee method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:06.095Z INFO  charge authorized amount=288.76 currency=USD processor=stripe
+2026-10-17T10:00:06.145Z DEBUG cache hit key=customer:9832
+2026-10-17T10:00:06.145Z INFO  request id=934b615a-c73c-0616-382c-899635eea79a method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:06.145Z INFO  charge authorized amount=208.30 currency=USD processor=stripe
+2026-10-17T10:00:06.165Z DEBUG cache hit key=customer:2440
+2026-10-17T10:00:06.165Z INFO  request id=166988ca-8e73-b298-6b3a-b484171e9d0c method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:06.165Z INFO  charge authorized amount=119.24 currency=USD processor=stripe
+2026-10-17T10:00:06.194Z DEBUG cache miss key=customer:1875
+2026-10-17T10:00:06.194Z INFO  request id=bbf40e63-4e87-72d7-4760-8cd3a570e172 method=POST path=/v1/charges status=200 latency=50ms
+2026-10-17T10:00:06.194Z INFO  charge authorized amount=107.24 currency=USD processor=stripe
+2026-10-17T10:00:06.231Z DEBUG cache miss key=customer:4549
+2026-10-17T10:00:06.231Z INFO  request id=6eb1ddca-64f0-5562-67ea-0dcc19b10f05 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:06.231Z INFO  charge authorized amount=201.79 currency=USD processor=stripe
+2026-10-17T10:00:06.266Z DEBUG cache hit key=customer:2389
+2026-10-17T10:00:06.266Z INFO  request id=e0318c44-da39-55f6-1ce2-f30a0593a81d method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:06.266Z INFO  charge authorized amount=288.28 currency=USD processor=stripe
+2026-10-17T10:00:06.297Z DEBUG cache hit key=customer:9995
+2026-10-17T10:00:06.297Z INFO  request id=baff0d13-87b9-fb92-ee63-10777e08229e method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:06.297Z INFO  charge authorized amount=153.85 currency=USD processor=stripe
+2026-10-17T10:00:06.310Z DEBUG cache hit key=customer:3976
+2026-10-17T10:00:06.310Z INFO  request id=50b715a6-4d11-4859-40dc-aa3f72e0aa52 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:06.310Z INFO  charge authorized amount=129.79 currency=USD processor=stripe
+2026-10-17T10:00:06.366Z DEBUG cache miss key=customer:6959
+2026-10-17T10:00:06.366Z INFO  request id=1002b144-3f38-4640-f42d-c5bd05f432d9 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:06.366Z INFO  charge authorized amount=159.24 currency=USD processor=stripe
+2026-10-17T10:00:06.383Z DEBUG cache hit key=customer:6102
+2026-10-17T10:00:06.383Z INFO  request id=610dcfa7-2c7d-f274-9542-ed4d4be51b63 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:06.383Z INFO  charge authorized amount=255.23 currency=USD processor=stripe
+2026-10-17T10:00:06.391Z DEBUG cache miss key=customer:3969
+2026-10-17T10:00:06.391Z INFO  request id=7698f828-4a23-0e9d-6e39-92710074c388 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:06.391Z INFO  charge authorized amount=376.25 currency=USD processor=stripe
+2026-10-17T10:00:06.391Z INFO  healthcheck ok uptime=49s goroutines=45
+2026-10-17T10:00:06.427Z DEBUG cache miss key=customer:6813
+2026-10-17T10:00:06.427Z INFO  request id=1d03aa30-9a9e-d4ab-ee79-161dcbd97dc1 method=POST path=/v1/charges status=200 latency=51ms
+2026-10-17T10:00:06.427Z INFO  charge authorized amount=345.48 currency=USD processor=stripe
+2026-10-17T10:00:06.487Z DEBUG cache miss key=customer:7922
+2026-10-17T10:00:06.487Z INFO  request id=ef24cfdb-37b9-1e26-c9e5-adb43c138f8d method=POST path=/v1/charges status=200 latency=66ms
+2026-10-17T10:00:06.487Z INFO  charge authorized amount=67.70 currency=USD processor=stripe
+2026-10-17T10:00:06.526Z DEBUG cache hit key=customer:5725
+2026-10-17T10:00:06.526Z INFO  request id=65e4c324-3975-9aa5-695f-701a17d28dfb method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:06.526Z INFO  charge authorized amount=109.05 currency=USD processor=stripe
+2026-10-17T10:00:06.569Z DEBUG cache hit key=customer:3739
+2026-10-17T10:00:06.569Z INFO  request id=06024da8-6186-65d5-8c9d-084824a28991 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:06.569Z INFO  charge authorized amount=244.59 currency=USD processor=stripe
+2026-10-17T10:00:06.609Z DEBUG cache miss key=customer:7145
+2026-10-17T10:00:06.609Z INFO  request id=a33658d6-ec48-a1d0-2358-e8403905d33b method=POST path=/v1/charges status=200 latency=51ms
+2026-10-17T10:00:06.609Z INFO  charge authorized amount=279.97 currency=USD processor=stripe
+2026-10-17T10:00:06.667Z DEBUG cache hit key=customer:6775
+2026-10-17T10:00:06.667Z INFO  request id=12306648-026e-44ff-14c4-d0f942cd44d2 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:06.667Z INFO  charge authorized amount=211.06 currency=USD processor=stripe
+2026-10-17T10:00:06.677Z DEBUG cache hit key=customer:3888
+2026-10-17T10:00:06.677Z INFO  request id=b3c72fa7-1748-6dcf-1984-905218e11cc3 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:06.677Z INFO  charge authorized amount=347.65 currency=USD processor=stripe
+2026-10-17T10:00:06.704Z DEBUG cache hit key=customer:5064
+2026-10-17T10:00:06.704Z INFO  request id=970a09d7-1061-e7ce-7bf0-c2d994b7977f method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:06.704Z INFO  charge authorized amount=147.83 currency=USD processor=stripe
+2026-10-17T10:00:06.746Z DEBUG cache hit key=customer:3359
+2026-10-17T10:00:06.746Z INFO  request id=2d91b49b-dec4-1340-bafc-41c5e11fcbf4 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:06.746Z INFO  charge authorized amount=146.04 currency=USD processor=stripe
+2026-10-17T10:00:06.794Z DEBUG cache hit key=customer:1406
+2026-10-17T10:00:06.794Z INFO  request id=ea2ad21d-1703-ad79-4f61-7c8b32b20cc4 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:06.794Z INFO  charge authorized amount=12.06 currency=USD processor=stripe
+2026-10-17T10:00:06.843Z DEBUG cache hit key=customer:9574
+2026-10-17T10:00:06.843Z INFO  request id=08a79046-6e0d-57b8-49ff-fa1ed21bfb0b method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:06.843Z INFO  charge authorized amount=305.78 currency=USD processor=stripe
+2026-10-17T10:00:06.889Z DEBUG cache hit key=customer:2618
+2026-10-17T10:00:06.889Z INFO  request id=27804e3f-f9eb-f9f4-cbae-46035a371232 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:06.889Z INFO  charge authorized amount=270.19 currency=USD processor=stripe
+2026-10-17T10:00:06.936Z DEBUG cache hit key=customer:4879
+2026-10-17T10:00:06.936Z INFO  request id=d63ef0c3-0751-1af6-8a30-cd6978b529a8 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:06.936Z INFO  charge authorized amount=403.77 currency=USD processor=stripe
+2026-10-17T10:00:06.936Z WARN  slow query took 251ms: SELECT * FROM charges WHERE customer_id = $1
+2026-10-17T10:00:06.993Z DEBUG cache hit key=customer:9960
+2026-10-17T10:00:06.993Z INFO  request id=f5728c4f-d0e4-588b-e739-a048f03bd4ac method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:06.993Z INFO  charge authorized amount=221.71 currency=USD processor=stripe
+2026-10-17T10:00:07.033Z DEBUG cache hit key=customer:9253
+2026-10-17T10:00:07.033Z INFO  request id=651ceecd-7e2f-3041-6bf3-177877aa0bc5 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:07.033Z INFO  charge authorized amount=162.78 currency=USD processor=stripe
+2026-10-17T10:00:07.043Z DEBUG cache miss key=customer:1738
+2026-10-17T10:00:07.043Z INFO  request id=f9d1cc41-6031-4d6c-8d54-beeca2711113 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:07.043Z INFO  charge authorized amount=366.31 currency=USD processor=stripe
+2026-10-17T10:00:07.048Z DEBUG cache miss key=customer:5786
+2026-10-17T10:00:07.048Z INFO  request id=fbc33900-9a44-fa46-078b-18959933fb6e method=POST path=/v1/charges status=200 latency=44ms
+2026-10-17T10:00:07.048Z INFO  charge authorized amount=97.46 currency=USD processor=stripe
+2026-10-17T10:00:07.076Z DEBUG cache hit key=customer:7524
+2026-10-17T10:00:07.076Z INFO  request id=6188651a-a22c-2578-58f6-0649cee8c05c method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:07.076Z INFO  charge authorized amount=355.18 currency=USD processor=stripe
+2026-10-17T10:00:07.081Z DEBUG cache hit key=customer:1092
+2026-10-17T10:00:07.081Z INFO  request id=75953ce4-93a3-8187-da29-c155cc98184d method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:07.081Z INFO  charge authorized amount=242.10 currency=USD processor=stripe
+2026-10-17T10:00:07.090Z DEBUG cache hit key=customer:2458
+2026-10-17T10:00:07.090Z INFO  request id=9d33dc2d-3530-e2c2-2254-14e05a8c7b98 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:07.090Z INFO  charge authorized amount=371.89 currency=USD processor=stripe
+2026-10-17T10:00:07.102Z DEBUG cache hit key=customer:9317
+2026-10-17T10:00:07.102Z INFO  request id=7c8e7fdf-9594-1a17-7e93-4f0078be7dba method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:07.102Z INFO  charge authorized amount=113.20 currency=USD processor=stripe
+2026-10-17T10:00:07.144Z DEBUG cache miss key=customer:3877
+2026-10-17T10:00:07.144Z INFO  request id=a4c9b6f5-c16b-2df4-feec-e2f6480987f0 method=POST path=/v1/charges status=200 latency=50ms
+2026-10-17T10:00:07.144Z INFO  charge authorized amount=44.26 currency=USD processor=stripe
+2026-10-17T10:00:07.150Z DEBUG cache hit key=customer:2672
+2026-10-17T10:00:07.150Z INFO  request id=93f642eb-8476-6c68-bacc-a62bdcafab66 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:07.150Z INFO  charge authorized amount=277.02 currency=USD processor=stripe
+2026-10-17T10:00:07.156Z DEBUG cache hit key=customer:6918
+2026-10-17T10:00:07.156Z INFO  request id=03c89f4f-2a95-ad5f-aede-3796b11ecf44 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:07.156Z INFO  charge authorized amount=191.74 currency=USD processor=stripe
+2026-10-17T10:00:07.189Z DEBUG cache hit key=customer:7188
+2026-10-17T10:00:07.189Z INFO  request id=3ca1691a-8a70-6605-ce0b-906fdccbe954 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:07.189Z INFO  charge authorized amount=106.95 currency=USD processor=stripe
+2026-10-17T10:00:07.212Z DEBUG cache hit key=customer:4981
+2026-10-17T10:00:07.212Z INFO  request id=f8e5f2f6-3c54-a2ff-1fc1-1c383e7bc555 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:07.212Z INFO  charge authorized amount=234.14 currency=USD processor=stripe
+2026-10-17T10:00:07.268Z DEBUG cache miss key=customer:2662
+2026-10-17T10:00:07.268Z INFO  request id=9e754689-faf3-fb48-d8ca-918586d4feae method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:07.268Z INFO  charge authorized amount=159.04 currency=USD processor=stripe
+2026-10-17T10:00:07.306Z DEBUG cache hit key=customer:4829
+2026-10-17T10:00:07.306Z INFO  request id=a735b9c7-59ca-adce-c614-44f8ec47c345 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:07.306Z INFO  charge authorized amount=326.53 currency=USD processor=stripe
+2026-10-17T10:00:07.355Z DEBUG cache hit key=customer:5927
+2026-10-17T10:00:07.355Z INFO  request id=a1d2304e-2708-f60b-c839-615f2894570d method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:07.355Z INFO  charge authorized amount=146.46 currency=USD processor=stripe
+2026-10-17T10:00:07.415Z DEBUG cache hit key=customer:6401
+2026-10-17T10:00:07.415Z INFO  request id=c9c27cf9-3d86-5f37-24d4-f299d07ff899 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:07.415Z INFO  charge authorized amount=357.51 currency=USD processor=stripe
+2026-10-17T10:00:07.438Z DEBUG cache hit key=customer:6018
+2026-10-17T10:00:07.438Z INFO  request id=fed6205d-6835-6c92-2556-fc4c976165fe method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:07.438Z INFO  charge authorized amount=346.32 currency=USD processor=stripe
+2026-10-17T10:00:07.455Z DEBUG cache hit key=customer:7508
+2026-10-17T10:00:07.455Z INFO  request id=2c141ed0-4a86-b8d0-0fd9-c25bf77a8dc3 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:07.455Z INFO  charge authorized amount=233.44 currency=USD processor=stripe
+2026-10-17T10:00:07.475Z DEBUG cache hit key=customer:3934
+2026-10-17T10:00:07.475Z INFO  request id=e63f5543-33a4-1bb8-2107-d71cc161fa81 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:07.475Z INFO  charge authorized amount=390.41 currency=USD processor=stripe
+2026-10-17T10:00:07.518Z DEBUG cache hit key=customer:7877
+2026-10-17T10:00:07.518Z INFO  request id=291a82c4-8028-5333-2747-19ff4c89c060 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:07.518Z INFO  charge authorized amount=83.62 currency=USD processor=stripe
+2026-10-17T10:00:07.533Z DEBUG cache hit key=customer:4230
+2026-10-17T10:00:07.533Z INFO  request id=05de5593-4b66-1ce1-ec31-7968c2c4de60 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:07.533Z INFO  charge authorized amount=248.12 currency=USD processor=stripe
+2026-10-17T10:00:07.547Z DEBUG cache hit key=customer:8269
+2026-10-17T10:00:07.547Z INFO  request id=f45c66cd-ed8c-a2c2-50ea-72c58add2058 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:07.547Z INFO  charge authorized amount=318.39 currency=USD processor=stripe
+2026-10-17T10:00:07.578Z DEBUG cache hit key=customer:1602
+2026-10-17T10:00:07.578Z INFO  request id=d046b439-2be0-8fb7-bad1-5d15a0108143 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:07.578Z INFO  charge authorized amount=278.89 currency=USD processor=stripe
+2026-10-17T10:00:07.618Z DEBUG cache hit key=customer:3725
+2026-10-17T10:00:07.618Z INFO  request id=7900a7b9-98fb-0f81-d1e1-915faca3c2c8 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:07.618Z INFO  charge authorized amount=42.51 currency=USD processor=stripe
+2026-10-17T10:00:07.662Z DEBUG cache hit key=customer:9059
+2026-10-17T10:00:07.662Z INFO  request id=a7104b81-5f5e-c8da-e55e-0783ff7ae9a3 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:07.662Z INFO  charge authorized amount=13.78 currency=USD processor=stripe
+2026-10-17T10:00:07.698Z DEBUG cache hit key=customer:5889
+2026-10-17T10:00:07.698Z INFO  request id=e6b99e38-1ac1-50b4-4dfa-ace151896f87 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:07.698Z INFO  charge authorized amount=285.52 currency=USD processor=stripe
+2026-10-17T10:00:07.733Z DEBUG cache miss key=customer:6726
+2026-10-17T10:00:07.733Z INFO  request id=39233123-426a-2d5d-e68c-1e1a38e38e08 method=POST path=/v1/charges status=200 latency=65ms
+2026-10-17T10:00:07.733Z INFO  charge authorized amount=308.51 currency=USD processor=stripe
+2026-10-17T10:00:07.733Z WARN  slow query took 248ms: SELECT * FROM charges WHERE customer_id = $1
+2026-10-17T10:00:07.758Z DEBUG cache hit key=customer:8587
+2026-10-17T10:00:07.758Z INFO  request id=e2a98f29-13c8-9051-b0f0-ead163deb508 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:07.758Z INFO  charge authorized amount=290.51 currency=USD processor=stripe
+2026-10-17T10:00:07.780Z DEBUG cache miss key=customer:7350
+2026-10-17T10:00:07.780Z INFO  request id=7b6466d9-84f5-9fcb-b6ac-fe922163505b method=POST path=/v1/charges status=200 latency=64ms
+2026-10-17T10:00:07.780Z INFO  charge authorized amount=377.05 currency=USD processor=stripe
+2026-10-17T10:00:07.798Z DEBUG cache hit key=customer:1880
+2026-10-17T10:00:07.798Z INFO  request id=d23a6842-c1df-cee5-e4b3-da51eb43ddd1 method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:07.798Z INFO  charge authorized amount=171.97 currency=USD processor=stripe
+2026-10-17T10:00:07.838Z DEBUG cache hit key=customer:8631
+2026-10-17T10:00:07.838Z INFO  request id=4fafbcb6-ecb7-0369-4422-772d15aaa58c method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:07.838Z INFO  charge authorized amount=215.65 currency=USD processor=stripe
+2026-10-17T10:00:07.858Z DEBUG cache hit key=customer:1170
+2026-10-17T10:00:07.858Z INFO  request id=94826f60-e4b3-e758-3987-93eaf73ef5d4 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:07.858Z INFO  charge authorized amount=225.67 currency=USD processor=stripe
+2026-10-17T10:00:07.906Z DEBUG cache hit key=customer:2047
+2026-10-17T10:00:07.906Z INFO  request id=b56cd147-1eda-5520-1598-a8112fd8f14e method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:07.906Z INFO  charge authorized amount=264.34 currency=USD processor=stripe
+2026-10-17T10:00:07.934Z DEBUG cache hit key=customer:4675
+2026-10-17T10:00:07.934Z INFO  request id=205f0e50-1316-7f80-4d17-80d9f4ef9d45 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:07.934Z INFO  charge authorized amount=168.54 currency=USD processor=stripe
+2026-10-17T10:00:07.941Z DEBUG cache hit key=customer:2080
+2026-10-17T10:00:07.941Z INFO  request id=7449c1cd-bb4d-b1dd-4882-b66edc10fcb1 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:07.941Z INFO  charge authorized amount=391.45 currency=USD processor=stripe
+2026-10-17T10:00:07.948Z DEBUG cache hit key=customer:3324
+2026-10-17T10:00:07.948Z INFO  request id=704203c5-18c1-c0be-05a4-6b02b34b93bf method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:07.948Z INFO  charge authorized amount=60.13 currency=USD processor=stripe
+2026-10-17T10:00:07.948Z INFO  healthcheck ok uptime=59s goroutines=50
+2026-10-17T10:00:08.004Z DEBUG cache hit key=customer:6867
+2026-10-17T10:00:08.004Z INFO  request id=f02523cd-cd77-49cf-39fd-ecdc20adfdd5 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:08.004Z INFO  charge authorized amount=82.50 currency=USD processor=stripe
+2026-10-17T10:00:08.057Z DEBUG cache hit key=customer:7858
+2026-10-17T10:00:08.057Z INFO  request id=40c643ca-bfb4-6294-2fe7-4a77c22b8f68 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:08.057Z INFO  charge authorized amount=156.27 currency=USD processor=stripe
+2026-10-17T10:00:08.098Z DEBUG cache hit key=customer:4591
+2026-10-17T10:00:08.098Z INFO  request id=25601837-6d48-7fe8-097f-1653a7a9e99e method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:08.098Z INFO  charge authorized amount=318.50 currency=USD processor=stripe
+2026-10-17T10:00:08.157Z DEBUG cache hit key=customer:6790
+2026-10-17T10:00:08.157Z INFO  request id=1ef24926-0015-608e-b43e-20b099cbe745 method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:08.157Z INFO  charge authorized amount=264.73 currency=USD processor=stripe
+2026-10-17T10:00:08.204Z DEBUG cache hit key=customer:5325
+2026-10-17T10:00:08.204Z INFO  request id=5f7a762d-226a-f91a-9638-a0244f1a03c7 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:08.204Z INFO  charge authorized amount=190.70 currency=USD processor=stripe
+2026-10-17T10:00:08.224Z DEBUG cache hit key=customer:8588
+2026-10-17T10:00:08.224Z INFO  request id=ce83e39c-35af-51c4-572c-8e395b785669 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:08.224Z INFO  charge authorized amount=72.68 currency=USD processor=stripe
+2026-10-17T10:00:08.246Z DEBUG cache hit key=customer:6020
+2026-10-17T10:00:08.246Z INFO  request id=7bfedfc4-145a-58f1-9670-3e4809e7624f method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:08.246Z INFO  charge authorized amount=72.30 currency=USD processor=stripe
+2026-10-17T10:00:08.266Z DEBUG cache hit key=customer:6750
+2026-10-17T10:00:08.266Z INFO  request id=e7cfa6c1-92dd-9210-bfd8-f54cfe2cddaf method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:08.266Z INFO  charge authorized amount=48.82 currency=USD processor=stripe
+2026-10-17T10:00:08.314Z DEBUG cache hit key=customer:7043
+2026-10-17T10:00:08.314Z INFO  request id=cf5cecff-3acc-feba-d88d-143afd1c3b09 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:08.314Z INFO  charge authorized amount=73.43 currency=USD processor=stripe
+2026-10-17T10:00:08.336Z DEBUG cache hit key=customer:4991
+2026-10-17T10:00:08.336Z INFO  request id=5a3f0a7e-d4f5-e443-d477-d1ab30bc0b31 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:08.336Z INFO  charge authorized amount=102.00 currency=USD processor=stripe
+2026-10-17T10:00:08.368Z DEBUG cache hit key=customer:1240
+2026-10-17T10:00:08.368Z INFO  request id=2b7d8575-4c02-9509-95f4-a87c3dc6ad62 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:08.368Z INFO  charge authorized amount=371.55 currency=USD processor=stripe
+2026-10-17T10:00:08.407Z DEBUG cache hit key=customer:3091
+2026-10-17T10:00:08.407Z INFO  request id=38aadc10-33b0-f742-95f6-ddb91fe74132 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:08.407Z INFO  charge authorized amount=108.58 currency=USD processor=stripe
+2026-10-17T10:00:08.439Z DEBUG cache hit key=customer:6580
+2026-10-17T10:00:08.439Z INFO  request id=3fa65e82-53c1-284f-210c-f7b50a96e664 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:08.439Z INFO  charge authorized amount=166.99 currency=USD processor=stripe
+2026-10-17T10:00:08.494Z DEBUG cache miss key=customer:3064
+2026-10-17T10:00:08.494Z INFO  request id=e562f3cc-01c4-a8de-8c40-894316efbb06 method=POST path=/v1/charges status=200 latency=42ms
+2026-10-17T10:00:08.494Z INFO  charge authorized amount=248.57 currency=USD processor=stripe
+2026-10-17T10:00:08.527Z DEBUG cache hit key=customer:5293
+2026-10-17T10:00:08.527Z INFO  request id=400f9695-6e40-f298-a7cb-97f369ef599b method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:08.527Z INFO  charge authorized amount=296.03 currency=USD processor=stripe
+2026-10-17T10:00:08.572Z DEBUG cache hit key=customer:3170
+2026-10-17T10:00:08.572Z INFO  request id=e0970209-75ab-65af-bea8-1f303ebd8676 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:08.572Z INFO  charge authorized amount=79.23 currency=USD processor=stripe
+2026-10-17T10:00:08.609Z DEBUG cache hit key=customer:6438
+2026-10-17T10:00:08.609Z INFO  request id=39aa6d9e-b3f3-8801-077e-6d17e3cee3fb method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:08.609Z INFO  charge authorized amount=133.07 currency=USD processor=stripe
+2026-10-17T10:00:08.661Z DEBUG cache hit key=customer:4518
+2026-10-17T10:00:08.661Z INFO  request id=57ae83f3-0c90-3927-c27d-85e1353db9e2 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:08.661Z INFO  charge authorized amount=27.88 currency=USD processor=stripe
+2026-10-17T10:00:08.691Z DEBUG cache hit key=customer:4704
+2026-10-17T10:00:08.691Z INFO  request id=16dda873-4fb0-5671-4f51-59977f18e5c5 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:08.691Z INFO  charge authorized amount=223.88 currency=USD processor=stripe
+2026-10-17T10:00:08.721Z DEBUG cache miss key=customer:6583
+2026-10-17T10:00:08.721Z INFO  request id=f1bfa65e-4ed5-3078-9510-d79bc4477e50 method=POST path=/v1/charges status=200 latency=67ms
+2026-10-17T10:00:08.721Z INFO  charge authorized amount=151.63 currency=USD processor=stripe
+2026-10-17T10:00:08.777Z DEBUG cache hit key=customer:8340
+2026-10-17T10:00:08.777Z INFO  request id=178060f2-668a-de02-6a8f-5d1fb13972e1 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:08.777Z INFO  charge authorized amount=27.84 currency=USD processor=stripe
+2026-10-17T10:00:08.811Z DEBUG cache hit key=customer:1026
+2026-10-17T10:00:08.811Z INFO  request id=290b5005-44be-3211-8726-9a19bcf33ec8 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:08.811Z INFO  charge authorized amount=333.32 currency=USD processor=stripe
+2026-10-17T10:00:08.842Z DEBUG cache hit key=customer:8829
+2026-10-17T10:00:08.842Z INFO  request id=99cae1ce-08f9-c6b4-5ceb-5b47bcd7d7b2 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:08.842Z INFO  charge authorized amount=7.23 currency=USD processor=stripe
+2026-10-17T10:00:08.895Z DEBUG cache hit key=customer:8411
+2026-10-17T10:00:08.895Z INFO  request id=45a8d887-3cb2-1832-b210-c83e451c01ac method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:08.895Z INFO  charge authorized amount=21.07 currency=USD processor=stripe
+2026-10-17T10:00:08.945Z DEBUG cache hit key=customer:5113
+2026-10-17T10:00:08.945Z INFO  request id=949de2fb-0f9e-9556-4210-87a40c1d2c44 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:08.945Z INFO  charge authorized amount=34.88 currency=USD processor=stripe
+2026-10-17T10:00:08.962Z DEBUG cache hit key=customer:8676
+2026-10-17T10:00:08.962Z INFO  request id=c5fb13fe-1310-2d77-3526-90c9b761bf13 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:08.962Z INFO  charge authorized amount=330.60 currency=USD processor=stripe
+2026-10-17T10:00:09.021Z DEBUG cache hit key=customer:1253
+2026-10-17T10:00:09.021Z INFO  request id=ea8d9be3-aeb0-6b51-14e0-d53d4724863e method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:09.021Z INFO  charge authorized amount=301.61 currency=USD processor=stripe
+2026-10-17T10:00:09.078Z DEBUG cache hit key=customer:8011
+2026-10-17T10:00:09.078Z INFO  request id=ba124f3b-974b-f965-6b5b-11cf35fd2136 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:09.078Z INFO  charge authorized amount=128.25 currency=USD processor=stripe
+2026-10-17T10:00:09.112Z DEBUG cache hit key=customer:7017
+2026-10-17T10:00:09.112Z INFO  request id=0b029ab2-6191-f455-0108-b143eb16c0b6 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:09.112Z INFO  charge authorized amount=233.70 currency=USD processor=stripe
+2026-10-17T10:00:09.164Z DEBUG cache hit key=customer:1181
+2026-10-17T10:00:09.164Z INFO  request id=009431fb-d6ae-5d20-ac2e-3a124d85f939 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:09.164Z INFO  charge authorized amount=319.92 currency=USD processor=stripe
+2026-10-17T10:00:09.169Z DEBUG cache miss key=customer:6163
+2026-10-17T10:00:09.169Z INFO  request id=d27fc56f-5b66-f354-51b2-a407d4648a87 method=POST path=/v1/charges status=200 latency=47ms
+2026-10-17T10:00:09.169Z INFO  charge authorized amount=378.71 currency=USD processor=stripe
+2026-10-17T10:00:09.190Z DEBUG cache hit key=customer:6636
+2026-10-17T10:00:09.190Z INFO  request id=ae70807e-45f4-7aa6-5477-8c11dbdc1494 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:09.190Z INFO  charge authorized amount=389.32 currency=USD processor=stripe
+2026-10-17T10:00:09.200Z DEBUG cache hit key=customer:1187
+2026-10-17T10:00:09.200Z INFO  request id=58c1ec6f-bae3-0547-b56f-14dbb0ead11b method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:09.200Z INFO  charge authorized amount=122.81 currency=USD processor=stripe
+2026-10-17T10:00:09.229Z DEBUG cache hit key=customer:5728
+2026-10-17T10:00:09.229Z INFO  request id=360f29c5-15d5-9bbc-b072-5a62c2e5bfb3 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:09.229Z INFO  charge authorized amount=39.54 currency=USD processor=stripe
+2026-10-17T10:00:09.259Z DEBUG cache hit key=customer:4255
+2026-10-17T10:00:09.259Z INFO  request id=2b5cf291-d737-52bc-a585-0299a522b3aa method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:09.259Z INFO  charge authorized amount=99.51 currency=USD processor=stripe
+2026-10-17T10:00:09.289Z DEBUG cache hit key=customer:8765
+2026-10-17T10:00:09.289Z INFO  request id=126f4706-7d61-38bd-f0bf-48d5d2ad494d method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:09.289Z INFO  charge authorized amount=264.32 currency=USD processor=stripe
+2026-10-17T10:00:09.315Z DEBUG cache hit key=customer:3932
+2026-10-17T10:00:09.315Z INFO  request id=eae082b4-103f-aa59-7518-0f90d5d6cac1 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:09.315Z INFO  charge authorized amount=330.17 currency=USD processor=stripe
+2026-10-17T10:00:09.315Z WARN  slow query took 239ms: SELECT * FROM charges WHERE customer_id = $1
+2026-10-17T10:00:09.344Z DEBUG cache hit key=customer:3918
+2026-10-17T10:00:09.344Z INFO  request id=9805f046-8a13-e03d-1800-9318ecd92042 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:09.344Z INFO  charge authorized amount=114.34 currency=USD processor=stripe
+2026-10-17T10:00:09.357Z DEBUG cache hit key=customer:4806
+2026-10-17T10:00:09.357Z INFO  request id=959be263-a5d1-6cec-97a3-0731d5aec216 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:09.357Z INFO  charge authorized amount=66.68 currency=USD processor=stripe
+2026-10-17T10:00:09.377Z DEBUG cache hit key=customer:6372
+2026-10-17T10:00:09.377Z INFO  request id=6cb4deba-6e2d-7fd8-6224-9c5fa6b20e3e method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:09.377Z INFO  charge authorized amount=41.08 currency=USD processor=stripe
+2026-10-17T10:00:09.389Z DEBUG cache miss key=customer:1438
+2026-10-17T10:00:09.389Z INFO  request id=435661ae-be72-6a8a-6496-dd3cc4b3319f method=POST path=/v1/charges status=200 latency=60ms
+2026-10-17T10:00:09.389Z INFO  charge authorized amount=273.29 currency=USD processor=stripe
+2026-10-17T10:00:09.417Z DEBUG cache hit key=customer:5597
+2026-10-17T10:00:09.417Z INFO  request id=797e75cc-bc98-58a9-9513-ffb268c6899d method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:09.417Z INFO  charge authorized amount=316.05 currency=USD processor=stripe
+2026-10-17T10:00:09.427Z DEBUG cache hit key=customer:6649
+2026-10-17T10:00:09.427Z INFO  request id=fe98d605-8973-84fe-5271-00170001ea19 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:09.427Z INFO  charge authorized amount=215.60 currency=USD processor=stripe
+2026-10-17T10:00:09.447Z DEBUG cache miss key=customer:3864
+2026-10-17T10:00:09.447Z INFO  request id=106acabc-4687-7d00-3dcd-39b2c0b90f6b method=POST path=/v1/charges status=200 latency=54ms
+2026-10-17T10:00:09.447Z INFO  charge authorized amount=15.35 currency=USD processor=stripe
+2026-10-17T10:00:09.458Z DEBUG cache hit key=customer:5306
+2026-10-17T10:00:09.458Z INFO  request id=2c38474d-14a0-309e-2f40-0e2c21af6e37 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:09.458Z INFO  charge authorized amount=97.30 currency=USD processor=stripe
+2026-10-17T10:00:09.508Z DEBUG cache hit key=customer:6167
+2026-10-17T10:00:09.508Z INFO  request id=9099283f-f266-60f7-49e5-b14976a23648 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:09.508Z INFO  charge authorized amount=33.77 currency=USD processor=stripe
+2026-10-17T10:00:09.535Z DEBUG cache hit key=customer:6844
+2026-10-17T10:00:09.535Z INFO  request id=680a47a0-4595-cc10-9685-869b183faeff method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:09.535Z INFO  charge authorized amount=151.46 currency=USD processor=stripe
+2026-10-17T10:00:09.577Z DEBUG cache hit key=customer:3169
+2026-10-17T10:00:09.577Z INFO  request id=2af84b39-fe3c-7795-3748-c3b86fd84e95 method=POST path=/v1/charges status=200 latency=36ms
+2026-10-17T10:00:09.577Z INFO  charge authorized amount=312.33 currency=USD processor=stripe
+2026-10-17T10:00:09.613Z DEBUG cache miss key=customer:8166
+2026-10-17T10:00:09.613Z INFO  request id=47a298c0-49cb-d577-3a50-878b6effe840 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:09.613Z INFO  charge authorized amount=311.75 currency=USD processor=stripe
+2026-10-17T10:00:09.651Z DEBUG cache hit key=customer:9414
+2026-10-17T10:00:09.651Z INFO  request id=dc55bd3e-1969-0638-a182-fddb413adb06 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:09.651Z INFO  charge authorized amount=199.35 currency=USD processor=stripe
+2026-10-17T10:00:09.651Z INFO  healthcheck ok uptime=69s goroutines=47
+2026-10-17T10:00:09.691Z DEBUG cache hit key=customer:3356
+2026-10-17T10:00:09.691Z INFO  request id=d66dc070-8f3c-c201-2cab-e8e2f0c38e35 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:09.691Z INFO  charge authorized amount=41.98 currency=USD processor=stripe
+2026-10-17T10:00:09.746Z DEBUG cache miss key=customer:1278
+2026-10-17T10:00:09.746Z INFO  request id=f4f37d5b-935d-c080-a186-65545e4acc19 method=POST path=/v1/charges status=200 latency=57ms
+2026-10-17T10:00:09.746Z INFO  charge authorized amount=233.55 currency=USD processor=stripe
+2026-10-17T10:00:09.785Z DEBUG cache hit key=customer:5446
+2026-10-17T10:00:09.785Z INFO  request id=5da0b954-5dfa-70ff-063f-0090fd842f89 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:09.785Z INFO  charge authorized amount=277.09 currency=USD processor=stripe
+2026-10-17T10:00:09.799Z DEBUG cache hit key=customer:5079
+2026-10-17T10:00:09.799Z INFO  request id=dfc5cc91-a4a5-6be6-4d9a-c6d3fbaf5536 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:09.799Z INFO  charge authorized amount=244.91 currency=USD processor=stripe
+2026-10-17T10:00:09.853Z DEBUG cache hit key=customer:2719
+2026-10-17T10:00:09.853Z INFO  request id=a26d185d-93a2-a220-d718-b43ce1d429d2 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:09.853Z INFO  charge authorized amount=286.10 currency=USD processor=stripe
+2026-10-17T10:00:09.862Z DEBUG cache hit key=customer:4048
+2026-10-17T10:00:09.862Z INFO  request id=cb598605-660b-6a37-21e0-edcfb14287c3 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:09.862Z INFO  charge authorized amount=76.87 currency=USD processor=stripe
+2026-10-17T10:00:09.909Z DEBUG cache hit key=customer:9314
+2026-10-17T10:00:09.909Z INFO  request id=dd9639ba-d348-7c2c-ce2f-230452cb0618 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:09.909Z INFO  charge authorized amount=401.09 currency=USD processor=stripe
+2026-10-17T10:00:09.922Z DEBUG cache hit key=customer:9866
+2026-10-17T10:00:09.922Z INFO  request id=4bb89e2c-cff4-a900-6f9b-9b1a38c4c39f method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:09.922Z INFO  charge authorized amount=352.39 currency=USD processor=stripe
+2026-10-17T10:00:09.927Z DEBUG cache hit key=customer:3379
+2026-10-17T10:00:09.927Z INFO  request id=6481b184-6148-434c-672b-84dd7a2033de method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:09.927Z INFO  charge authorized amount=193.91 currency=USD processor=stripe
+2026-10-17T10:00:09.974Z DEBUG cache hit key=customer:8891
+2026-10-17T10:00:09.974Z INFO  request id=b5140d43-baf1-d79e-9c6a-01cff6f51ba7 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:09.974Z INFO  charge authorized amount=192.57 currency=USD processor=stripe
+2026-10-17T10:00:09.987Z DEBUG cache miss key=customer:4746
+2026-10-17T10:00:09.987Z INFO  request id=f46b67c1-ff59-17b7-aaa6-4713c349dc8f method=POST path=/v1/charges status=200 latency=43ms
+2026-10-17T10:00:09.987Z INFO  charge authorized amount=23.90 currency=USD processor=stripe
+2026-10-17T10:00:09.992Z DEBUG cache hit key=customer:1872
+2026-10-17T10:00:09.992Z INFO  request id=856a8c7d-4a63-e7dd-e154-d778fc80a011 method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:09.992Z INFO  charge authorized amount=128.74 currency=USD processor=stripe
+2026-10-17T10:00:10.030Z DEBUG cache hit key=customer:8799
+2026-10-17T10:00:10.030Z INFO  request id=592771d5-5801-af7c-83b2-ef5eb5684aa0 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:10.030Z INFO  charge authorized amount=191.62 currency=USD processor=stripe
+2026-10-17T10:00:10.060Z DEBUG cache hit key=customer:8322
+2026-10-17T10:00:10.060Z INFO  request id=44eca2ba-c0fb-9cc8-c73d-9e776e23d53d method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:10.060Z INFO  charge authorized amount=373.53 currency=USD processor=stripe
+2026-10-17T10:00:10.095Z DEBUG cache hit key=customer:5958
+2026-10-17T10:00:10.095Z INFO  request id=dcfbfb31-efc2-ecdc-972d-a05987aafce7 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:10.095Z INFO  charge authorized amount=172.35 currency=USD processor=stripe
+2026-10-17T10:00:10.136Z DEBUG cache hit key=customer:2289
+2026-10-17T10:00:10.136Z INFO  request id=83fd5d11-50a1-182e-3d39-c3cd163920f1 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:10.136Z INFO  charge authorized amount=156.41 currency=USD processor=stripe
+2026-10-17T10:00:10.187Z DEBUG cache hit key=customer:4833
+2026-10-17T10:00:10.187Z INFO  request id=d7ed8399-2b50-9618-09c3-6e0a2c8eb872 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:10.187Z INFO  charge authorized amount=358.11 currency=USD processor=stripe
+2026-10-17T10:00:10.195Z DEBUG cache hit key=customer:4646
+2026-10-17T10:00:10.195Z INFO  request id=e9f7a1a4-2102-b323-ce2b-9b7d0de5aae3 method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:10.195Z INFO  charge authorized amount=40.60 currency=USD processor=stripe
+2026-10-17T10:00:10.247Z DEBUG cache miss key=customer:4242
+2026-10-17T10:00:10.247Z INFO  request id=24797237-2b59-913b-8b08-8e93471a7d54 method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:10.247Z INFO  charge authorized amount=21.71 currency=USD processor=stripe
+2026-10-17T10:00:10.260Z DEBUG cache hit key=customer:6464
+2026-10-17T10:00:10.260Z INFO  request id=c6ae4c52-ba46-aaf3-d1a7-fb41aa5d506c method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:10.260Z INFO  charge authorized amount=74.09 currency=USD processor=stripe
+2026-10-17T10:00:10.289Z DEBUG cache hit key=customer:8157
+2026-10-17T10:00:10.289Z INFO  request id=cdbbe6e3-4d44-3e03-1f36-170215a301f9 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:10.289Z INFO  charge authorized amount=170.44 currency=USD processor=stripe
+2026-10-17T10:00:10.309Z DEBUG cache hit key=customer:8208
+2026-10-17T10:00:10.309Z INFO  request id=22737494-a8a5-f67a-cb55-1cfe89f447df method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:10.309Z INFO  charge authorized amount=331.24 currency=USD processor=stripe
+2026-10-17T10:00:10.319Z DEBUG cache hit key=customer:2138
+2026-10-17T10:00:10.319Z INFO  request id=bf5f8792-e3ac-eb0e-8687-65b8611d7905 method=POST path=/v1/charges status=200 latency=31ms
+2026-10-17T10:00:10.319Z INFO  charge authorized amount=395.02 currency=USD processor=stripe
+2026-10-17T10:00:10.330Z DEBUG cache hit key=customer:7563
+2026-10-17T10:00:10.330Z INFO  request id=089949e0-c2fa-54ae-a9a2-2654df67f3f6 method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:10.330Z INFO  charge authorized amount=320.83 currency=USD processor=stripe
+2026-10-17T10:00:10.362Z DEBUG cache hit key=customer:4881
+2026-10-17T10:00:10.362Z INFO  request id=2c5fc59b-2954-c3da-f18f-d67eb8bd9e6e method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:10.362Z INFO  charge authorized amount=131.77 currency=USD processor=stripe
+2026-10-17T10:00:10.370Z DEBUG cache hit key=customer:7109
+2026-10-17T10:00:10.370Z INFO  request id=3d152cd8-f21d-ea41-5421-b452efc7cc4e method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:10.370Z INFO  charge authorized amount=116.34 currency=USD processor=stripe
+2026-10-17T10:00:10.409Z DEBUG cache miss key=customer:7754
+2026-10-17T10:00:10.409Z INFO  request id=a6bf1ab8-5fa6-9026-59ce-9be9024750d1 method=POST path=/v1/charges status=200 latency=50ms
+2026-10-17T10:00:10.409Z INFO  charge authorized amount=84.22 currency=USD processor=stripe
+2026-10-17T10:00:10.466Z DEBUG cache miss key=customer:1659
+2026-10-17T10:00:10.466Z INFO  request id=d618a6b8-5eef-8a1f-c7e1-78440bfebb85 method=POST path=/v1/charges status=200 latency=61ms
+2026-10-17T10:00:10.466Z INFO  charge authorized amount=356.49 currency=USD processor=stripe
+2026-10-17T10:00:10.501Z DEBUG cache hit key=customer:9195
+2026-10-17T10:00:10.501Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T10:00:10.639Z INFO  request id=c44a7c37-3f18-4202-befa-5bf3f315642e method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:10.639Z INFO  charge authorized amount=91.38 currency=USD processor=stripe
+2026-10-17T10:00:10.677Z DEBUG cache hit key=customer:4971
+2026-10-17T10:00:10.677Z INFO  request id=d18c31ba-9880-b1cf-2d81-b5d02f00d6d3 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:10.677Z INFO  charge authorized amount=291.03 currency=USD processor=stripe
+2026-10-17T10:00:10.682Z DEBUG cache miss key=customer:3929
+2026-10-17T10:00:10.682Z INFO  request id=51da5dbf-47ab-6b8d-7b4e-61e8eadd8bfd method=POST path=/v1/charges status=200 latency=42ms
+2026-10-17T10:00:10.682Z INFO  charge authorized amount=327.25 currency=USD processor=stripe
+2026-10-17T10:00:10.728Z DEBUG cache miss key=customer:6645
+2026-10-17T10:00:10.728Z INFO  request id=8d028bf4-d889-ceb9-51cf-e289adf15986 method=POST path=/v1/charges status=200 latency=49ms
+2026-10-17T10:00:10.728Z INFO  charge authorized amount=256.19 currency=USD processor=stripe
+2026-10-17T10:00:10.747Z DEBUG cache hit key=customer:5352
+2026-10-17T10:00:10.747Z INFO  request id=5dfcb575-672b-2a5e-454c-1209bc2bb21a method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:10.747Z INFO  charge authorized amount=125.82 currency=USD processor=stripe
+2026-10-17T10:00:10.789Z DEBUG cache hit key=customer:7041
+2026-10-17T10:00:10.789Z INFO  request id=99d39dcb-3c69-9574-8bc7-76f8df638303 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:10.789Z INFO  charge authorized amount=172.12 currency=USD processor=stripe
+2026-10-17T10:00:10.798Z DEBUG cache hit key=customer:9462
+2026-10-17T10:00:10.798Z INFO  request id=3a1f5504-b589-d4fc-ad86-5eed4041a186 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:10.798Z INFO  charge authorized amount=313.12 currency=USD processor=stripe
+2026-10-17T10:00:10.845Z DEBUG cache miss key=customer:2671
+2026-10-17T10:00:10.845Z INFO  request id=df203b50-0398-4ab9-d718-36f9f1b059db method=POST path=/v1/charges status=200 latency=39ms
+2026-10-17T10:00:10.845Z INFO  charge authorized amount=228.60 currency=USD processor=stripe
+2026-10-17T10:00:10.893Z DEBUG cache hit key=customer:6281
+2026-10-17T10:00:10.893Z INFO  request id=3a2e0570-650c-1384-f181-8d76fbefe3a7 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:10.893Z INFO  charge authorized amount=75.84 currency=USD processor=stripe
+2026-10-17T10:00:10.900Z DEBUG cache hit key=customer:8853
+2026-10-17T10:00:10.900Z INFO  request id=ef3f4613-8148-de9f-13eb-82c11f7b6a22 method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:10.900Z INFO  charge authorized amount=121.84 currency=USD processor=stripe
+2026-10-17T10:00:10.911Z DEBUG cache hit key=customer:5991
+2026-10-17T10:00:10.911Z INFO  request id=c28904fa-d985-92b5-9c1c-c4b40eeddb34 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:10.911Z INFO  charge authorized amount=226.85 currency=USD processor=stripe
+2026-10-17T10:00:10.931Z DEBUG cache hit key=customer:9457
+2026-10-17T10:00:10.931Z INFO  request id=e6edf96a-1c16-bbbe-f064-02964d219575 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:10.931Z INFO  charge authorized amount=100.76 currency=USD processor=stripe
+2026-10-17T10:00:10.953Z DEBUG cache hit key=customer:1076
+2026-10-17T10:00:10.953Z INFO  request id=fd23c36e-fc1f-72a9-6888-c3af76db57a5 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:10.953Z INFO  charge authorized amount=116.82 currency=USD processor=stripe
+2026-10-17T10:00:10.992Z DEBUG cache hit key=customer:8779
+2026-10-17T10:00:10.992Z INFO  request id=4be70175-8117-8868-6d5a-45820d2980bf method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:10.992Z INFO  charge authorized amount=378.89 currency=USD processor=stripe
+2026-10-17T10:00:11.002Z DEBUG cache hit key=customer:5958
+2026-10-17T10:00:11.002Z INFO  request id=7d694ec2-d595-1b36-ad1b-9d5265fa098a method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:11.002Z INFO  charge authorized amount=195.80 currency=USD processor=stripe
+2026-10-17T10:00:11.008Z DEBUG cache hit key=customer:2766
+2026-10-17T10:00:11.008Z INFO  request id=a20038f1-9009-6276-cd22-e89b6e7dd10f method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:11.008Z INFO  charge authorized amount=347.81 currency=USD processor=stripe
+2026-10-17T10:00:11.016Z DEBUG cache miss key=customer:6837
+2026-10-17T10:00:11.016Z INFO  request id=d58fa033-c963-ff15-26cd-a81ae38352a7 method=POST path=/v1/charges status=200 latency=44ms
+2026-10-17T10:00:11.016Z INFO  charge authorized amount=72.27 currency=USD processor=stripe
+2026-10-17T10:00:11.045Z DEBUG cache hit key=customer:4643
+2026-10-17T10:00:11.045Z INFO  request id=74d79f66-da30-0095-4dfa-22048f305244 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:11.045Z INFO  charge authorized amount=324.88 currency=USD processor=stripe
+2026-10-17T10:00:11.097Z DEBUG cache hit key=customer:3584
+2026-10-17T10:00:11.097Z INFO  request id=623f254c-9484-a67a-7b26-3da301923a4e method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:11.097Z INFO  charge authorized amount=11.54 currency=USD processor=stripe
+2026-10-17T10:00:11.124Z DEBUG cache hit key=customer:1272
+2026-10-17T10:00:11.124Z INFO  request id=fb6866ae-aaaf-475b-8026-55dc033694f2 method=POST path=/v1/charges status=200 latency=21ms
+2026-10-17T10:00:11.124Z INFO  charge authorized amount=38.60 currency=USD processor=stripe
+2026-10-17T10:00:11.175Z DEBUG cache miss key=customer:5749
+2026-10-17T10:00:11.175Z INFO  request id=4376e3b0-af19-a47d-66ac-e4eecbcefb77 method=POST path=/v1/charges status=200 latency=66ms
+2026-10-17T10:00:11.175Z INFO  charge authorized amount=266.47 currency=USD processor=stripe
+2026-10-17T10:00:11.231Z DEBUG cache miss key=customer:1865
+2026-10-17T10:00:11.231Z INFO  request id=b0856eb8-b2f3-e864-a986-76a67271a82c method=POST path=/v1/charges status=200 latency=62ms
+2026-10-17T10:00:11.231Z INFO  charge authorized amount=281.44 currency=USD processor=stripe
+2026-10-17T10:00:11.231Z INFO  healthcheck ok uptime=79s goroutines=47
+2026-10-17T10:00:11.275Z DEBUG cache hit key=customer:7237
+2026-10-17T10:00:11.275Z INFO  request id=e033a762-09d2-88e1-1e8a-4dbb06b9029e method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:11.275Z INFO  charge authorized amount=186.01 currency=USD processor=stripe
+2026-10-17T10:00:11.309Z DEBUG cache hit key=customer:4515
+2026-10-17T10:00:11.309Z INFO  request id=90cb1864-469d-bc8d-2e90-b8f64d0d040f method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:11.309Z INFO  charge authorized amount=198.13 currency=USD processor=stripe
+2026-10-17T10:00:11.365Z DEBUG cache hit key=customer:3361
+2026-10-17T10:00:11.365Z INFO  request id=3fa8a374-e459-7a52-b46a-afb4ba574138 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:11.365Z INFO  charge authorized amount=164.93 currency=USD processor=stripe
+2026-10-17T10:00:11.415Z DEBUG cache hit key=customer:7146
+2026-10-17T10:00:11.415Z INFO  request id=799382eb-3fc3-bdc3-b688-6a3cd79761b0 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:11.415Z INFO  charge authorized amount=211.64 currency=USD processor=stripe
+2026-10-17T10:00:11.434Z DEBUG cache hit key=customer:5708
+2026-10-17T10:00:11.434Z INFO  request id=2bafa080-a745-2543-3f1d-82add5306a4c method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:11.434Z INFO  charge authorized amount=179.98 currency=USD processor=stripe
+2026-10-17T10:00:11.469Z DEBUG cache hit key=customer:1911
+2026-10-17T10:00:11.469Z INFO  request id=fce258c0-8398-12c2-deb2-a355b6230697 method=POST path=/v1/charges status=200 latency=24ms
+2026-10-17T10:00:11.469Z INFO  charge authorized amount=130.47 currency=USD processor=stripe
+2026-10-17T10:00:11.475Z DEBUG cache hit key=customer:3643
+2026-10-17T10:00:11.475Z INFO  request id=0530439f-af72-c953-17a1-0c984c5ec004 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:11.475Z INFO  charge authorized amount=281.16 currency=USD processor=stripe
+2026-10-17T10:00:11.501Z DEBUG cache hit key=customer:5164
+2026-10-17T10:00:11.501Z INFO  request id=1b7e00ba-30ef-f221-755d-6d427ec634a2 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:11.501Z INFO  charge authorized amount=306.99 currency=USD processor=stripe
+2026-10-17T10:00:11.542Z DEBUG cache hit key=customer:4936
+2026-10-17T10:00:11.542Z INFO  request id=b95980d2-747c-6436-8b55-64f022c4a493 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:11.542Z INFO  charge authorized amount=107.48 currency=USD processor=stripe
+2026-10-17T10:00:11.602Z DEBUG cache miss key=customer:4899
+2026-10-17T10:00:11.602Z INFO  request id=f2a39ddc-ae10-cd17-acb3-754251e83776 method=POST path=/v1/charges status=200 latency=39ms
+2026-10-17T10:00:11.602Z INFO  charge authorized amount=7.67 currency=USD processor=stripe
+2026-10-17T10:00:11.610Z DEBUG cache hit key=customer:9766
+2026-10-17T10:00:11.610Z INFO  request id=7f409b9a-0fa4-f265-3944-edcb8b3ef963 method=POST path=/v1/charges status=200 latency=30ms
+2026-10-17T10:00:11.610Z INFO  charge authorized amount=16.23 currency=USD processor=stripe
+2026-10-17T10:00:11.626Z DEBUG cache hit key=customer:1092
+2026-10-17T10:00:11.626Z INFO  request id=ba7f8806-196c-9578-4dd2-759b334d2706 method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:11.626Z INFO  charge authorized amount=230.05 currency=USD processor=stripe
+2026-10-17T10:00:11.666Z DEBUG cache hit key=customer:3924
+2026-10-17T10:00:11.666Z INFO  request id=70a72649-178a-94f6-dc73-719d5bc235f9 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:11.666Z INFO  charge authorized amount=335.24 currency=USD processor=stripe
+2026-10-17T10:00:11.673Z DEBUG cache miss key=customer:9016
+2026-10-17T10:00:11.673Z INFO  request id=80a1f4c7-bc44-cb84-24df-1f70e8d77366 method=POST path=/v1/charges status=200 latency=42ms
+2026-10-17T10:00:11.673Z INFO  charge authorized amount=312.80 currency=USD processor=stripe
+2026-10-17T10:00:11.678Z DEBUG cache hit key=customer:5123
+2026-10-17T10:00:11.678Z INFO  request id=aa0e8903-1481-c97a-5a4c-15ec6abe42d4 method=POST path=/v1/charges status=200 latency=16ms
+2026-10-17T10:00:11.678Z INFO  charge authorized amount=11.99 currency=USD processor=stripe
+2026-10-17T10:00:11.722Z DEBUG cache hit key=customer:8148
+2026-10-17T10:00:11.722Z INFO  request id=0498c33d-7120-2b5e-4cf7-ed097da49b97 method=POST path=/v1/charges status=200 latency=18ms
+2026-10-17T10:00:11.722Z INFO  charge authorized amount=162.13 currency=USD processor=stripe
+2026-10-17T10:00:11.775Z DEBUG cache miss key=customer:1864
+2026-10-17T10:00:11.775Z INFO  request id=0a6db4c3-8ff0-d0a1-af2e-31fb92eaef08 method=POST path=/v1/charges status=200 latency=49ms
+2026-10-17T10:00:11.775Z INFO  charge authorized amount=91.29 currency=USD processor=stripe
+2026-10-17T10:00:11.781Z DEBUG cache hit key=customer:9380
+2026-10-17T10:00:11.781Z INFO  request id=c5113ecc-839a-4fa4-de25-160e574289aa method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:11.781Z INFO  charge authorized amount=362.95 currency=USD processor=stripe
+2026-10-17T10:00:11.799Z DEBUG cache hit key=customer:6372
+2026-10-17T10:00:11.799Z INFO  request id=be4d8fb7-9cec-7f92-2097-19a71570a555 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:11.799Z INFO  charge authorized amount=274.98 currency=USD processor=stripe
+2026-10-17T10:00:11.805Z DEBUG cache hit key=customer:7423
+2026-10-17T10:00:11.805Z INFO  request id=3f1ff9b4-0167-0e1d-ba76-226cbd054495 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:11.805Z INFO  charge authorized amount=194.53 currency=USD processor=stripe
+2026-10-17T10:00:11.848Z DEBUG cache hit key=customer:1291
+2026-10-17T10:00:11.848Z INFO  request id=9ebe24dd-4b75-56c6-d40e-08723d7f9905 method=POST path=/v1/charges status=200 latency=19ms
+2026-10-17T10:00:11.848Z INFO  charge authorized amount=367.84 currency=USD processor=stripe
+2026-10-17T10:00:11.871Z DEBUG cache hit key=customer:5254
+2026-10-17T10:00:11.871Z INFO  request id=76d429b6-d3d6-e0c8-1565-0447748c4b27 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:11.871Z INFO  charge authorized amount=403.24 currency=USD processor=stripe
+2026-10-17T10:00:11.890Z DEBUG cache hit key=customer:5072
+2026-10-17T10:00:11.890Z INFO  request id=541c5447-acf9-35c1-7764-650b287f5289 method=POST path=/v1/charges status=200 latency=20ms
+2026-10-17T10:00:11.890Z INFO  charge authorized amount=168.06 currency=USD processor=stripe
+2026-10-17T10:00:11.933Z DEBUG cache hit key=customer:2223
+2026-10-17T10:00:11.933Z INFO  request id=d579072a-d0b1-2a5e-cf31-95a32a0b0248 method=POST path=/v1/charges status=200 latency=13ms
+2026-10-17T10:00:11.933Z INFO  charge authorized amount=393.17 currency=USD processor=stripe
+2026-10-17T10:00:11.982Z DEBUG cache hit key=customer:1233
+2026-10-17T10:00:11.982Z INFO  request id=3aa546b3-c64e-caa2-87bf-3468c59add86 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:11.982Z INFO  charge authorized amount=69.46 currency=USD processor=stripe
+2026-10-17T10:00:12.020Z DEBUG cache hit key=customer:4378
+2026-10-17T10:00:12.020Z INFO  request id=365b885f-52af-a532-c20e-ef9e9b0fe706 method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:12.020Z INFO  charge authorized amount=43.30 currency=USD processor=stripe
+2026-10-17T10:00:12.034Z DEBUG cache hit key=customer:1626
+2026-10-17T10:00:12.034Z INFO  request id=579566a9-9331-b5ae-80d8-73cd042bff07 method=POST path=/v1/charges status=200 latency=17ms
+2026-10-17T10:00:12.034Z INFO  charge authorized amount=350.87 currency=USD processor=stripe
+2026-10-17T10:00:12.093Z DEBUG cache hit key=customer:6012
+2026-10-17T10:00:12.093Z INFO  request id=9b2bbe9c-92bc-66c0-fc9c-a8717bfc108e method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:12.093Z INFO  charge authorized amount=237.70 currency=USD processor=stripe
+2026-10-17T10:00:12.104Z DEBUG cache hit key=customer:1728
+2026-10-17T10:00:12.104Z INFO  request id=35464eaa-5082-586b-b554-82db97599d51 method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:12.104Z INFO  charge authorized amount=333.06 currency=USD processor=stripe
+2026-10-17T10:00:12.118Z DEBUG cache hit key=customer:1905
+2026-10-17T10:00:12.118Z INFO  request id=3ed8d7a8-2e17-381b-b8ba-a2205715f735 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:12.118Z INFO  charge authorized amount=212.54 currency=USD processor=stripe
+2026-10-17T10:00:12.171Z DEBUG cache hit key=customer:6440
+2026-10-17T10:00:12.171Z INFO  request id=c1e0dbd7-ba8d-a876-0d59-52c03667251e method=POST path=/v1/charges status=200 latency=35ms
+2026-10-17T10:00:12.171Z INFO  charge authorized amount=44.73 currency=USD processor=stripe
+2026-10-17T10:00:12.225Z DEBUG cache hit key=customer:7754
+2026-10-17T10:00:12.225Z INFO  request id=7a9511b2-bb35-04ba-4a28-717823a27a1f method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:12.225Z INFO  charge authorized amount=271.40 currency=USD processor=stripe
+2026-10-17T10:00:12.265Z DEBUG cache hit key=customer:2215
+2026-10-17T10:00:12.265Z INFO  request id=99ce6970-290b-ebb3-98b5-836ae6ca013f method=POST path=/v1/charges status=200 latency=15ms
+2026-10-17T10:00:12.265Z INFO  charge authorized amount=56.91 currency=USD processor=stripe
+2026-10-17T10:00:12.320Z DEBUG cache hit key=customer:4638
+2026-10-17T10:00:12.320Z INFO  request id=e440adbb-37d4-ae1e-edc8-07b95b1c2a7d method=POST path=/v1/charges status=200 latency=12ms
+2026-10-17T10:00:12.320Z INFO  charge authorized amount=379.16 currency=USD processor=stripe
+2026-10-17T10:00:12.364Z DEBUG cache hit key=customer:7786
+2026-10-17T10:00:12.364Z INFO  request id=448007a4-d868-6d45-1e71-de4748965309 method=POST path=/v1/charges status=200 latency=23ms
+2026-10-17T10:00:12.364Z INFO  charge authorized amount=396.09 currency=USD processor=stripe
+2026-10-17T10:00:12.373Z DEBUG cache hit key=customer:3482
+2026-10-17T10:00:12.373Z INFO  request id=b6f19740-90ef-de0c-a963-e9fdd691ed0c method=POST path=/v1/charges status=200 latency=22ms
+2026-10-17T10:00:12.373Z INFO  charge authorized amount=233.27 currency=USD processor=stripe
+2026-10-17T10:00:12.386Z DEBUG cache miss key=customer:4514
+2026-10-17T10:00:12.386Z INFO  request id=c5e074c5-78fe-bc39-18df-1a9d5053d09d method=POST path=/v1/charges status=200 latency=46ms
+2026-10-17T10:00:12.386Z INFO  charge authorized amount=88.68 currency=USD processor=stripe
+2026-10-17T10:00:12.442Z DEBUG cache miss key=customer:1630
+2026-10-17T10:00:12.442Z INFO  request id=a5b731f4-7390-1efc-a5d4-6ff35870e0cc method=POST path=/v1/charges status=200 latency=41ms
+2026-10-17T10:00:12.442Z INFO  charge authorized amount=75.43 currency=USD processor=stripe
+2026-10-17T10:00:12.462Z DEBUG cache hit key=customer:1343
+2026-10-17T10:00:12.462Z INFO  request id=25a6b010-0555-ff18-8b80-f835259a6344 method=POST path=/v1/charges status=200 latency=26ms
+2026-10-17T10:00:12.462Z INFO  charge authorized amount=205.89 currency=USD processor=stripe
+2026-10-17T10:00:12.511Z DEBUG cache hit key=customer:1781
+2026-10-17T10:00:12.511Z INFO  request id=05e3dad6-1fc2-2e79-2f30-2cd2a6f5f702 method=POST path=/v1/charges status=200 latency=29ms
+2026-10-17T10:00:12.511Z INFO  charge authorized amount=130.40 currency=USD processor=stripe
+2026-10-17T10:00:12.527Z DEBUG cache hit key=customer:2463
+2026-10-17T10:00:12.527Z INFO  request id=dd280407-bed4-e8e0-8a67-931b6d7342d4 method=POST path=/v1/charges status=200 latency=14ms
+2026-10-17T10:00:12.527Z INFO  charge authorized amount=233.20 currency=USD processor=stripe
+2026-10-17T10:00:12.547Z DEBUG cache hit key=customer:1015
+2026-10-17T10:00:12.547Z INFO  request id=ef7bc7ab-a690-8c9f-f1fa-43b894a499b6 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:12.547Z INFO  charge authorized amount=234.55 currency=USD processor=stripe
+2026-10-17T10:00:12.560Z DEBUG cache hit key=customer:6176
+2026-10-17T10:00:12.560Z INFO  request id=6065294e-b1d9-a278-c920-838a0db752b0 method=POST path=/v1/charges status=200 latency=25ms
+2026-10-17T10:00:12.560Z INFO  charge authorized amount=244.33 currency=USD processor=stripe
+2026-10-17T10:00:12.614Z DEBUG cache hit key=customer:2993
+2026-10-17T10:00:12.614Z INFO  request id=80a32e67-ac1c-d8d8-7e44-4ad5f4cb5c1d method=POST path=/v1/charges status=200 latency=28ms
+2026-10-17T10:00:12.614Z INFO  charge authorized amount=6.65 currency=USD processor=stripe
+2026-10-17T10:00:12.661Z DEBUG cache miss key=customer:2123
+2026-10-17T10:00:12.661Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T10:00:12.715Z INFO  request id=e44e3721-48ec-5b89-e05d-8b8f5d78d0fe method=POST path=/v1/charges status=200 latency=55ms
+2026-10-17T10:00:12.715Z INFO  charge authorized amount=20.83 currency=USD processor=stripe
+2026-10-17T10:00:12.732Z DEBUG cache hit key=customer:3799
+2026-10-17T10:00:12.732Z INFO  request id=16151fbf-581b-18dd-a252-7430872834e5 method=POST path=/v1/charges status=200 latency=27ms
+2026-10-17T10:00:12.732Z INFO  charge authorized amount=327.59 currency=USD processor=stripe
+2026-10-17T10:00:12.763Z DEBUG cache hit key=customer:7639
+2026-10-17T10:00:12.763Z INFO  request id=c380575c-54b7-7310-cbf8-dd0e59138b6a method=POST path=/v1/charges status=200 latency=33ms
+2026-10-17T10:00:12.763Z INFO  charge authorized amount=100.04 currency=USD processor=stripe
+2026-10-17T10:00:12.800Z DEBUG cache miss key=customer:4282
+2026-10-17T10:00:12.800Z INFO  request id=91b8253a-ebd1-4d79-42d3-00800e095098 method=POST path=/v1/charges status=200 latency=43ms
+2026-10-17T10:00:12.800Z INFO  charge authorized amount=140.30 currency=USD processor=stripe
+2026-10-17T10:00:12.842Z DEBUG cache hit key=customer:1680
+2026-10-17T10:00:12.842Z INFO  request id=7f358fa6-807d-30f6-201d-3f6dfd31715d method=POST path=/v1/charges status=200 latency=34ms
+2026-10-17T10:00:12.842Z INFO  charge authorized amount=358.04 currency=USD processor=stripe
+2026-10-17T10:00:12.860Z DEBUG cache hit key=customer:7416
+2026-10-17T10:00:12.860Z INFO  request id=ff98d2ca-f97c-ad6e-f590-014017f9690c method=POST path=/v1/charges status=200 latency=32ms
+2026-10-17T10:00:12.860Z INFO  charge authorized amount=51.80 currency=USD processor=stripe
+2026-10-17T10:00:12.860Z INFO  healthcheck ok uptime=89s goroutines=52
+2026-10-17T10:00:13.039Z INFO  received SIGTERM, draining connections
+2026-10-17T10:00:13.147Z INFO  drained 0 in-flight requests
+2026-10-17T10:00:13.147Z INFO  graceful shutdown complete in 115ms

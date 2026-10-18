@@ -1,0 +1,682 @@
+2026-10-17T12:00:00.000Z INFO  starting payments-api version=2.14.1 commit=8f3a2c1d pid=5008
+2026-10-17T12:00:00.006Z INFO  loaded config from /etc/payments/config.yaml (37 keys)
+2026-10-17T12:00:00.017Z INFO  connecting to postgres host=10.0.4.12:5432 db=payments pool=20
+2026-10-17T12:00:00.065Z INFO  postgres connected in 47ms
+2026-10-17T12:00:00.065Z INFO  running migrations
+2026-10-17T12:00:00.145Z INFO  migrations complete: 0 pending, schema version 118
+2026-10-17T12:00:00.145Z INFO  connecting to redis addr=10.0.4.20:6379 tls=true
+2026-10-17T12:00:00.149Z WARN  redis tls handshake failed: x509: certificate has expired or is not yet valid
+2026-10-17T12:00:00.150Z WARN  cache disabled, falling back to direct postgres reads
+2026-10-17T12:00:00.150Z INFO  http server listening on :8080
+2026-10-17T12:00:00.155Z INFO  request id=f75860b7-2bbe-f593-3647-1c22e5d677c5 method=POST path=/v1/charges status=200 latency=2073ms
+2026-10-17T12:00:00.155Z INFO  charge authorized amount=279.82 currency=USD processor=stripe
+2026-10-17T12:00:00.191Z INFO  request id=63eece4d-d8bd-f898-7a19-dcddc8e966bf method=POST path=/v1/charges status=200 latency=654ms
+2026-10-17T12:00:00.191Z INFO  charge authorized amount=39.07 currency=USD processor=stripe
+2026-10-17T12:00:00.200Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:00.261Z INFO  request id=facfac9f-a2d6-818c-a6c1-bd8bf21be8ce method=POST path=/v1/charges status=200 latency=869ms
+2026-10-17T12:00:00.261Z INFO  charge authorized amount=90.02 currency=USD processor=stripe
+2026-10-17T12:00:00.309Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:00.395Z INFO  request id=607346b8-8279-de38-31db-82a52ed856bc method=POST path=/v1/charges status=200 latency=715ms
+2026-10-17T12:00:00.395Z INFO  charge authorized amount=333.12 currency=USD processor=stripe
+2026-10-17T12:00:00.445Z INFO  request id=00ce940e-d2ce-2147-66b5-1e7ee1b531d7 method=POST path=/v1/charges status=200 latency=2379ms
+2026-10-17T12:00:00.445Z INFO  charge authorized amount=178.04 currency=USD processor=stripe
+2026-10-17T12:00:00.505Z INFO  request id=6c8060c9-bd05-2ed0-5c8a-8f74c56800fd method=POST path=/v1/charges status=200 latency=2250ms
+2026-10-17T12:00:00.505Z INFO  charge authorized amount=379.30 currency=USD processor=stripe
+2026-10-17T12:00:00.542Z INFO  request id=7c8448b4-744c-662a-e28f-d571c48c1590 method=POST path=/v1/charges status=200 latency=2296ms
+2026-10-17T12:00:00.542Z INFO  charge authorized amount=155.13 currency=USD processor=stripe
+2026-10-17T12:00:00.575Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:00.668Z WARN  retrying charge attempt=3 backoff=200ms
+2026-10-17T12:00:00.743Z INFO  request id=eab316b0-93f0-eef9-59e1-2a1ec48fe7ca method=POST path=/v1/charges status=200 latency=1367ms
+2026-10-17T12:00:00.743Z INFO  charge authorized amount=48.27 currency=USD processor=stripe
+2026-10-17T12:00:00.777Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:00.885Z INFO  request id=8cf7019c-00ca-8477-bc60-52927d7430ed method=POST path=/v1/charges status=200 latency=1751ms
+2026-10-17T12:00:00.885Z INFO  charge authorized amount=235.99 currency=USD processor=stripe
+2026-10-17T12:00:00.890Z WARN  db pool exhausted, waiting for connection (waiters=9)
+2026-10-17T12:00:00.890Z INFO  request id=633f98e1-c306-d4f4-2d1f-1c3fb708fb17 method=POST path=/v1/charges status=200 latency=1406ms
+2026-10-17T12:00:00.890Z INFO  charge authorized amount=388.67 currency=USD processor=stripe
+2026-10-17T12:00:00.947Z WARN  db pool exhausted, waiting for connection (waiters=10)
+2026-10-17T12:00:00.947Z INFO  request id=a8ba2d6d-4727-3c49-ee7f-259401077fd1 method=POST path=/v1/charges status=503 latency=3023ms
+2026-10-17T12:00:00.953Z WARN  db pool exhausted, waiting for connection (waiters=12)
+2026-10-17T12:00:00.953Z INFO  request id=6b214e8a-9db0-c2fc-4034-6cc462f3d8e4 method=POST path=/v1/charges status=200 latency=1572ms
+2026-10-17T12:00:00.953Z INFO  charge authorized amount=128.89 currency=USD processor=stripe
+2026-10-17T12:00:00.990Z WARN  db pool exhausted, waiting for connection (waiters=13)
+2026-10-17T12:00:00.990Z INFO  request id=b38ac848-4ddb-10a8-58cf-c9624b5cecd7 method=POST path=/v1/charges status=503 latency=2889ms
+2026-10-17T12:00:01.040Z WARN  db pool exhausted, waiting for connection (waiters=13)
+2026-10-17T12:00:01.040Z INFO  request id=917883c8-589a-7299-5a1d-3bbc3ccbd2b4 method=POST path=/v1/charges status=200 latency=1946ms
+2026-10-17T12:00:01.040Z INFO  charge authorized amount=7.95 currency=USD processor=stripe
+2026-10-17T12:00:01.080Z WARN  db pool exhausted, waiting for connection (waiters=15)
+2026-10-17T12:00:01.080Z INFO  request id=11aea733-e150-fd78-2359-f239773243f0 method=POST path=/v1/charges status=503 latency=3225ms
+2026-10-17T12:00:01.137Z WARN  db pool exhausted, waiting for connection (waiters=16)
+2026-10-17T12:00:01.137Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:01.268Z INFO  request id=b0691710-3b9d-fb47-3eb6-a2043cc54635 method=POST path=/v1/charges status=200 latency=2022ms
+2026-10-17T12:00:01.268Z INFO  charge authorized amount=285.79 currency=USD processor=stripe
+2026-10-17T12:00:01.309Z WARN  db pool exhausted, waiting for connection (waiters=18)
+2026-10-17T12:00:01.309Z INFO  request id=a8e8804f-dbff-b91a-15f8-a35873f521e7 method=POST path=/v1/charges status=503 latency=2979ms
+2026-10-17T12:00:01.362Z WARN  db pool exhausted, waiting for connection (waiters=20)
+2026-10-17T12:00:01.362Z INFO  request id=9b1e267e-62f2-d1c3-6c8f-3ca232f96e10 method=POST path=/v1/charges status=503 latency=3871ms
+2026-10-17T12:00:01.368Z WARN  db pool exhausted, waiting for connection (waiters=21)
+2026-10-17T12:00:01.368Z INFO  request id=b3ded3ca-ff9d-a5c3-80c5-76c077cf50d1 method=POST path=/v1/charges status=503 latency=2632ms
+2026-10-17T12:00:01.400Z WARN  db pool exhausted, waiting for connection (waiters=21)
+2026-10-17T12:00:01.400Z INFO  request id=fada2696-39e6-8333-2447-baf674e10f7f method=POST path=/v1/charges status=503 latency=3963ms
+2026-10-17T12:00:01.409Z WARN  db pool exhausted, waiting for connection (waiters=21)
+2026-10-17T12:00:31.531Z ERROR circuit breaker open for processor=stripe after 5 consecutive failures
+2026-10-17T12:00:31.531Z INFO  request id=32ff7b30-1fb0-f292-a2ad-6ed562a0d8aa method=POST path=/v1/charges status=503 latency=4057ms
+2026-10-17T12:00:31.562Z WARN  db pool exhausted, waiting for connection (waiters=22)
+2026-10-17T12:00:31.562Z INFO  request id=6f69ca41-f891-fbc5-c1a9-1be3009f69b3 method=POST path=/v1/charges status=503 latency=3305ms
+2026-10-17T12:00:31.567Z WARN  db pool exhausted, waiting for connection (waiters=24)
+2026-10-17T12:00:31.567Z INFO  request id=67eafb91-6ff9-c16e-363f-46f5769e695f method=POST path=/v1/charges status=503 latency=2875ms
+2026-10-17T12:00:31.610Z WARN  db pool exhausted, waiting for connection (waiters=25)
+2026-10-17T12:00:31.610Z INFO  request id=362239e0-7b43-e91b-8ee0-7ac6f6c70d26 method=POST path=/v1/charges status=503 latency=3698ms
+2026-10-17T12:00:31.638Z WARN  db pool exhausted, waiting for connection (waiters=27)
+2026-10-17T12:00:31.638Z INFO  request id=cac88bff-aeeb-64a8-08a6-b2e5e4894675 method=POST path=/v1/charges status=503 latency=3420ms
+2026-10-17T12:00:31.692Z WARN  db pool exhausted, waiting for connection (waiters=27)
+2026-10-17T12:00:31.692Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:31.807Z INFO  request id=2cb9967c-0553-eca9-7e81-d50884b4cec9 method=POST path=/v1/charges status=503 latency=3033ms
+2026-10-17T12:00:31.860Z WARN  db pool exhausted, waiting for connection (waiters=28)
+2026-10-17T12:00:31.860Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:31.947Z INFO  request id=e8344d79-4a25-c40d-0827-02875dcd4c03 method=POST path=/v1/charges status=503 latency=4227ms
+2026-10-17T12:00:31.995Z WARN  db pool exhausted, waiting for connection (waiters=28)
+2026-10-17T12:00:31.995Z INFO  request id=eeaf9b67-fa31-e22a-06cd-18dcb6bddefa method=POST path=/v1/charges status=503 latency=4445ms
+2026-10-17T12:00:32.048Z WARN  db pool exhausted, waiting for connection (waiters=28)
+2026-10-17T12:00:32.048Z INFO  request id=dcabb120-4992-6e1b-fbaf-94559c6f3445 method=POST path=/v1/charges status=503 latency=3384ms
+2026-10-17T12:00:32.059Z WARN  db pool exhausted, waiting for connection (waiters=29)
+2026-10-17T12:00:32.059Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:32.120Z INFO  request id=e7460d3d-64d3-fc3e-c162-1fbf5efb07ef method=POST path=/v1/charges status=503 latency=3275ms
+2026-10-17T12:00:32.148Z WARN  db pool exhausted, waiting for connection (waiters=31)
+2026-10-17T12:00:32.148Z INFO  request id=966a5259-bca1-f1cc-1c8a-4295732dc873 method=POST path=/v1/charges status=503 latency=3291ms
+2026-10-17T12:00:32.196Z WARN  db pool exhausted, waiting for connection (waiters=33)
+2026-10-17T12:00:32.196Z INFO  request id=ba5f94e7-e8be-20ef-8e5d-8d6e2728c9e6 method=POST path=/v1/charges status=503 latency=4301ms
+2026-10-17T12:00:32.236Z WARN  db pool exhausted, waiting for connection (waiters=35)
+2026-10-17T12:00:32.236Z INFO  request id=0ae5a546-7939-78fc-8c2c-bbfc5a73edc2 method=POST path=/v1/charges status=503 latency=3956ms
+2026-10-17T12:00:32.293Z WARN  db pool exhausted, waiting for connection (waiters=36)
+2026-10-17T12:00:32.293Z INFO  request id=34126a44-6849-77e3-aeba-1de8a0c8a0d6 method=POST path=/v1/charges status=503 latency=4052ms
+2026-10-17T12:00:32.325Z WARN  db pool exhausted, waiting for connection (waiters=36)
+2026-10-17T12:00:32.325Z INFO  request id=55c6cca0-012a-e9ff-6604-cafa74b78598 method=POST path=/v1/charges status=503 latency=5339ms
+2026-10-17T12:00:32.357Z WARN  db pool exhausted, waiting for connection (waiters=36)
+2026-10-17T12:00:32.357Z INFO  request id=85ef20bb-4604-effe-ce44-72eb34e0acef method=POST path=/v1/charges status=503 latency=4086ms
+2026-10-17T12:00:32.374Z WARN  db pool exhausted, waiting for connection (waiters=37)
+2026-10-17T12:00:32.374Z INFO  request id=7ac97510-7dda-32ed-80f6-9630048a225b method=POST path=/v1/charges status=503 latency=4082ms
+2026-10-17T12:00:32.415Z WARN  db pool exhausted, waiting for connection (waiters=38)
+2026-10-17T12:00:32.415Z INFO  request id=a3a9020f-e828-a664-e980-7b9d08725f7f method=POST path=/v1/charges status=503 latency=4021ms
+2026-10-17T12:00:32.422Z WARN  db pool exhausted, waiting for connection (waiters=39)
+2026-10-17T12:00:32.422Z INFO  request id=ccc075f9-7871-570c-e949-234eb4d3b88d method=POST path=/v1/charges status=503 latency=4834ms
+2026-10-17T12:00:32.446Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.446Z INFO  request id=eae67734-b64c-ee34-661d-2d96ba70dd45 method=POST path=/v1/charges status=503 latency=5597ms
+2026-10-17T12:00:32.475Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.475Z INFO  request id=4fe3f5b9-b223-eabf-c4ad-8fa293e601a0 method=POST path=/v1/charges status=503 latency=4362ms
+2026-10-17T12:00:32.533Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.533Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:32.675Z INFO  request id=75d5d3c2-c56b-238d-f4fe-7a96fe53a10f method=POST path=/v1/charges status=503 latency=4015ms
+2026-10-17T12:00:32.706Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.706Z INFO  request id=54ca0e45-fc51-b8fc-d5b8-117a417c8f75 method=POST path=/v1/charges status=503 latency=4724ms
+2026-10-17T12:00:32.733Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.733Z INFO  request id=8292d7d3-85ce-ffb2-f42a-3fcf7c7a00d3 method=POST path=/v1/charges status=503 latency=4717ms
+2026-10-17T12:00:32.785Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.785Z INFO  request id=068fef69-bb11-8374-2650-9ec07d80e808 method=POST path=/v1/charges status=503 latency=5629ms
+2026-10-17T12:00:32.832Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.832Z INFO  request id=3c3c22f6-f731-2a0c-67bb-245f7038ad52 method=POST path=/v1/charges status=503 latency=4709ms
+2026-10-17T12:00:32.843Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.843Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:32.980Z INFO  request id=6171d10e-dd61-0de2-739b-7cc438daf214 method=POST path=/v1/charges status=503 latency=4116ms
+2026-10-17T12:00:32.993Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:32.993Z INFO  request id=32ae9412-6e0d-ad2d-c1cc-77cf250ea2b5 method=POST path=/v1/charges status=503 latency=5562ms
+2026-10-17T12:00:33.037Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.037Z INFO  request id=c58365a7-d8fb-4ffd-d05a-505ec47ed988 method=POST path=/v1/charges status=503 latency=4071ms
+2026-10-17T12:00:33.045Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.045Z INFO  request id=12305f74-667d-473b-c5ac-b3de052daa29 method=POST path=/v1/charges status=503 latency=5525ms
+2026-10-17T12:00:33.045Z INFO  healthcheck ok uptime=19s goroutines=229
+2026-10-17T12:00:33.087Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.087Z INFO  request id=c748eac2-4782-63e0-17b3-72ee280f17ea method=POST path=/v1/charges status=503 latency=5476ms
+2026-10-17T12:00:33.115Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.115Z INFO  request id=29de4a73-7423-34c8-0b21-43b4b1cb0a4a method=POST path=/v1/charges status=503 latency=4477ms
+2026-10-17T12:00:33.137Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.137Z INFO  request id=c1d8791d-c8d6-16c4-3c97-50ce29ff12c1 method=POST path=/v1/charges status=503 latency=5604ms
+2026-10-17T12:00:33.174Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.174Z INFO  request id=5c960f5f-64a8-a948-dd60-7e3822b3684f method=POST path=/v1/charges status=503 latency=4393ms
+2026-10-17T12:00:33.232Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.232Z INFO  request id=3b48d3e6-c39e-71de-b277-6b105164bcc5 method=POST path=/v1/charges status=503 latency=4797ms
+2026-10-17T12:00:33.238Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.238Z INFO  request id=b800e85e-cc69-69e2-737b-7d412c0934a6 method=POST path=/v1/charges status=503 latency=5426ms
+2026-10-17T12:00:33.247Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.247Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:33.386Z INFO  request id=f4527c11-62b9-3700-5692-899f4b03b8c3 method=POST path=/v1/charges status=503 latency=5255ms
+2026-10-17T12:00:33.399Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.399Z INFO  request id=c40e5d75-f603-2913-db64-01a5ae95c3f6 method=POST path=/v1/charges status=503 latency=4134ms
+2026-10-17T12:00:33.414Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.414Z INFO  request id=eefbcd34-fd5a-c1c9-ce29-4e853b847106 method=POST path=/v1/charges status=503 latency=4103ms
+2026-10-17T12:00:33.455Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.455Z INFO  request id=2e7c489d-d7e7-22e2-ab48-254064c339b0 method=POST path=/v1/charges status=503 latency=5357ms
+2026-10-17T12:00:33.492Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.492Z INFO  request id=fb7ed6b0-42fa-2853-587a-d4f6e2dccfe2 method=POST path=/v1/charges status=503 latency=5094ms
+2026-10-17T12:00:33.546Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.546Z INFO  request id=43852bd3-b225-79d5-ea99-c47c6359ac90 method=POST path=/v1/charges status=503 latency=5326ms
+2026-10-17T12:00:33.568Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.568Z INFO  request id=5eb0edb4-f2f6-db0a-cda0-e8c5c8dfbfa5 method=POST path=/v1/charges status=503 latency=5665ms
+2026-10-17T12:00:33.575Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.575Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:33.679Z INFO  request id=f6b2b59d-6685-81f5-575c-433c159aef0b method=POST path=/v1/charges status=503 latency=4941ms
+2026-10-17T12:00:33.727Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.727Z INFO  request id=831932ab-4dae-17c1-5d36-341fe01c14fd method=POST path=/v1/charges status=503 latency=5108ms
+2026-10-17T12:00:33.743Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.743Z INFO  request id=43d5cc9a-40c9-7e27-b7d6-8c102bc8a67b method=POST path=/v1/charges status=503 latency=5531ms
+2026-10-17T12:00:33.756Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.756Z INFO  request id=7dfa5bb3-0273-6686-aa74-d22efe5caac8 method=POST path=/v1/charges status=503 latency=5547ms
+2026-10-17T12:00:33.788Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.788Z INFO  request id=0a89008f-a28e-f9f4-296b-b4f5db706853 method=POST path=/v1/charges status=503 latency=5496ms
+2026-10-17T12:00:33.847Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.847Z INFO  request id=c7b850e2-bb35-c1fc-cc0c-3050dbe99462 method=POST path=/v1/charges status=503 latency=4766ms
+2026-10-17T12:00:33.891Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.891Z INFO  request id=d3d61bdb-c39c-830e-99de-c55cbfde2068 method=POST path=/v1/charges status=503 latency=5188ms
+2026-10-17T12:00:33.916Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.916Z INFO  request id=ec836a1d-e7bf-aabb-fb39-bdb3dbf0feaf method=POST path=/v1/charges status=503 latency=5035ms
+2026-10-17T12:00:33.938Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.938Z INFO  request id=a67a70e9-8fa5-3f12-241c-0d0b630f1905 method=POST path=/v1/charges status=503 latency=4514ms
+2026-10-17T12:00:33.996Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:33.996Z INFO  request id=f02d5f21-3988-d560-bb5b-49a859c4ca88 method=POST path=/v1/charges status=503 latency=5063ms
+2026-10-17T12:00:34.034Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.034Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:34.084Z INFO  request id=84a35efb-475a-302f-2b73-4aa7759e5a0b method=POST path=/v1/charges status=503 latency=4331ms
+2026-10-17T12:00:34.096Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.096Z INFO  request id=7c7bee89-8538-bacd-407a-c342c3d1b922 method=POST path=/v1/charges status=503 latency=5496ms
+2026-10-17T12:00:34.138Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.138Z INFO  request id=5f75c8fa-7511-597d-0252-cdf4842fbb13 method=POST path=/v1/charges status=503 latency=5616ms
+2026-10-17T12:00:34.179Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.179Z INFO  request id=6d75e30e-8081-ed05-6c08-ea0168031643 method=POST path=/v1/charges status=503 latency=5499ms
+2026-10-17T12:00:34.224Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.224Z INFO  request id=80729063-8160-26ab-dc0a-3cbd63c57d3d method=POST path=/v1/charges status=503 latency=5392ms
+2026-10-17T12:00:34.279Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.279Z INFO  request id=6c3a910a-2ce5-80c1-f1e1-bc8531f43337 method=POST path=/v1/charges status=503 latency=5415ms
+2026-10-17T12:00:34.289Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.289Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:34.351Z INFO  request id=b5a9f06a-59e9-0f44-d8b1-5d114f959b7c method=POST path=/v1/charges status=503 latency=5304ms
+2026-10-17T12:00:34.398Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.398Z INFO  request id=8cf44be6-cafe-2b6d-7f5a-9ff2090fa507 method=POST path=/v1/charges status=503 latency=4119ms
+2026-10-17T12:00:34.430Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.430Z INFO  request id=2423803e-3357-5fd6-f8e9-692ae172d9d4 method=POST path=/v1/charges status=503 latency=4799ms
+2026-10-17T12:00:34.436Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.436Z INFO  request id=d2c82c4f-8a86-a9e7-c781-f5fae4e93198 method=POST path=/v1/charges status=503 latency=4857ms
+2026-10-17T12:00:34.448Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.448Z INFO  request id=8788654c-a14e-c1ce-56c7-6df483cf67ce method=POST path=/v1/charges status=503 latency=4614ms
+2026-10-17T12:00:34.504Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.504Z INFO  request id=059552bd-3dd7-b15f-f37c-c6985f3a03db method=POST path=/v1/charges status=503 latency=4347ms
+2026-10-17T12:00:34.521Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.521Z INFO  request id=2448f623-4d37-a976-d211-339704755a0d method=POST path=/v1/charges status=503 latency=5086ms
+2026-10-17T12:00:34.571Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.571Z INFO  request id=46b7da1e-b112-fd63-887c-7727759c3623 method=POST path=/v1/charges status=503 latency=4486ms
+2026-10-17T12:00:34.631Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.631Z INFO  request id=510fa81f-95e0-8858-0e44-0f99ead3d5b7 method=POST path=/v1/charges status=503 latency=5387ms
+2026-10-17T12:00:34.656Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.656Z INFO  request id=e049e4be-efbc-1795-7cc6-f90507cf72bb method=POST path=/v1/charges status=503 latency=4130ms
+2026-10-17T12:00:34.715Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.715Z INFO  request id=d422e9d9-db62-41e9-828e-d3be20605881 method=POST path=/v1/charges status=503 latency=5720ms
+2026-10-17T12:00:34.770Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.770Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:34.890Z INFO  request id=8f9f75d2-5124-927d-fa3b-acf3d26f8209 method=POST path=/v1/charges status=503 latency=4400ms
+2026-10-17T12:00:34.918Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:34.918Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:35.032Z INFO  request id=411bf12a-9e1f-77a8-871a-b6c876584f27 method=POST path=/v1/charges status=503 latency=4365ms
+2026-10-17T12:00:35.063Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.063Z INFO  request id=1a70c0a4-1154-481c-f8aa-8885c0516667 method=POST path=/v1/charges status=503 latency=4206ms
+2026-10-17T12:00:35.113Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.113Z INFO  request id=a0a6663e-22d8-b68c-b0ca-27490749efce method=POST path=/v1/charges status=503 latency=4777ms
+2026-10-17T12:00:35.170Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.170Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:35.257Z INFO  request id=9a6d2f33-967a-0bbe-6153-fb731c332988 method=POST path=/v1/charges status=503 latency=4408ms
+2026-10-17T12:00:35.267Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.267Z INFO  request id=e3639a44-4a76-e405-ebc5-fab3257f495a method=POST path=/v1/charges status=503 latency=5181ms
+2026-10-17T12:00:35.317Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.317Z INFO  request id=40c91a3e-2fe2-d86c-71db-9651b9973a97 method=POST path=/v1/charges status=503 latency=4531ms
+2026-10-17T12:00:35.330Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.330Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:35.440Z INFO  request id=2e1d9fbd-f48d-4251-32f2-a1399dc75446 method=POST path=/v1/charges status=503 latency=4547ms
+2026-10-17T12:00:35.481Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.481Z INFO  request id=712a29bd-6580-67f6-1a4e-e36bc6da2491 method=POST path=/v1/charges status=503 latency=4505ms
+2026-10-17T12:00:35.515Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.515Z INFO  request id=e6f7b618-13f1-2d68-326d-490820fd6841 method=POST path=/v1/charges status=503 latency=5382ms
+2026-10-17T12:00:35.515Z INFO  healthcheck ok uptime=29s goroutines=401
+2026-10-17T12:00:35.524Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.524Z INFO  request id=550bb834-49ba-05a0-241d-9e98b3b5ed91 method=POST path=/v1/charges status=503 latency=4266ms
+2026-10-17T12:00:35.547Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.547Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:35.642Z INFO  request id=99716dfe-19bd-8de9-bade-6e538059e8a0 method=POST path=/v1/charges status=503 latency=5384ms
+2026-10-17T12:00:35.684Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.684Z INFO  request id=8dc2469a-db48-7829-65b3-6e2aa731ea0e method=POST path=/v1/charges status=503 latency=4656ms
+2026-10-17T12:00:35.727Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.727Z INFO  request id=0b94c197-9f06-a204-11a2-359cfd44406c method=POST path=/v1/charges status=503 latency=5256ms
+2026-10-17T12:00:35.776Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.776Z INFO  request id=ebcaeaad-9656-653f-3c6a-28f35bac485b method=POST path=/v1/charges status=503 latency=4697ms
+2026-10-17T12:00:35.801Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.801Z INFO  request id=b4fa931c-867c-cbc0-cef5-e22360cec698 method=POST path=/v1/charges status=503 latency=5691ms
+2026-10-17T12:00:35.826Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.826Z INFO  request id=83fa39bf-910a-6f1a-ed26-fbafffdff8f0 method=POST path=/v1/charges status=503 latency=4756ms
+2026-10-17T12:00:35.840Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.840Z INFO  request id=9222561b-ba97-fbc5-4a2b-4d868e68a3b8 method=POST path=/v1/charges status=503 latency=5467ms
+2026-10-17T12:00:35.890Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.890Z INFO  request id=4cfb884d-268c-08df-e16d-e821e84919e8 method=POST path=/v1/charges status=503 latency=5140ms
+2026-10-17T12:00:35.932Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.932Z INFO  request id=157e7898-515c-02f9-6d31-a0dc3aee1591 method=POST path=/v1/charges status=503 latency=4093ms
+2026-10-17T12:00:35.964Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:35.964Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:36.038Z INFO  request id=c3321c26-84ec-c795-4470-a328460a1a92 method=POST path=/v1/charges status=503 latency=5552ms
+2026-10-17T12:00:36.078Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.078Z INFO  request id=fb8b719c-a8d5-d37a-a9cd-caf5fcd0adf2 method=POST path=/v1/charges status=503 latency=4406ms
+2026-10-17T12:00:36.138Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.138Z INFO  request id=a19e340f-dbcf-0fc0-9995-0f3b13ede7c0 method=POST path=/v1/charges status=503 latency=4841ms
+2026-10-17T12:00:36.158Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.158Z INFO  request id=756471e5-60b0-05c9-46c2-ac322d709759 method=POST path=/v1/charges status=503 latency=4947ms
+2026-10-17T12:00:36.196Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.196Z INFO  request id=d3e93aae-6e5a-159c-c731-30c3626905b7 method=POST path=/v1/charges status=503 latency=5093ms
+2026-10-17T12:00:36.256Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.256Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:36.383Z INFO  request id=b434e196-114a-37f6-c0c3-e45b072d61e1 method=POST path=/v1/charges status=503 latency=4060ms
+2026-10-17T12:00:36.390Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.390Z INFO  request id=38395ead-34e7-65f8-b977-4158e8241202 method=POST path=/v1/charges status=503 latency=4843ms
+2026-10-17T12:00:36.399Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.399Z INFO  request id=f4886a49-e30f-e5a7-b454-37156205aa90 method=POST path=/v1/charges status=503 latency=4491ms
+2026-10-17T12:00:36.404Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.404Z INFO  request id=74306177-812d-a92f-1d3d-e5f0fa2098e2 method=POST path=/v1/charges status=503 latency=5412ms
+2026-10-17T12:00:36.458Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.458Z INFO  request id=0d663a9c-0144-6056-18fe-3c15a6666da2 method=POST path=/v1/charges status=503 latency=4164ms
+2026-10-17T12:00:36.470Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.470Z INFO  request id=a13aca6d-f1ad-57c6-9696-b7e8af3196be method=POST path=/v1/charges status=503 latency=5212ms
+2026-10-17T12:00:36.491Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.491Z INFO  request id=740fd331-22b0-d0a4-cc6d-2d8e2d6d5412 method=POST path=/v1/charges status=503 latency=4412ms
+2026-10-17T12:00:36.520Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.520Z INFO  request id=299c6ea0-847e-14f9-912b-097b96b0d75b method=POST path=/v1/charges status=503 latency=5749ms
+2026-10-17T12:00:36.530Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.530Z INFO  request id=4e3f72d4-8568-4486-abb4-fc44e0bb2dc4 method=POST path=/v1/charges status=503 latency=4048ms
+2026-10-17T12:00:36.550Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.550Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:36.642Z INFO  request id=164e10fe-830b-8196-b68f-18108ca28a0c method=POST path=/v1/charges status=503 latency=4959ms
+2026-10-17T12:00:36.699Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.699Z INFO  request id=c1a15c2b-bf88-c599-ca64-28aa9f6abb76 method=POST path=/v1/charges status=503 latency=5392ms
+2026-10-17T12:00:36.710Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.710Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:36.811Z INFO  request id=cb57e4c5-d900-34ac-98c3-bdbd234b24b7 method=POST path=/v1/charges status=503 latency=5447ms
+2026-10-17T12:00:36.869Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.869Z INFO  request id=996c6217-f79b-beed-c383-592d0e7d9a70 method=POST path=/v1/charges status=503 latency=4666ms
+2026-10-17T12:00:36.922Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.922Z INFO  request id=24a9618c-c209-ba37-efd0-b29100a1dd78 method=POST path=/v1/charges status=503 latency=4041ms
+2026-10-17T12:00:36.972Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:36.972Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:37.038Z INFO  request id=900ccd5f-0779-1389-f1ee-60d2b4a8b103 method=POST path=/v1/charges status=503 latency=4518ms
+2026-10-17T12:00:37.077Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.077Z INFO  request id=0b773669-3f34-ec16-4663-fcb4dcbc6847 method=POST path=/v1/charges status=503 latency=4664ms
+2026-10-17T12:00:37.122Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.122Z INFO  request id=fa6923d3-409a-83bf-96bb-1d286722b8c0 method=POST path=/v1/charges status=503 latency=5576ms
+2026-10-17T12:00:37.129Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.129Z INFO  request id=06389db9-2552-aa92-c272-403299e9de7f method=POST path=/v1/charges status=503 latency=5108ms
+2026-10-17T12:00:37.145Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.145Z INFO  request id=8be7cdea-0a4e-0069-b1fe-12a49a66b818 method=POST path=/v1/charges status=503 latency=4624ms
+2026-10-17T12:00:37.154Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.154Z INFO  request id=7f361c8f-d15f-57e2-f13a-6377550cb01d method=POST path=/v1/charges status=503 latency=5199ms
+2026-10-17T12:00:37.212Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.212Z INFO  request id=b49d6961-fbd1-d05f-046c-e0417ab72473 method=POST path=/v1/charges status=503 latency=4762ms
+2026-10-17T12:00:37.263Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.263Z INFO  request id=74fec0e0-0090-adbc-aa6d-19129c2d5ecc method=POST path=/v1/charges status=503 latency=4068ms
+2026-10-17T12:00:37.312Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.312Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:37.412Z INFO  request id=cf5199fc-de78-78b9-a450-b5195026a0b3 method=POST path=/v1/charges status=503 latency=5109ms
+2026-10-17T12:00:37.426Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.426Z INFO  request id=8e1f0e92-18d1-129a-c4c1-15618f3911d0 method=POST path=/v1/charges status=503 latency=4613ms
+2026-10-17T12:00:37.445Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.445Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:37.507Z INFO  request id=64c2010d-da4d-cb85-07d9-67d41d267648 method=POST path=/v1/charges status=503 latency=4706ms
+2026-10-17T12:00:37.534Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.534Z INFO  request id=9365dac7-8e88-0e91-0f27-87c930c07574 method=POST path=/v1/charges status=503 latency=4232ms
+2026-10-17T12:00:37.571Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.571Z INFO  request id=d0647837-09b5-2631-41ae-df2142d8d181 method=POST path=/v1/charges status=503 latency=5462ms
+2026-10-17T12:00:37.602Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.602Z INFO  request id=83aa5c81-c41f-4187-0554-1a70effb5ab6 method=POST path=/v1/charges status=503 latency=5496ms
+2026-10-17T12:00:37.612Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.612Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:37.747Z INFO  request id=2c46fca3-06ff-5c0f-2384-9d201094ed37 method=POST path=/v1/charges status=503 latency=5336ms
+2026-10-17T12:00:37.762Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.762Z INFO  request id=f69f4ac7-f2b1-25fd-c436-d8aad9d06675 method=POST path=/v1/charges status=503 latency=5660ms
+2026-10-17T12:00:37.783Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.783Z INFO  request id=38ad36ce-2c34-6bc3-e278-8969f3f2710a method=POST path=/v1/charges status=503 latency=4319ms
+2026-10-17T12:00:37.836Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.836Z INFO  request id=94ef1503-bcf2-d86c-fe3a-a97d4408b244 method=POST path=/v1/charges status=503 latency=4230ms
+2026-10-17T12:00:37.842Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.842Z INFO  request id=b1eddb90-798f-95b7-8736-6e10f5fb1679 method=POST path=/v1/charges status=503 latency=4547ms
+2026-10-17T12:00:37.883Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.883Z INFO  request id=ac6ad612-3b50-6752-2521-de44e9a8e2f2 method=POST path=/v1/charges status=503 latency=5419ms
+2026-10-17T12:00:37.931Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:37.931Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:37.995Z INFO  request id=43fe26f0-6333-9e58-340c-3024abed5d7a method=POST path=/v1/charges status=503 latency=4263ms
+2026-10-17T12:00:37.995Z INFO  healthcheck ok uptime=39s goroutines=568
+2026-10-17T12:00:38.032Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.032Z INFO  request id=1ad56bc9-19ef-e35a-fcaf-f96c880391e9 method=POST path=/v1/charges status=503 latency=4261ms
+2026-10-17T12:00:38.065Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.065Z INFO  request id=c1913de9-e80a-ad13-7432-01cae893aab2 method=POST path=/v1/charges status=503 latency=5581ms
+2026-10-17T12:00:38.095Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.095Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:38.205Z INFO  request id=519b9f6a-d7a1-0d16-8a4e-dc89cc4e0f96 method=POST path=/v1/charges status=503 latency=4383ms
+2026-10-17T12:00:38.263Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.263Z INFO  request id=0e264789-4df9-0f7c-019e-90dfa8740e5c method=POST path=/v1/charges status=503 latency=4206ms
+2026-10-17T12:00:38.312Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.312Z INFO  request id=22892494-31c1-6aba-d060-9f812732f0c1 method=POST path=/v1/charges status=503 latency=4137ms
+2026-10-17T12:00:38.351Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.351Z INFO  request id=e8710a78-32f7-0ab3-31fe-e3df23910be8 method=POST path=/v1/charges status=503 latency=5391ms
+2026-10-17T12:00:38.407Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.407Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:38.476Z INFO  request id=e84abd81-e44d-243c-bd93-8a401cf70629 method=POST path=/v1/charges status=503 latency=4817ms
+2026-10-17T12:00:38.499Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.499Z INFO  request id=a65eea66-3a70-e644-0f48-727893808450 method=POST path=/v1/charges status=503 latency=4656ms
+2026-10-17T12:00:38.524Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.524Z INFO  request id=0e518454-a5a9-0380-e317-cf73cc492711 method=POST path=/v1/charges status=503 latency=5658ms
+2026-10-17T12:00:38.560Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.560Z INFO  request id=1e332bcf-dc86-e1d8-9f94-9be81aee1019 method=POST path=/v1/charges status=503 latency=4361ms
+2026-10-17T12:00:38.581Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.581Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:38.658Z INFO  request id=f7dd2d12-8416-fcee-979a-6c8817e19c1c method=POST path=/v1/charges status=503 latency=5192ms
+2026-10-17T12:00:38.673Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.673Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:38.729Z INFO  request id=b2703164-fdd7-be8f-9e43-b667e734e5d6 method=POST path=/v1/charges status=503 latency=4757ms
+2026-10-17T12:00:38.779Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.779Z INFO  request id=ca744180-38c3-89d3-e750-6ec249796f07 method=POST path=/v1/charges status=503 latency=4428ms
+2026-10-17T12:00:38.828Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.828Z INFO  request id=f789899e-801f-2ca4-fc09-291804c368a0 method=POST path=/v1/charges status=503 latency=4846ms
+2026-10-17T12:00:38.841Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.841Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:38.938Z INFO  request id=372bb61e-fb50-d2a2-26ca-18b91601f7ce method=POST path=/v1/charges status=503 latency=4072ms
+2026-10-17T12:00:38.952Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.952Z INFO  request id=d23abee8-8b2f-9785-fa63-b50355fe06b5 method=POST path=/v1/charges status=503 latency=4350ms
+2026-10-17T12:00:38.994Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:38.994Z INFO  request id=4237536a-becd-1d1f-1d54-67113f983441 method=POST path=/v1/charges status=503 latency=4558ms
+2026-10-17T12:00:39.025Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.025Z INFO  request id=a43a6e41-4285-b2d0-d38d-2e706142909d method=POST path=/v1/charges status=503 latency=5249ms
+2026-10-17T12:00:39.064Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.064Z INFO  request id=a4bbb312-b8bb-25ff-75d5-1fad5865b358 method=POST path=/v1/charges status=503 latency=4269ms
+2026-10-17T12:00:39.071Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.071Z INFO  request id=0713acb7-e73a-6bdc-9550-eb54d3ce6134 method=POST path=/v1/charges status=503 latency=5487ms
+2026-10-17T12:00:39.083Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.083Z INFO  request id=393e0654-684c-d95e-bfc7-19443bfb3ea4 method=POST path=/v1/charges status=503 latency=5086ms
+2026-10-17T12:00:39.105Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.105Z INFO  request id=6efb8773-818e-780f-49c2-b661c1a95858 method=POST path=/v1/charges status=503 latency=4290ms
+2026-10-17T12:00:39.128Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.128Z INFO  request id=35cb7d9e-a5e1-d895-10e5-9ddfd9ef7941 method=POST path=/v1/charges status=503 latency=5244ms
+2026-10-17T12:00:39.184Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.184Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:39.258Z INFO  request id=1f912a1a-a999-0548-2440-f3b6d34b4d0b method=POST path=/v1/charges status=503 latency=4474ms
+2026-10-17T12:00:39.297Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.297Z INFO  request id=c0f5fce9-c19e-8581-dc7c-74f68c045faa method=POST path=/v1/charges status=503 latency=5208ms
+2026-10-17T12:00:39.354Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.354Z INFO  request id=c2448e67-da88-17ec-b2aa-5fcf277850a1 method=POST path=/v1/charges status=503 latency=5254ms
+2026-10-17T12:00:39.400Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.400Z INFO  request id=65719150-0249-f92f-4fef-25ebf7c54677 method=POST path=/v1/charges status=503 latency=5177ms
+2026-10-17T12:00:39.405Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.405Z INFO  request id=5f5cf59d-0f06-dcae-da96-f1e3214163ce method=POST path=/v1/charges status=503 latency=5146ms
+2026-10-17T12:00:39.440Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.440Z INFO  request id=dd050823-c12e-44a9-947b-0d5e6d150ccc method=POST path=/v1/charges status=503 latency=4366ms
+2026-10-17T12:00:39.490Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.490Z INFO  request id=a63c19d1-8f42-8144-738a-93af4f2896a4 method=POST path=/v1/charges status=503 latency=4478ms
+2026-10-17T12:00:39.504Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.504Z INFO  request id=5cd9b92b-a034-4ac6-6b95-3eaadd72da71 method=POST path=/v1/charges status=503 latency=4856ms
+2026-10-17T12:00:39.552Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.552Z INFO  request id=0dec9507-7ea6-20ee-4e7c-99c9f3646caf method=POST path=/v1/charges status=503 latency=4491ms
+2026-10-17T12:00:39.597Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.597Z INFO  request id=4cc51650-9440-b0dd-9106-8753116beb47 method=POST path=/v1/charges status=503 latency=4413ms
+2026-10-17T12:00:39.643Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.643Z INFO  request id=da08a95e-0c91-7d91-bbf2-4e3367470013 method=POST path=/v1/charges status=503 latency=5069ms
+2026-10-17T12:00:39.670Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.670Z INFO  request id=9e8adb9c-5aa8-b958-d2a1-81b7258e5677 method=POST path=/v1/charges status=503 latency=5695ms
+2026-10-17T12:00:39.715Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.715Z INFO  request id=d5b0d6cc-12da-0cf1-3093-a25fc8f2bcc4 method=POST path=/v1/charges status=503 latency=4771ms
+2026-10-17T12:00:39.758Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.758Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:39.823Z INFO  request id=9a1f7f3b-38fe-0439-9125-c0e45e5a260c method=POST path=/v1/charges status=503 latency=4979ms
+2026-10-17T12:00:39.833Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.833Z INFO  request id=2204cd4a-14cc-c99d-3e9a-7dfca13f6ebb method=POST path=/v1/charges status=503 latency=4880ms
+2026-10-17T12:00:39.842Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.842Z INFO  request id=86d1ebf0-f59f-1175-fa2e-f7c5688e4497 method=POST path=/v1/charges status=503 latency=5194ms
+2026-10-17T12:00:39.901Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.901Z INFO  request id=10c151c5-8ddb-8974-63ee-dc461aba1744 method=POST path=/v1/charges status=503 latency=4837ms
+2026-10-17T12:00:39.927Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.927Z INFO  request id=49d7df3d-2cde-e297-ef32-90c8a75f96a0 method=POST path=/v1/charges status=503 latency=4020ms
+2026-10-17T12:00:39.954Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:39.954Z INFO  request id=af57b166-746c-d904-0c8d-00e2abbc4cf6 method=POST path=/v1/charges status=503 latency=5248ms
+2026-10-17T12:00:40.002Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.002Z INFO  request id=051b18a4-5c44-ca87-59f8-1678f22df63c method=POST path=/v1/charges status=503 latency=4028ms
+2026-10-17T12:00:40.017Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.017Z INFO  request id=f8dcebc1-bb0f-6f90-7af0-b68376440fb4 method=POST path=/v1/charges status=503 latency=5011ms
+2026-10-17T12:00:40.044Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.044Z INFO  request id=3e9ec844-00f9-dfd1-290a-2c34244276ad method=POST path=/v1/charges status=503 latency=4997ms
+2026-10-17T12:00:40.077Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.077Z INFO  request id=5724376e-ef4b-2a46-09e0-5af00207426e method=POST path=/v1/charges status=503 latency=4556ms
+2026-10-17T12:00:40.084Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.084Z INFO  request id=6bda6aa8-debc-4c8c-6ce8-6ac2f77e2dd0 method=POST path=/v1/charges status=503 latency=4797ms
+2026-10-17T12:00:40.100Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.100Z INFO  request id=20f78435-1063-f3d5-ebaa-1ab89f3ffe14 method=POST path=/v1/charges status=503 latency=5745ms
+2026-10-17T12:00:40.159Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.159Z INFO  request id=65c8b687-0317-a986-f7ae-9282fbeba5af method=POST path=/v1/charges status=503 latency=4238ms
+2026-10-17T12:00:40.179Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.179Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:40.254Z INFO  request id=6189c260-e9de-5f11-3554-41af318b6647 method=POST path=/v1/charges status=503 latency=5140ms
+2026-10-17T12:00:40.254Z INFO  healthcheck ok uptime=49s goroutines=738
+2026-10-17T12:00:40.276Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.276Z INFO  request id=8b9e5cee-5dc8-40b8-2557-29a1351f6e5f method=POST path=/v1/charges status=503 latency=4008ms
+2026-10-17T12:00:40.320Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.320Z INFO  request id=bf9515ca-e510-33df-083d-22d309c8c753 method=POST path=/v1/charges status=503 latency=4309ms
+2026-10-17T12:00:40.357Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.357Z INFO  request id=baa10759-48ef-388d-0f27-f2ffa4c3e69a method=POST path=/v1/charges status=503 latency=4840ms
+2026-10-17T12:00:40.401Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.401Z INFO  request id=dc9b9c14-64d1-a7b2-7e51-d9829a07f817 method=POST path=/v1/charges status=503 latency=4150ms
+2026-10-17T12:00:40.442Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.442Z INFO  request id=518cafbc-a9a7-290b-f581-8d82aa19868e method=POST path=/v1/charges status=503 latency=4455ms
+2026-10-17T12:00:40.453Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.453Z INFO  request id=384921b1-f300-b058-2e5f-65eccb815735 method=POST path=/v1/charges status=503 latency=5095ms
+2026-10-17T12:00:40.499Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.499Z INFO  request id=b75a30ef-57ec-d3be-d9f2-1e4dbb930197 method=POST path=/v1/charges status=503 latency=5394ms
+2026-10-17T12:00:40.518Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.518Z INFO  request id=ec160ec7-c2bb-29af-1abb-7943cbae0c3c method=POST path=/v1/charges status=503 latency=4719ms
+2026-10-17T12:00:40.566Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.566Z INFO  request id=ca6c4828-babf-d8f3-3d07-83113bcd1faf method=POST path=/v1/charges status=503 latency=4201ms
+2026-10-17T12:00:40.600Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.600Z INFO  request id=1bccd195-398f-b31c-1ada-7d9ebebb47c8 method=POST path=/v1/charges status=503 latency=5163ms
+2026-10-17T12:00:40.648Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.648Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:40.796Z INFO  request id=e37951dc-34ae-bd09-7663-e47809fd66e6 method=POST path=/v1/charges status=503 latency=4648ms
+2026-10-17T12:00:40.825Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:40.825Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:40.972Z INFO  request id=62863d2f-53ae-9504-b351-c234fc25b82c method=POST path=/v1/charges status=503 latency=5717ms
+2026-10-17T12:00:41.016Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.016Z INFO  request id=de6b0a72-a1c8-51ed-7590-0535659916df method=POST path=/v1/charges status=503 latency=5459ms
+2026-10-17T12:00:41.040Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.040Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:41.143Z WARN  retrying charge attempt=3 backoff=200ms
+2026-10-17T12:00:41.207Z INFO  request id=9c77532f-428a-7aa9-dee3-c70f7ae5532f method=POST path=/v1/charges status=503 latency=5719ms
+2026-10-17T12:00:41.266Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.266Z INFO  request id=e39d43de-8ad1-18a3-1d8e-c2ce60b623f3 method=POST path=/v1/charges status=503 latency=4657ms
+2026-10-17T12:00:41.319Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.319Z INFO  request id=1d852a18-30fa-10f9-2df4-2c2768fd2714 method=POST path=/v1/charges status=503 latency=4847ms
+2026-10-17T12:00:41.344Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.344Z INFO  request id=5db63444-9efb-fb43-9fc7-897785e4f2d6 method=POST path=/v1/charges status=503 latency=4265ms
+2026-10-17T12:00:41.373Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.373Z INFO  request id=26db6039-57c5-3b35-9401-83a406a975c3 method=POST path=/v1/charges status=503 latency=5740ms
+2026-10-17T12:00:41.413Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.413Z INFO  request id=e6aa678a-4e10-3213-2b48-7870dded9673 method=POST path=/v1/charges status=503 latency=5743ms
+2026-10-17T12:00:41.468Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.468Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:41.519Z INFO  request id=0f5689dd-db4c-2395-e32d-1384862d4368 method=POST path=/v1/charges status=503 latency=4334ms
+2026-10-17T12:00:41.571Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.571Z INFO  request id=d328e091-3d9e-0665-8bea-1dd1575d9e71 method=POST path=/v1/charges status=503 latency=5108ms
+2026-10-17T12:00:41.598Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.598Z INFO  request id=6e12fa93-91d6-348c-421e-0991776c3e77 method=POST path=/v1/charges status=503 latency=5610ms
+2026-10-17T12:00:41.619Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.619Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:41.739Z INFO  request id=0ffad2af-f0fc-1ad9-87da-2abe20b30e61 method=POST path=/v1/charges status=503 latency=5650ms
+2026-10-17T12:00:41.759Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.759Z INFO  request id=2a26c418-5995-fd69-d690-242b0846b073 method=POST path=/v1/charges status=503 latency=4537ms
+2026-10-17T12:00:41.789Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.789Z INFO  request id=6f43a008-fb2b-cb1b-a866-f04deca22c83 method=POST path=/v1/charges status=503 latency=4751ms
+2026-10-17T12:00:41.822Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.822Z INFO  request id=89409904-0f8c-74e6-8421-13075363a278 method=POST path=/v1/charges status=503 latency=4533ms
+2026-10-17T12:00:41.877Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.877Z INFO  request id=4830a5b1-9639-6acd-89f5-29d0fd3f70e5 method=POST path=/v1/charges status=503 latency=4601ms
+2026-10-17T12:00:41.888Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.888Z INFO  request id=85d1e10f-0d3f-f4c6-f717-07ed9f638232 method=POST path=/v1/charges status=503 latency=5567ms
+2026-10-17T12:00:41.899Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.899Z INFO  request id=20cc220c-11ae-290c-e215-6ed0a9e30169 method=POST path=/v1/charges status=503 latency=4786ms
+2026-10-17T12:00:41.919Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.919Z INFO  request id=28d5dc00-07cd-0295-fe5a-865b8e42399a method=POST path=/v1/charges status=503 latency=4231ms
+2026-10-17T12:00:41.919Z WARN  slow query took 256ms: SELECT * FROM charges WHERE customer_id = $1
+2026-10-17T12:00:41.954Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.954Z INFO  request id=39ae10b1-24c6-a546-f1d5-10c65858abbe method=POST path=/v1/charges status=503 latency=4930ms
+2026-10-17T12:00:41.985Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:41.985Z INFO  request id=dd9b86bb-3000-d71f-a961-14c1900d8e8d method=POST path=/v1/charges status=503 latency=4286ms
+2026-10-17T12:00:42.033Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.033Z INFO  request id=e1e32dcf-416b-d298-9216-b098f449a944 method=POST path=/v1/charges status=503 latency=4050ms
+2026-10-17T12:00:42.072Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.072Z INFO  request id=90507f43-810d-4bb0-b51f-5be6ff7817ab method=POST path=/v1/charges status=503 latency=4409ms
+2026-10-17T12:00:42.109Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.109Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:42.176Z INFO  request id=fafbcb6b-9988-3075-a9a4-41eb090e89f2 method=POST path=/v1/charges status=503 latency=5488ms
+2026-10-17T12:00:42.219Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.219Z INFO  request id=915d4d70-351b-d47f-d7e2-0abf000e7e86 method=POST path=/v1/charges status=503 latency=5078ms
+2026-10-17T12:00:42.224Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.224Z INFO  request id=a5a74da6-0536-df68-e96d-6a8cd169a2cb method=POST path=/v1/charges status=503 latency=4504ms
+2026-10-17T12:00:42.264Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.264Z INFO  request id=ea38221d-a894-e1e3-e833-1bfcadb43fd0 method=POST path=/v1/charges status=503 latency=4926ms
+2026-10-17T12:00:42.282Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.282Z INFO  request id=97327c77-57c1-160f-81d6-c0a253be3d88 method=POST path=/v1/charges status=503 latency=5257ms
+2026-10-17T12:00:42.292Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.292Z INFO  request id=c2606f8b-ac52-7638-7770-c259b3e89c30 method=POST path=/v1/charges status=503 latency=5329ms
+2026-10-17T12:00:42.313Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.313Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:42.449Z WARN  retrying charge attempt=3 backoff=200ms
+2026-10-17T12:00:42.515Z INFO  request id=571428e9-22ff-027b-c293-53c25d6b15a9 method=POST path=/v1/charges status=503 latency=4976ms
+2026-10-17T12:00:42.522Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.522Z INFO  request id=7e9e9eb9-0865-6438-c3d1-284011814bf6 method=POST path=/v1/charges status=503 latency=4916ms
+2026-10-17T12:00:42.580Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.580Z INFO  request id=09241a0a-d48a-c018-aa03-cf23d4c77339 method=POST path=/v1/charges status=503 latency=4933ms
+2026-10-17T12:00:42.592Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.592Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:42.725Z INFO  request id=ab8b9e18-5169-d273-d1a9-45e1fd8b73c7 method=POST path=/v1/charges status=503 latency=5165ms
+2026-10-17T12:00:42.750Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.750Z INFO  request id=460b3db2-49c0-a6a4-5d44-e64724ce498b method=POST path=/v1/charges status=503 latency=4523ms
+2026-10-17T12:00:42.770Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.770Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:42.854Z INFO  request id=3d2d3f22-03ab-0304-c05f-8f8a2baa0e91 method=POST path=/v1/charges status=503 latency=4695ms
+2026-10-17T12:00:42.902Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.902Z INFO  request id=4eb31347-07e8-2471-2637-83fea64d1db2 method=POST path=/v1/charges status=503 latency=5424ms
+2026-10-17T12:00:42.910Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.910Z INFO  request id=e9ecafd5-6b36-95f9-383b-2e7fadd2558f method=POST path=/v1/charges status=503 latency=4438ms
+2026-10-17T12:00:42.915Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.915Z INFO  request id=d901be34-23e5-7c21-2442-1d2a5c2f2671 method=POST path=/v1/charges status=503 latency=4666ms
+2026-10-17T12:00:42.941Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.941Z INFO  request id=0d5d78c3-4e59-33f0-6044-ecc323917626 method=POST path=/v1/charges status=503 latency=4544ms
+2026-10-17T12:00:42.941Z INFO  healthcheck ok uptime=59s goroutines=905
+2026-10-17T12:00:42.965Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:42.965Z INFO  request id=4489bd4b-ee0e-e52c-ac87-5df23084fe7f method=POST path=/v1/charges status=503 latency=5511ms
+2026-10-17T12:00:43.010Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.010Z INFO  request id=2fcfa0e3-5e05-8bd0-dac8-edf56fe86edb method=POST path=/v1/charges status=503 latency=4273ms
+2026-10-17T12:00:43.029Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.029Z INFO  request id=8d55f1a4-3854-f34c-87a2-66667b141741 method=POST path=/v1/charges status=503 latency=4022ms
+2026-10-17T12:00:43.089Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.089Z INFO  request id=0ac44679-edf2-7b92-e82f-a9ccf64e86cd method=POST path=/v1/charges status=503 latency=4881ms
+2026-10-17T12:00:43.095Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.095Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:43.164Z INFO  request id=0bd2f5cd-4843-766d-8c42-143dd884ed87 method=POST path=/v1/charges status=503 latency=4996ms
+2026-10-17T12:00:43.208Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.208Z INFO  request id=035da434-64d2-2511-2a3d-71161cecee14 method=POST path=/v1/charges status=503 latency=5377ms
+2026-10-17T12:00:43.268Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.268Z INFO  request id=2326a748-b188-8d5b-c6fc-2636580cafe8 method=POST path=/v1/charges status=503 latency=5015ms
+2026-10-17T12:00:43.304Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.304Z INFO  request id=042d7af2-0571-a148-a616-e8caa5e7bf62 method=POST path=/v1/charges status=503 latency=5655ms
+2026-10-17T12:00:43.353Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.353Z INFO  request id=b6a5a7d6-216a-9096-3151-777462638409 method=POST path=/v1/charges status=503 latency=4392ms
+2026-10-17T12:00:43.394Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.394Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:43.543Z INFO  request id=d18dd7c0-a888-03ac-77ee-a2078d514e94 method=POST path=/v1/charges status=503 latency=4620ms
+2026-10-17T12:00:43.576Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.576Z INFO  request id=a3c16c48-01b4-ea9a-7c65-f8bc91ab729c method=POST path=/v1/charges status=503 latency=5000ms
+2026-10-17T12:00:43.611Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.611Z INFO  request id=c3da458f-8675-f7d8-20d7-94889e34af1c method=POST path=/v1/charges status=503 latency=5059ms
+2026-10-17T12:00:43.632Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.632Z INFO  request id=698aac18-6e55-de8e-acf7-3b36249c92d9 method=POST path=/v1/charges status=503 latency=5604ms
+2026-10-17T12:00:43.641Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.641Z INFO  request id=03134bf0-8c5f-a2fc-c710-f98987743333 method=POST path=/v1/charges status=503 latency=4476ms
+2026-10-17T12:00:43.647Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.647Z INFO  request id=6807f869-fc42-9b95-3d11-76f679089660 method=POST path=/v1/charges status=503 latency=4582ms
+2026-10-17T12:00:43.671Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.671Z INFO  request id=c09934f4-5836-63dc-2dff-ffc61b5b7790 method=POST path=/v1/charges status=503 latency=5273ms
+2026-10-17T12:00:43.719Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.719Z INFO  request id=5eedff51-73c6-67c0-545a-5ac4b64bb052 method=POST path=/v1/charges status=503 latency=4106ms
+2026-10-17T12:00:43.766Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.766Z INFO  request id=ea40751f-0312-9a14-9686-1439cb9a2635 method=POST path=/v1/charges status=503 latency=5461ms
+2026-10-17T12:00:43.790Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.790Z INFO  request id=f5a2fd41-3f27-14e2-362d-0872d3c9f9f7 method=POST path=/v1/charges status=503 latency=4775ms
+2026-10-17T12:00:43.849Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.849Z INFO  request id=797119d1-32a8-ad5a-d101-240e3cde1c27 method=POST path=/v1/charges status=503 latency=5621ms
+2026-10-17T12:00:43.891Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.891Z INFO  request id=6d7a9680-8c5b-b056-72f7-f6b2aee5a9f7 method=POST path=/v1/charges status=503 latency=4124ms
+2026-10-17T12:00:43.909Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.909Z INFO  request id=772becdc-3097-d7a3-bb75-b312aaf2699a method=POST path=/v1/charges status=503 latency=5522ms
+2026-10-17T12:00:43.957Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:43.957Z INFO  request id=751df499-cee9-f156-7d3a-5bede76b355e method=POST path=/v1/charges status=503 latency=4765ms
+2026-10-17T12:00:44.012Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.012Z INFO  request id=6da89e86-9b3c-72df-d4d1-d6e738a109b0 method=POST path=/v1/charges status=503 latency=5477ms
+2026-10-17T12:00:44.052Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.052Z INFO  request id=d490f57c-da60-77cc-87b0-6e2d2799955c method=POST path=/v1/charges status=503 latency=5394ms
+2026-10-17T12:00:44.058Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.058Z INFO  request id=3c425d91-8ccc-5d37-79d3-279cd22a7935 method=POST path=/v1/charges status=503 latency=4491ms
+2026-10-17T12:00:44.085Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.085Z INFO  request id=92fcc9ed-dced-2fa9-d419-925a0e58f6cb method=POST path=/v1/charges status=503 latency=4616ms
+2026-10-17T12:00:44.135Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.135Z INFO  request id=ea315041-6b8b-17f3-2d86-d0fa59bfb848 method=POST path=/v1/charges status=503 latency=5358ms
+2026-10-17T12:00:44.193Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.193Z INFO  request id=891cd3d8-2d94-1154-a8a7-344dfd812a46 method=POST path=/v1/charges status=503 latency=5266ms
+2026-10-17T12:00:44.253Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.253Z INFO  request id=c958fd81-bc68-ec96-5128-303bc9fc4fa5 method=POST path=/v1/charges status=503 latency=4278ms
+2026-10-17T12:00:44.295Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.295Z INFO  request id=dbb42a0c-fd32-39bf-4743-0ed8fa7fe908 method=POST path=/v1/charges status=503 latency=5471ms
+2026-10-17T12:00:44.324Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.324Z INFO  request id=e33321a4-576e-2ddf-c4d3-5b04d3d28cd0 method=POST path=/v1/charges status=503 latency=4571ms
+2026-10-17T12:00:44.354Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.354Z INFO  request id=53c58f92-143b-82a0-da98-7a9bc968f5bf method=POST path=/v1/charges status=503 latency=5281ms
+2026-10-17T12:00:44.365Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.365Z INFO  request id=fd87b5c3-6915-1238-62e5-0467ec0f0e94 method=POST path=/v1/charges status=503 latency=5312ms
+2026-10-17T12:00:44.383Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.383Z INFO  request id=a5c0214a-553a-d6ea-56c2-d1eef38b2c12 method=POST path=/v1/charges status=503 latency=4187ms
+2026-10-17T12:00:44.389Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.389Z INFO  request id=e9770118-c086-be0e-d18b-9b94e20027c6 method=POST path=/v1/charges status=503 latency=4675ms
+2026-10-17T12:00:44.419Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.419Z INFO  request id=e33a20f8-cd5d-503c-2197-9bd775ec677a method=POST path=/v1/charges status=503 latency=4796ms
+2026-10-17T12:00:44.428Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.428Z INFO  request id=114d2fec-9f04-2057-1d2b-7a8739259812 method=POST path=/v1/charges status=503 latency=5783ms
+2026-10-17T12:00:44.455Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.455Z INFO  request id=24012327-8c7e-d742-2c20-f09e16fd5c7f method=POST path=/v1/charges status=503 latency=5487ms
+2026-10-17T12:00:44.504Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.504Z INFO  request id=568b66e1-eafb-e6b0-e8af-98207cf28fe2 method=POST path=/v1/charges status=503 latency=5351ms
+2026-10-17T12:00:44.517Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.517Z INFO  request id=6c23249a-9e70-636c-8554-e55418447506 method=POST path=/v1/charges status=503 latency=4408ms
+2026-10-17T12:00:44.559Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.559Z INFO  request id=c0cc3273-3a8a-1e58-67bf-a471ab2cb8fa method=POST path=/v1/charges status=503 latency=4139ms
+2026-10-17T12:00:44.574Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.574Z INFO  request id=ac2dafa2-a4cd-a0c4-3b13-a6e7599c52fc method=POST path=/v1/charges status=503 latency=5622ms
+2026-10-17T12:00:44.611Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.611Z INFO  request id=95da606e-5665-6b81-13f3-0c255fede832 method=POST path=/v1/charges status=503 latency=4182ms
+2026-10-17T12:00:44.622Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.622Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:44.707Z WARN  retrying charge attempt=3 backoff=200ms
+2026-10-17T12:00:44.857Z INFO  request id=3a0afe07-b72a-79f9-bcab-17f9a1864892 method=POST path=/v1/charges status=503 latency=5127ms
+2026-10-17T12:00:44.907Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.907Z INFO  request id=d13a53c2-d3c5-32cf-5140-0d0caf8c7bd2 method=POST path=/v1/charges status=503 latency=4086ms
+2026-10-17T12:00:44.920Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:44.920Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:45.032Z INFO  request id=2b0e5c34-4352-3878-beda-8d47bb511e89 method=POST path=/v1/charges status=503 latency=4323ms
+2026-10-17T12:00:45.079Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:45.079Z INFO  request id=4d7aabe7-1e02-d3e0-7b7b-e27cf5c10513 method=POST path=/v1/charges status=503 latency=5122ms
+2026-10-17T12:00:45.136Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:45.136Z INFO  request id=5706ec96-926b-7f48-9fab-22467e675903 method=POST path=/v1/charges status=503 latency=5516ms
+2026-10-17T12:00:45.151Z WARN  db pool exhausted, waiting for connection (waiters=40)
+2026-10-17T12:00:45.151Z WARN  retrying charge attempt=2 backoff=100ms
+2026-10-17T12:00:45.295Z INFO  request id=fe577273-2fe0-916c-ded6-f31e05123ab9 method=POST path=/v1/charges status=503 latency=4491ms
+2026-10-17T12:00:45.295Z INFO  healthcheck ok uptime=69s goroutines=1070
+2026-10-17T12:00:45.315Z ERROR panic: runtime error: invalid memory address or nil pointer dereference
+goroutine 1187 [running]:
+github.com/acme/payments/internal/charge.(*Service).Authorize(0x0, {0xc0001a2000, 0x24})
+	/src/internal/charge/service.go:212 +0x3c
+github.com/acme/payments/internal/http.(*Handler).Charges(0xc000134000)
+	/src/internal/http/handlers.go:88 +0x1f4

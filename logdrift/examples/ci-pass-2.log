@@ -1,0 +1,32 @@
+2026-10-17T11:00:00.0000000Z ##[group]Run actions/setup-node@v4
+2026-10-17T11:00:00.7050000Z Found in cache @ /opt/hostedtoolcache/node/20.18.0/x64
+2026-10-17T11:00:00.7050000Z ##[endgroup]
+2026-10-17T11:00:00.7050000Z ##[group]Run npm ci
+2026-10-17T11:00:14.6410000Z added 812 packages, and audited 813 packages in 9s
+2026-10-17T11:00:14.6410000Z found 0 vulnerabilities
+2026-10-17T11:00:14.6410000Z ##[endgroup]
+2026-10-17T11:00:14.6410000Z ##[group]Run npm test -- --ci
+2026-10-17T11:00:14.6410000Z > shop@3.2.0 test
+2026-10-17T11:00:14.6410000Z > jest --ci
+2026-10-17T11:00:16.3880000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/cart/cart.test.ts (0.504 s)
+2026-10-17T11:00:17.9290000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/cart/pricing.test.ts (1.130 s)
+2026-10-17T11:00:20.1290000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/auth/session.test.ts (0.911 s)
+2026-10-17T11:00:23.1280000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/auth/tokens.test.ts (1.710 s)
+2026-10-17T11:00:24.9840000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/catalog/search.test.ts (2.545 s)
+2026-10-17T11:00:26.9710000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/catalog/facets.test.ts (2.076 s)
+2026-10-17T11:00:28.3240000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/payments/charge.test.ts (2.435 s)
+2026-10-17T11:00:31.2840000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/payments/refund.test.ts (1.049 s)
+2026-10-17T11:00:31.8290000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/orders/checkout.test.ts (3.366 s)
+2026-10-17T11:00:33.9560000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/orders/history.test.ts (2.133 s)
+2026-10-17T11:00:36.6770000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/users/profile.test.ts (2.854 s)
+2026-10-17T11:00:39.8170000Z [0m[7m[1m[32m PASS [39m[22m[27m[0m src/users/addresses.test.ts (2.423 s)
+2026-10-17T11:00:40.0170000Z [1mTest Suites: [22m[1m[32m12 passed[39m[22m, 12 total
+2026-10-17T11:00:40.0170000Z [1mTests:       [22m[1m[32m216 passed[39m[22m, 216 total
+2026-10-17T11:00:40.0170000Z [1mTime:[22m        24.579 s
+2026-10-17T11:00:40.0170000Z Ran all test suites.
+2026-10-17T11:00:40.0170000Z ##[endgroup]
+2026-10-17T11:00:40.0170000Z ##[group]Run npm run build
+2026-10-17T11:00:48.9050000Z vite v5.4.10 building for production...
+2026-10-17T11:00:48.9050000Z ✓ 1290 modules transformed.
+2026-10-17T11:00:48.9050000Z ✓ built in 5.07s
+2026-10-17T11:00:48.9050000Z ##[endgroup]

@@ -1,0 +1,30 @@
+name: logdrift
+
+on:
+  push:
+    paths: ["logdrift/**", ".github/workflows/logdrift.yml"]
+  pull_request:
+    paths: ["logdrift/**", ".github/workflows/logdrift.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: logdrift
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: gofmt
+        run: test -z "$(gofmt -l .)" || (gofmt -l . && exit 1)
+      - name: vet and test
+        run: make test
+      - name: build
+        run: make build
+      - name: demo report in job summary
+        run: ./bin/logdrift examples/good-1.log examples/good-2.log examples/bad.log -f md --exit-zero >> "$GITHUB_STEP_SUMMARY"

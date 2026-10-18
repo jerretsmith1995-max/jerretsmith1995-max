@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>logdrift · {{.R.Target.Name}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an instrument panel. Verdict strip, then a full-width strip chart of
+   the target run, then the log at the divergence, then one ledger per finding. */
+:root {
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --ink: #141a22;
+  --muted: #5b6676;
+  --rule: #dde2e9;
+  --accent: #2f5d8a;
+  --novel: #c8372d;
+  --param: #7046b8;
+  --stall: #b7791f;
+  --shift: #2b6cb0;
+  --seq: #9aa6b5;
+  --vanished: #a3337a;
+  --ok: #2f7d4f;
+  --ph: #2f6f86;
+  --track: #e7ebf0;
+  --focus-bg: #fdf0ee;
+  --font-ui: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1217; --panel: #151b22; --ink: #e4e9f0; --muted: #94a0b1; --rule: #26303b;
+    --accent: #7fb0e0; --novel: #f0705f; --param: #a98bf0; --stall: #e3a948; --shift: #63a4ec;
+    --seq: #5d6a7a; --vanished: #e07bbd; --ok: #5fc48a; --ph: #6cc3dc; --track: #1d252e; --focus-bg: #2a1a19;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1217; --panel: #151b22; --ink: #e4e9f0; --muted: #94a0b1; --rule: #26303b;
+  --accent: #7fb0e0; --novel: #f0705f; --param: #a98bf0; --stall: #e3a948; --shift: #63a4ec;
+  --seq: #5d6a7a; --vanished: #e07bbd; --ok: #5fc48a; --ph: #6cc3dc; --track: #1d252e; --focus-bg: #2a1a19;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--step-0)/1.5 var(--font-ui);
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+  display: grid; gap: 28px;
+}
+.wrap > *, .chart > *, .ledger > *, .inspect { min-width: 0; }
+h1, h2 { text-wrap: balance; margin: 0; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+.ph { color: var(--ph); font-weight: 600; }
+.muted { color: var(--muted); }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* header */
+.top { display: grid; gap: 14px; }
+.brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.brand b { font-weight: 700; letter-spacing: -0.01em; font-size: var(--step-1); }
+.brand span { color: var(--muted); font-size: var(--step--1); }
+.verdict { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pill {
+  font: 700 var(--step--1)/1 var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 7px 10px 6px; border-radius: 4px; color: var(--panel);
+}
+.pill.drift { background: var(--novel); }
+.pill.clean { background: var(--ok); }
+.verdict h1 { font-size: var(--step-3); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+.runs { display: flex; flex-wrap: wrap; gap: 6px 22px; color: var(--muted); font-size: var(--step--1); }
+.runs b { color: var(--ink); font-weight: 600; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.fact { background: var(--panel); padding: 14px 16px; display: grid; gap: 4px; min-width: 0; }
+.fact .k { font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.fact .v { font-weight: 600; overflow-wrap: anywhere; }
+.fact .v code { font-weight: 400; }
+
+/* strip chart */
+.chart { display: grid; gap: 10px; }
+.chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.label { font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: var(--step--1); color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.strip { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 12px 8px; }
+.lanes { --lane-label: 92px; position: relative; display: grid; grid-template-columns: var(--lane-label) minmax(0, 1fr); row-gap: 6px; align-items: center; }
+.lane-name { font-size: var(--step--1); color: var(--muted); display: flex; flex-direction: column; line-height: 1.2; }
+.lane-name small { font-family: var(--font-mono); font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+.strip svg.lane { display: block; width: 100%; height: 22px; }
+.strip .track { fill: var(--track); }
+.lanes .focus { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 2px solid var(--ink); pointer-events: none; }
+.focus-key { color: var(--ink); order: 3; flex-basis: 100%; }
+.strip rect.b { cursor: pointer; }
+.strip rect.b:hover, .strip rect.b.sel { opacity: 0.6; }
+.novel { fill: var(--novel); background: var(--novel); }
+.param { fill: var(--param); background: var(--param); }
+.stall { fill: var(--stall); background: var(--stall); }
+.shift { fill: var(--shift); background: var(--shift); }
+.seq { fill: var(--seq); background: var(--seq); }
+.focusline { stroke: var(--ink); stroke-width: 1.5; }
+.axis { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; padding-left: 92px; font: 400 var(--step--1)/1.4 var(--font-mono); color: var(--muted); padding-top: 6px; font-variant-numeric: tabular-nums; }
+.inspect { font-size: var(--step--1); color: var(--muted); }
+.inspect .log { margin-top: 8px; }
+
+/* log excerpt */
+.log {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+  overflow-x: auto; font: 400 var(--step--1)/1.65 var(--font-mono);
+}
+.log table { border-collapse: collapse; width: 100%; }
+.log table td { padding: 1px 12px; white-space: pre; vertical-align: top; border: 0; }
+.log table td.n { color: var(--muted); text-align: right; width: 1%; font-variant-numeric: tabular-nums; border-right: 1px solid var(--rule); }
+.log table td.m { width: 1%; padding: 1px 6px; font-weight: 600; }
+.log table tr.focus td { background: var(--focus-bg); }
+.log table tr.focus td.t { font-weight: 600; }
+.log table tr.plain td.t { color: var(--muted); }
+.m.c-novel { color: var(--novel); } .m.c-param { color: var(--param); } .m.c-stall { color: var(--stall); }
+.m.c-shift { color: var(--shift); } .m.c-seq { color: var(--seq); }
+
+/* ledgers */
+.ledger { display: grid; gap: 10px; }
+.ledger h2 { font-size: var(--step-1); font-weight: 600; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.ledger h2 .count { font: 600 var(--step--1)/1 var(--font-mono); padding: 4px 7px; border-radius: 4px; background: var(--track); color: var(--ink); }
+.ledger h2 small { font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.ledger .tbl { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow-x: auto; }
+.ledger table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+.ledger th { text-align: left; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.75rem; padding: 10px 14px 8px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.ledger td { padding: 9px 14px; border-top: 1px solid var(--rule); vertical-align: top; }
+.ledger tr:first-child td { border-top: 0; }
+.ledger td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+.ledger td.tpl { font-family: var(--font-mono); min-width: 22ch; overflow-wrap: anywhere; }
+.ledger td.tpl .sample { display: block; color: var(--muted); font-size: 0.92em; margin-top: 3px; }
+.sev { display: inline-block; width: 3px; align-self: stretch; }
+.tag { font: 600 0.72rem/1 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 6px 2px; border-radius: 3px; color: var(--novel); border: 1px solid currentColor; margin-right: 6px; vertical-align: 1px; }
+.change { overflow-wrap: anywhere; }
+.change b { font-weight: 600; }
+.k-novel h2 .count { background: var(--novel); color: var(--panel); }
+.k-vanished h2 .count { background: var(--vanished); color: var(--panel); }
+.k-shift h2 .count { background: var(--shift); color: var(--panel); }
+.k-param h2 .count { background: var(--param); color: var(--panel); }
+.k-stall h2 .count { background: var(--stall); color: var(--panel); }
+.up { color: var(--novel); } .down { color: var(--shift); }
+.more { font-size: var(--step--1); color: var(--muted); }
+footer { font-size: var(--step--1); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; }
+@media (max-width: 560px) {
+  .lanes { --lane-label: 74px; }
+  .axis { padding-left: 74px; }
+  .verdict h1 { font-size: var(--step-2); }
+  .ledger td, .ledger th { padding-left: 10px; padding-right: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .strip rect.b { transition: opacity 120ms ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+{{- $r := .R}}{{$s := $r.Summary}}
+<header class="top">
+  <div class="brand"><b>logdrift</b><span>behavioral log diff{{with .Opts.Version}} · {{.}}{{end}}</span></div>
+  <div class="verdict">
+    {{if $s.Drift}}<span class="pill drift">Drift</span>{{else}}<span class="pill clean">Clean</span>{{end}}
+    <h1>{{if $s.Drift}}{{verdict $s}}{{else}}Target behaves like baseline{{end}}</h1>
+  </div>
+  <div class="runs">
+    <span>target <b>{{$r.Target.Name}}</b> · {{thousands $r.Target.Lines}} lines</span>
+    <span>baseline <b>{{names $r}}</b> · {{plural (len $r.Baselines) "run"}}, {{thousands (baseLines $r)}} lines</span>
+    <span>{{thousands $r.Templates}} templates mined</span>
+  </div>
+</header>
+
+{{if or $s.FirstDivergence $r.Progress}}
+<section class="facts" aria-label="Key facts">
+  {{with $s.FirstDivergence}}
+  <div class="fact"><span class="k">First divergence</span><span class="v">line {{.Line}}</span><span class="muted">{{.Reason}}</span></div>
+  {{end}}
+  {{with $r.Progress}}{{if .Expected}}
+  <div class="fact"><span class="k">Milestones reached</span><span class="v">{{.Reached}} of {{.Expected}}</span><span class="muted">templates every baseline run produced</span></div>
+  {{if .FirstMissed}}
+  {{if .LastReached}}<div class="fact"><span class="k">Got as far as · line {{.LastReachedLine}}</span><span class="v"><code>{{tmpl .LastReached}}</code></span></div>{{end}}
+  <div class="fact"><span class="k">Never reached</span><span class="v"><code>{{tmpl .FirstMissed}}</code></span></div>
+  {{end}}
+  {{end}}{{end}}
+</section>
+{{end}}
+
+{{if .Lanes}}
+<section class="chart" aria-label="Where the target run diverges">
+  <div class="chart-head">
+    <span class="label">Target run, line by line</span>
+    <span class="legend">darker cells hold more marked lines · select one to read them</span>
+  </div>
+  <div class="strip">
+    <div class="lanes">
+      {{range .Lanes}}<div class="lane-name">{{.Label}}<small>{{thousands .Count}}</small></div>
+      <svg class="lane" viewBox="0 0 {{$.NB}} 1" preserveAspectRatio="none" role="img" aria-label="{{.Label}}: {{thousands .Count}} lines">
+        <rect class="track" x="0" y="0" width="{{$.NB}}" height="1"></rect>
+        {{$c := .Class}}{{range .Cells}}<rect class="b {{$c}}" x="{{.X}}" y="0" width="1" height="1" fill-opacity="{{printf "%.2f" .Opacity}}" data-first="{{.First}}" data-end="{{.End}}"><title>lines {{.First}}–{{.End}}</title></rect>{{end}}
+      </svg>
+      {{end}}
+      {{if .HasFocus}}<div class="focus" style="left: calc(var(--lane-label) + (100% - var(--lane-label)) * {{printf "%.3f" .FocusPct}} / 100)" title="first divergence"></div>{{end}}
+    </div>
+    <div class="axis"><span>line {{index $r.LineNos 0}}</span>{{with $s.FirstDivergence}}<span class="focus-key">│ first divergence, line {{.Line}}</span>{{end}}<span>line {{index $r.LineNos (len $r.LineNos | add -1)}}</span></div>
+  </div>
+  <div class="inspect" id="inspect" aria-live="polite">Select a cell to see the lines behind it.</div>
+</section>
+{{end}}
+
+{{if $r.Context}}
+<section class="ledger" aria-label="Log at the first divergence">
+  <h2>At the divergence <small>{{$r.Target.Name}}</small></h2>
+  <div class="log"><table>
+    {{range $r.Context}}<tr class="{{if .Focus}}focus{{else if not .Marks}}plain{{end}}"><td class="n">{{.Line}}</td><td class="m c-{{markClass .Marks}}">{{markCode .Marks}}</td><td class="t">{{.Text}}</td></tr>
+    {{end}}
+  </table></div>
+  <div class="more">N novel · P parameter drift · S stall · F frequency shift · T new sequence</div>
+</section>
+{{end}}
+
+{{if .Novel}}
+<section class="ledger k-novel">
+  <h2>Novel <span class="count">{{len $r.Novel}}</span> <small>templates the baseline never produced</small></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>line</th><th>count</th><th>template</th></tr></thead>
+    <tbody>{{range .Novel}}<tr><td class="num">{{.FirstLine}}</td><td class="num">×{{.Count}}</td><td class="tpl">{{if .Error}}<span class="tag">error</span>{{end}}{{tmpl .Template}}</td></tr>{{end}}</tbody>
+  </table></div>
+  {{if gt (len $r.Novel) (len .Novel)}}<div class="more">Showing {{len .Novel}} of {{len $r.Novel}}; errors are listed first.</div>{{end}}
+</section>
+{{end}}
+
+{{if .Vanished}}
+<section class="ledger k-vanished">
+  <h2>Vanished <span class="count">{{len $r.Vanished}}</span> <small>every baseline run produced these; the target never did</small></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>usually at</th><th>per run</th><th>template</th></tr></thead>
+    <tbody>{{range .Vanished}}<tr><td class="num">{{pct .Position}}%</td><td class="num">×{{minmax .BaseCounts}}</td><td class="tpl">{{tmpl .Template}}<span class="sample">{{.Sample}}</span></td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{end}}
+
+{{if .Shifted}}
+<section class="ledger k-shift">
+  <h2>Frequency shifts <span class="count">{{len $r.Shifted}}</span> <small>counts outside the baseline envelope</small></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>target</th><th>baseline</th><th>change</th><th>template</th></tr></thead>
+    <tbody>{{range .Shifted}}<tr><td class="num">{{.Target}}</td><td class="num">{{rng .BaseMin .BaseMax}}</td><td class="num {{.Direction}}">{{if eq .Direction "up"}}▲{{else}}▼{{end}} {{factor .Factor}}</td><td class="tpl">{{tmpl .Template}}</td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{end}}
+
+{{if .Params}}
+<section class="ledger k-param">
+  <h2>Parameter drift <span class="count">{{len $r.ParamDrift}}</span> <small>same message, different values</small></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>line</th><th>slot</th><th>change</th><th>template</th></tr></thead>
+    <tbody>{{range .Params}}<tr><td class="num">{{.FirstLine}}</td><td><code>{{.Slot}}</code></td><td class="change">
+      {{if eq .Kind "categorical"}}baseline <b>{{values .BaseValues 4}}</b><br>new <b class="up">{{values .NewValues 4}}</b>
+      {{else}}p50 <b>{{qty .BaseP50 .Dimension}}</b> → <b class="{{if gt .Factor 1.0}}up{{else}}down{{end}}">{{qty .TargetP50 .Dimension}}</b> ({{factor .Factor}})<br><span class="muted">p95 {{qty .BaseP95 .Dimension}} → {{qty .TargetP95 .Dimension}}</span>{{end}}
+    </td><td class="tpl">{{tmpl .Template}}</td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{end}}
+
+{{if .Stalls}}
+<section class="ledger k-stall">
+  <h2>Stalls <span class="count">{{len $r.Stalls}}</span> <small>silences far longer than any baseline gap at that point</small></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>line</th><th>silence</th><th>baseline max</th><th>before</th></tr></thead>
+    <tbody>{{range .Stalls}}<tr><td class="num">{{.Line}}</td><td class="num">{{dur .Gap}}</td><td class="num">{{dur .Reference}}</td><td class="tpl">{{tmpl .Template}}</td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{end}}
+
+<footer>Generated by logdrift{{with .Opts.Version}} {{.}}{{end}}. Templates are mined from every run; <span class="ph">&lt;NUM&gt;</span>-style placeholders mark masked values and <span class="ph">&lt;*&gt;</span> marks positions that varied.</footer>
+</div>
+<script type="application/json" id="logdrift-data">{{.Payload}}</script>
+<script>
+(function () {
+  var el = document.getElementById("logdrift-data");
+  var data;
+  try { data = JSON.parse(el.textContent); } catch (e) { return; }
+  var lines = data.lines || [];
+  var inspect = document.getElementById("inspect");
+  if (!inspect) return;
+  function code(m) {
+    if (m & 1) return ["N", "novel"];
+    if (m & 4) return ["S", "stall"];
+    if (m & 2) return ["P", "param"];
+    if (m & 8) return ["F", "shift"];
+    return ["T", "seq"];
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var selected = null;
+  document.querySelectorAll(".strip rect.b").forEach(function (r) {
+    r.setAttribute("tabindex", "0");
+    function show() {
+      if (selected) selected.classList.remove("sel");
+      selected = r; r.classList.add("sel");
+      var a = +r.dataset.first, b = +r.dataset.end;
+      var hits = lines.filter(function (l) { return l.l >= a && l.l <= b; }).slice(0, 40);
+      var html = "<b>Lines " + a + "–" + b + "</b>";
+      if (!hits.length) { html += " · only weak signals here."; inspect.innerHTML = html; return; }
+      html += '<div class="log"><table>' + hits.map(function (l) {
+        var c = code(l.m);
+        return '<tr><td class="n">' + l.l + '</td><td class="m c-' + c[1] + '">' + c[0] + '</td><td class="t">' + esc(l.t) + "</td></tr>";
+      }).join("") + "</table></div>";
+      inspect.innerHTML = html;
+    }
+    r.addEventListener("click", show);
+    r.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(); } });
+  });
+})();
+</script>
+</body>
+</html>
