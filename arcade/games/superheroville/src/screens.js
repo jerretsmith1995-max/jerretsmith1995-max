@@ -16,7 +16,7 @@
   function menuBackdrop(scene) {
     scene.add.image(0, 0, 'sky_street').setOrigin(0).setDisplaySize(400, 224);
     scene.add.image(0, 0, 'stars').setOrigin(0);
-    scene.add.image(352, 96, 'moon');
+    scene.add.image(372, 40, 'moon');
     const far = scene.add.tileSprite(0, 92, 400, 120, 'houses_far').setOrigin(0);
     const trees = scene.add.tileSprite(0, 134, 400, 90, 'trees').setOrigin(0);
     const near = scene.add.tileSprite(0, 114, 400, 110, 'houses_near').setOrigin(0).setTint(0x9a8ac8).setAlpha(0.85);
@@ -86,11 +86,11 @@
       this.tweens.add({ targets: bat, y: 110, duration: 600, yoyo: true, repeat: -1 });
       this.time.addEvent({ delay: 120, loop: true, callback: () => bat.setFrame((bat.frame.name + 1) % 2) });
 
-      this.press = shadowText(this, 200, 110, 'PRESS START', { tint: 0xffffff, depth: 20 });
+      this.press = shadowText(this, 200, 110, window.IS_TOUCH ? 'TAP A TO START' : 'PRESS START', { tint: 0xffffff, depth: 20 });
       this.time.addEvent({ delay: 500, loop: true, callback: () => this.press.setVisible(!this.press.t.visible) });
-      shadowText(this, 200, 128, 'ARROWS MOVE   SPACE JUMP   SHIFT RUN', { tint: 0xb8b8d8, depth: 20 });
+      shadowText(this, 200, 128, window.IS_TOUCH ? 'A JUMP   B RUN   SLIDE TO MOVE' : 'ARROWS MOVE   SPACE JUMP   SHIFT RUN', { tint: 0xb8b8d8, depth: 20 });
       shadowText(this, 200, 212, 'HI-SCORE ' + String(GAME.best || 0).padStart(6, '0'), { tint: 0xffd23f, depth: 20 });
-      shadowText(this, 394, 218, 'ESC: ARCADE', { ox: 1, tint: 0x8a8aaa, depth: 20 });
+      if (!window.IS_TOUCH) shadowText(this, 394, 218, 'ESC: ARCADE', { ox: 1, tint: 0x8a8aaa, depth: 20 });
       this.musicStarted = false;
       this.cameras.main.fadeIn(300);
     }
@@ -138,7 +138,7 @@
       });
       this.cursor.x = this.sprites[this.index].x;
       const un = GAME.unlocked || 0;
-      this.levelText.setText(un > 0 ? 'START AT: WORLD ' + LEVELS.names[this.levelPick] + '  (UP/DOWN)' : 'PRESS JUMP TO START!');
+      this.levelText.setText(un > 0 ? 'START AT: WORLD ' + LEVELS.names[this.levelPick] + '  (UP/DOWN)' : (window.IS_TOUCH ? 'TAP A TO START!' : 'PRESS JUMP TO START!'));
     }
     update(t) {
       this.ctl.update();

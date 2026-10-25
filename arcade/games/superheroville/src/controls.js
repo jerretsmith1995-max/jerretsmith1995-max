@@ -57,6 +57,13 @@
     update() {
       this.prev = this.state;
       this.state = this.read();
+      // Quick taps on the on-screen buttons (see touch.js).
+      const v = this.virtual;
+      if (v && v.taps) {
+        const map = { jump: ['jump', 'confirm'], start: ['start', 'confirm'], run: ['run'], left: ['left'], right: ['right'] };
+        Object.keys(v.taps).forEach(k => (map[k] || []).forEach(n => { this.latch[n] = true; }));
+        v.taps = {};
+      }
       this.edges = {};
       Object.keys(this.state).forEach(n => { this.edges[n] = (this.state[n] && !this.prev[n]) || !!this.latch[n]; });
       Object.keys(this.latch).forEach(n => { if (this.latch[n] && !this.state[n]) this.edges[n] = true; });

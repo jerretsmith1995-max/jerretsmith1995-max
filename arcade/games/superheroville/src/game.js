@@ -292,8 +292,8 @@
         this.pauseOverlay = [
           this.add.rectangle(0, 0, 400, 224, 0x000000, 0.55).setOrigin(0).setScrollFactor(0).setDepth(200),
           this.add.bitmapText(200, 96, 'font', 'PAUSED').setOrigin(0.5).setScale(2).setScrollFactor(0).setDepth(201).setTint(0xffd23f),
-          this.add.bitmapText(200, 128, 'font', 'ENTER: KEEP PLAYING').setOrigin(0.5).setScrollFactor(0).setDepth(201),
-          this.add.bitmapText(200, 142, 'font', 'ESC: BACK TO THE ARCADE').setOrigin(0.5).setScrollFactor(0).setDepth(201),
+          this.add.bitmapText(200, 128, 'font', window.IS_TOUCH ? 'TAP II TO KEEP PLAYING' : 'ENTER: KEEP PLAYING').setOrigin(0.5).setScrollFactor(0).setDepth(201),
+          this.add.bitmapText(200, 142, 'font', window.IS_TOUCH ? 'TAP THE HOUSE BUTTON FOR THE MENU' : 'ESC: BACK TO THE ARCADE').setOrigin(0.5).setScrollFactor(0).setDepth(201),
         ];
       } else {
         this.physics.resume(); this.tweens.resumeAll(); this.anims.resumeAll();

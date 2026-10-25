@@ -18,10 +18,17 @@
     GAME.best = Math.max(GAME.best || 0, GAME.score);
     try { localStorage.setItem('superheroville', JSON.stringify({ best: GAME.best, unlocked: GAME.unlocked, character: GAME.character })); } catch (e) { /* ignore */ }
   };
+  // Where Esc / the home button goes. The phone version has no arcade menu, so it
+  // sets ARCADE_URL = null and goes back to the title screen instead.
   window.exitToArcade = function () {
     SOUND.stopMusic();
     saveBest();
-    window.location.href = '../../index.html';
+    const url = window.ARCADE_URL === undefined ? '../../index.html' : window.ARCADE_URL;
+    if (url) { window.location.href = url; return; }
+    const g = window.game;
+    if (!g) return;
+    g.scene.getScenes(true).forEach(s => { if (s.scene.key !== 'Title') s.scene.stop(); });
+    g.scene.start('Title');
   };
 
   const config = {
