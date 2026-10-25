@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Sonny's Arcade</title>
+  <style>
+    :root {
+      --night: #120c2e; --night2: #2a1a5a; --gold: #ffd23f; --text: #ffffff; --dim: #a9a3d6;
+      --tile: #241650; --tile-hi: #3a2680; --red: #e0342f;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: var(--night); color: var(--text);
+      font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, -apple-system, sans-serif; }
+    body { background: radial-gradient(ellipse at 80% 10%, #4a2a7a 0%, var(--night2) 35%, var(--night) 75%); }
+    #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .moon { position: fixed; top: 6vh; right: 7vw; width: 12vh; height: 12vh; border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #fff8d8, #f2e2a0 70%); box-shadow: 0 0 6vh #fff4c866; z-index: 0; }
+    main { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4vh; padding: 3vh 4vw; }
+    h1 { margin: 0; font-size: clamp(36px, 9vh, 110px); letter-spacing: 0.04em; color: var(--gold);
+      text-shadow: 0.06em 0.06em 0 #000, 0 0 0.5em #ff8a1e55; text-align: center; line-height: 1; }
+    h1 small { display: block; font-size: 0.32em; color: var(--text); letter-spacing: 0.08em; margin-top: 0.6em; text-shadow: 0.1em 0.1em 0 #000; }
+    .games { display: flex; gap: 3vw; flex-wrap: wrap; justify-content: center; }
+    .game { width: clamp(220px, 26vw, 420px); aspect-ratio: 4 / 3.6; border-radius: 28px; background: var(--tile);
+      border: 6px solid #4a3a8a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2vh;
+      cursor: pointer; transition: transform 120ms ease, border-color 120ms ease, background 120ms ease; text-decoration: none; color: inherit;
+      box-shadow: 0 1.2vh 0 #0a0620; user-select: none; -webkit-user-select: none; }
+    .game canvas { width: 70%; image-rendering: pixelated; }
+    .game .name { font-size: clamp(22px, 4vh, 48px); font-weight: 800; color: var(--gold); text-shadow: 3px 3px 0 #000; }
+    .game .tag { font-size: clamp(14px, 2.2vh, 24px); color: var(--dim); }
+    .game.selected { transform: scale(1.06); border-color: var(--gold); background: var(--tile-hi); }
+    .game.soon { opacity: 0.45; cursor: default; }
+    .game.soon .name { color: var(--text); }
+    .hint { color: var(--dim); font-size: clamp(14px, 2.2vh, 22px); text-align: center; }
+    @media (max-width: 700px) { .game { width: 80vw; } main { justify-content: flex-start; padding-top: 6vh; overflow-y: auto; } }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="moon"></div>
+  <main>
+    <h1>SONNY'S ARCADE<small>PICK A GAME!</small></h1>
+    <div class="games" id="games"></div>
+    <div class="hint">Arrows or controller to choose · Enter, Space or click to play · Esc in a game comes back here</div>
+  </main>
+
+  <!-- The launcher draws its pictures with the same pixel art code as the games. -->
+  <script src="games/superheroville/src/art.js"></script>
+  <script>
+    const GAMES = [
+      { name: 'SUPERHEROVILLE', tag: 'Bop the monsters!', href: 'games/superheroville/index.html', art: 'sonny_hero', frame: 4 },
+      { name: 'CROSS THE STREET', tag: 'Coming soon', soon: true, art: 'mama_hero', frame: 1 },
+      { name: 'STAR KNIGHT', tag: 'Coming soon', soon: true, art: 'dada_rocket', frame: 9 },
+    ];
+    const box = document.getElementById('games');
+    let selected = 0;
+
+    GAMES.forEach((g, i) => {
+      const el = document.createElement(g.soon ? 'div' : 'a');
+      el.className = 'game' + (g.soon ? ' soon' : '');
+      if (!g.soon) el.href = g.href;
+      const c = document.createElement('canvas');
+      c.width = 64; c.height = 48;
+      const ctx = c.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      const [who, form] = g.art.split('_');
+      const sheet = ART.buildCharacterSheet(who, form);
+      ctx.drawImage(sheet, g.frame * 16, 0, 16, 24, 20, 2, 24, 36);
+      if (i === 0) { // a skeleton to bop
+        const sk = ART.buildStrip(ART.MONSTERS.skelly, [ART.MONSTERS.skelly.frames[0]]);
+        ctx.drawImage(sk, 0, 0, 16, 16, 44, 30, 16, 16);
+      }
+      el.appendChild(c);
+      el.insertAdjacentHTML('beforeend', `<div class="name">${g.name}</div><div class="tag">${g.tag}</div>`);
+      el.addEventListener('mouseenter', () => select(i));
+      el.addEventListener('click', e => { if (g.soon) e.preventDefault(); });
+      box.appendChild(el);
+    });
+
+    function select(i) {
+      selected = (i + GAMES.length) % GAMES.length;
+      [...box.children].forEach((el, k) => el.classList.toggle('selected', k === selected));
+    }
+    function launch() {
+      const g = GAMES[selected];
+      if (!g.soon) location.href = g.href;
+    }
+    select(0);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { select(selected + 1); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { select(selected - 1); e.preventDefault(); }
+      else if (e.key === 'Enter' || e.key === ' ') { launch(); e.preventDefault(); }
+    });
+
+    // Game controller support (Xbox / PlayStation / Switch Pro).
+    let prev = {};
+    function pollPad() {
+      const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+      const p = pads && [...pads].find(Boolean);
+      if (p) {
+        const now = {
+          left: (p.buttons[14] && p.buttons[14].pressed) || p.axes[0] < -0.5,
+          right: (p.buttons[15] && p.buttons[15].pressed) || p.axes[0] > 0.5,
+          go: (p.buttons[0] && p.buttons[0].pressed) || (p.buttons[9] && p.buttons[9].pressed),
+        };
+        if (now.left && !prev.left) select(selected - 1);
+        if (now.right && !prev.right) select(selected + 1);
+        if (now.go && !prev.go) launch();
+        prev = now;
+      }
+      requestAnimationFrame(pollPad);
+    }
+    requestAnimationFrame(pollPad);
+
+    // Twinkly stars
+    const sc = document.getElementById('stars'), sx = sc.getContext('2d');
+    const stars = Array.from({ length: 140 }, () => ({ x: Math.random(), y: Math.random() * 0.8, r: Math.random() < 0.15 ? 2 : 1, p: Math.random() * 6 }));
+    function drawStars(t) {
+      sc.width = innerWidth; sc.height = innerHeight;
+      stars.forEach(s => {
+        sx.globalAlpha = 0.4 + 0.6 * Math.abs(Math.sin(t / 900 + s.p));
+        sx.fillStyle = '#fff4c8';
+        sx.fillRect(Math.round(s.x * sc.width), Math.round(s.y * sc.height), s.r * 2, s.r * 2);
+      });
+      requestAnimationFrame(drawStars);
+    }
+    requestAnimationFrame(drawStars);
+  </script>
+</body>
+</html>
