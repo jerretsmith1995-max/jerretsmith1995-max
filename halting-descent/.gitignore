@@ -1,0 +1,4 @@
+fast_gd
+out/*.bin
+out/t_*
+__pycache__/
