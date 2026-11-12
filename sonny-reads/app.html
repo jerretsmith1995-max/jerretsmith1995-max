@@ -1,0 +1,593 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Sonny's Story Quest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Fredoka:wght@500;600&display=swap">
+<style>
+/* Layout: a one-screen bedtime app in a single phone-width column. Slim header,
+   a stage that holds one activity at a time, one thumb-sized button at the bottom.
+   Deliberately a single dark look: warm and low-glare for a dark bedroom. */
+:root{
+  color-scheme:dark;
+  --night:#15132e; --night-2:#1f1c44; --panel:#2a2658; --line:#423d80;
+  --ink:#f5eedf; --ink-soft:#b9b2d4;
+  --glow:#ffc95c; --ember:#ff8f6b; --leaf:#8fe0b0;
+  --display:'Fredoka','Trebuchet MS','Avenir Next',sans-serif;
+  --read:'Andika','Comic Sans MS','Century Gothic',sans-serif; /* single-storey a and g, made for new readers */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--night);color:var(--ink);font-family:var(--read);font-size:16px;
+  background-image:radial-gradient(1.5px 1.5px at 12% 18%,var(--ink) 50%,transparent 51%),
+    radial-gradient(1px 1px at 78% 9%,var(--ink) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 62% 30%,var(--ink-soft) 50%,transparent 51%),
+    radial-gradient(1px 1px at 30% 44%,var(--ink-soft) 50%,transparent 51%),
+    radial-gradient(1px 1px at 90% 52%,var(--ink) 50%,transparent 51%),
+    radial-gradient(1.5px 1.5px at 8% 70%,var(--ink-soft) 50%,transparent 51%),
+    radial-gradient(1px 1px at 48% 84%,var(--ink) 50%,transparent 51%),
+    linear-gradient(var(--night),var(--night-2));
+  background-attachment:fixed;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+button:focus-visible,label:focus-within{outline:3px solid var(--glow);outline-offset:3px}
+#app{height:100%;max-width:480px;margin:0 auto;display:flex;flex-direction:column;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px}
+.view{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px}
+.scroll{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:16px;padding-bottom:8px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+h1{font-size:28px;line-height:1.1} h2{font-size:20px} h3{font-size:16px;color:var(--glow)}
+p{margin:0;line-height:1.5}
+.soft{color:var(--ink-soft)}
+
+/* avatars */
+.av{border-radius:50%;background:var(--panel);border:3px solid var(--line);overflow:hidden;flex:none;display:block}
+.av img,.av svg{width:100%;height:100%;display:block;object-fit:cover}
+
+/* home */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.family{display:flex;gap:10px;justify-content:space-between}
+.family figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--ink-soft)}
+.tonight{background:var(--panel);border:2px solid var(--line);border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.tonight .big{font-family:var(--read);font-weight:700;font-size:64px;line-height:1;color:var(--glow)}
+.tonight .row{display:flex;align-items:center;gap:16px}
+.go{background:var(--glow);color:var(--night);font-family:var(--display);font-weight:600;font-size:20px;border-radius:999px;padding:16px 24px;width:100%;min-height:58px}
+.go.quiet{background:var(--panel);color:var(--ink-soft);border:2px solid var(--line)}
+.go.ready{background:var(--glow);color:var(--night);border:0;animation:pulse 1.6s ease-in-out infinite}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.node{aspect-ratio:1;border-radius:50%;background:var(--night-2);border:2px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;position:relative}
+.node .l{font-weight:700;font-size:22px;line-height:1.1}
+.node .n{font-size:11px;color:var(--ink-soft)}
+.node.done{border-color:var(--leaf)} .node.done .l{font-size:30px}
+.node.next{border-color:var(--glow);box-shadow:0 0 0 4px rgba(255,201,92,.18)}
+.link{color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;font-size:15px;padding:10px;align-self:center}
+
+/* play chrome */
+.bar{flex:1;height:8px;border-radius:8px;background:var(--panel);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--glow);border-radius:8px;transition:width .4s}
+.x{width:44px;height:44px;border-radius:50%;background:var(--panel);font-size:20px;color:var(--ink-soft);flex:none}
+#stage{align-items:center;text-align:center}
+.foot{display:flex;gap:10px}
+.foot .back{flex:none;width:58px;border-radius:50%;background:var(--panel);color:var(--ink-soft);font-size:22px}
+.ask{font-family:var(--display);font-weight:500;font-size:24px;line-height:1.25;text-wrap:balance}
+.cue{background:var(--night-2);border:1px dashed var(--line);border-radius:14px;padding:10px 14px;font-size:14px;color:var(--ink-soft);text-align:left;width:100%}
+.cue b{color:var(--ember);font-family:var(--display);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px;display:block}
+.hl{color:var(--glow);font-weight:700}
+
+/* meet */
+.letter-card{width:200px;height:200px;border-radius:40px;background:var(--panel);border:3px solid var(--glow);display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;color:var(--glow);font-size:110px;line-height:1;flex:none}
+.letter-card small{font-size:64px;color:var(--ink-soft);font-weight:700}
+.pop{animation:pop .45s}
+.keys{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.key{background:var(--night-2);border:2px solid var(--line);border-radius:18px;padding:10px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:22px;min-width:92px}
+.key .pic{font-size:44px;line-height:1.1}
+
+/* trace */
+.trace{position:relative;border-radius:32px;background:var(--panel);border:3px solid var(--line);touch-action:none;flex:none}
+.trace canvas{display:block;border-radius:30px;touch-action:none}
+.mini{font-size:14px;color:var(--ink-soft);text-decoration:underline;padding:8px}
+
+/* find */
+.eggs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:330px}
+.egg{aspect-ratio:.85;border-radius:50% 50% 46% 46%/60% 60% 40% 40%;background:var(--ink);color:var(--night);font-weight:700;font-size:44px;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .3s}
+.egg.hit{background:var(--glow);animation:pop .45s}
+.egg.miss{animation:wob .4s;opacity:.45}
+
+/* sort */
+.pair{display:flex;gap:14px;width:100%;justify-content:center}
+.pick{flex:1;max-width:170px;background:var(--panel);border:3px solid var(--line);border-radius:28px;padding:16px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:26px}
+.pick .pic{font-size:72px;line-height:1.1}
+.pick.yes{border-color:var(--leaf);animation:pop .45s}
+.pick.no{animation:wob .4s;opacity:.4}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:56px;border-radius:16px;background:var(--panel);border:2px solid var(--glow);color:var(--glow);font-weight:700;font-size:36px;padding:0 10px;vertical-align:middle}
+
+/* review */
+.tiles{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:340px}
+.tile{width:72px;height:84px;border-radius:20px;background:var(--panel);border:3px solid var(--line);font-weight:700;font-size:48px;color:var(--ink-soft);display:flex;align-items:center;justify-content:center}
+.tile.lit{border-color:var(--glow);color:var(--glow);animation:pop .45s}
+
+/* blend */
+.blend{width:100%;max-width:360px;display:flex;flex-direction:column;gap:10px}
+.sounds{display:flex;transition:gap .5s,padding .5s}
+.sounds button{flex:1;font-weight:700;font-size:92px;line-height:1.2;color:var(--ink-soft);transition:color .2s,flex .5s}
+.sounds button.lit{color:var(--glow)}
+.sounds.done{justify-content:center}
+.sounds.done button{flex:0 0 auto}
+.track{position:relative;height:64px;border-radius:999px;background:var(--panel);border:2px solid var(--line);touch-action:none}
+.track::before{content:"";position:absolute;left:28px;right:28px;top:50%;border-top:3px dotted var(--line)}
+.thumb{position:absolute;top:50%;left:0;width:56px;height:56px;margin:-28px 0 0 2px;border-radius:50%;background:var(--glow);font-size:32px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.reveal{min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:64px;line-height:1.1}
+
+/* story */
+.scene{width:100%;border-radius:28px;background:radial-gradient(circle at 80% 20%,var(--line),var(--panel) 60%);padding:18px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-size:60px;line-height:1.1;min-height:128px;flex:none}
+.text{font-size:26px;line-height:1.55;text-align:left;width:100%}
+.text .w{border-radius:8px;padding:0 1px}
+.text .w.said{background:var(--line)}
+.text .read{display:inline-block;font-weight:700;font-size:40px;line-height:1.15;color:var(--glow);background:var(--panel);border:2px solid var(--glow);border-radius:14px;padding:2px 12px;margin:2px 0}
+.text .read.said{background:var(--glow);color:var(--night)}
+.hear{align-self:flex-start;background:var(--panel);border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-size:15px;color:var(--ink-soft)}
+
+/* reward and sleep */
+.sticker{font-size:130px;line-height:1.1;animation:pop .7s}
+.breath{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,var(--ember),transparent 70%);display:flex;align-items:center;justify-content:center;font-size:64px;animation:breathe 8s ease-in-out infinite;flex:none;margin:24px 0}
+
+/* grown-ups */
+.card{background:var(--panel);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;line-height:1.45}
+.photo-row{display:flex;align-items:center;gap:12px}
+.photo-row .name{flex:1;font-size:18px}
+.btn{background:var(--night-2);border:2px solid var(--line);border-radius:999px;padding:10px 16px;font-size:15px;min-height:44px;display:inline-flex;align-items:center;cursor:pointer}
+.btn input{position:absolute;opacity:0;width:1px;height:1px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+@keyframes pop{0%{transform:scale(.8)}55%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,201,92,.5)}50%{box-shadow:0 0 0 12px rgba(255,201,92,0)}}
+@keyframes breathe{0%,100%{transform:scale(.7)}45%{transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div id="app">
+  <section class="view" id="home">
+    <div class="top">
+      <h1>Sonny's Story Quest</h1>
+      <button class="x" id="toGrown" aria-label="For grown-ups">⚙</button>
+    </div>
+    <div class="scroll">
+      <div class="family" id="family"></div>
+      <div class="tonight" id="tonight"></div>
+      <h3>Sticker trail</h3>
+      <div class="path" id="path"></div>
+      <button class="link" id="toGrown2">How this works (for grown-ups)</button>
+    </div>
+  </section>
+
+  <section class="view" id="play" hidden>
+    <div class="top">
+      <button class="x" id="quit" aria-label="Back to the start">✕</button>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+    <div class="scroll" id="stage"></div>
+    <div class="foot">
+      <button class="back" id="prev" aria-label="Go back one step">‹</button>
+      <button class="go quiet" id="next">Next</button>
+    </div>
+  </section>
+
+  <section class="view" id="grown" hidden>
+    <div class="top">
+      <h1>For grown-ups</h1>
+      <button class="x" id="closeGrown" aria-label="Close">✕</button>
+    </div>
+    <div class="scroll" id="grownBody"></div>
+  </section>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $=(s,r)=>(r||document).querySelector(s);
+const el=(html)=>{const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstChild;};
+const store={
+  get(k,d){try{const v=localStorage.getItem('ssq_'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem('ssq_'+k,JSON.stringify(v));return true;}catch(e){return false;}},
+  del(k){try{localStorage.removeItem('ssq_'+k);}catch(e){}}
+};
+let progress=store.get('progress',{done:{},voice:true});
+if(!progress.done)progress.done={};
+const save=()=>store.set('progress',progress);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+/* ---------- voice (optional: the grown-up is the main voice) ---------- */
+const canSpeak='speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+function speak(text){
+  if(!canSpeak||!progress.voice)return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    const v=speechSynthesis.getVoices().find(v=>/^en[-_](CA|US|GB)/i.test(v.lang));
+    if(v)u.voice=v;
+    u.rate=.8;u.pitch=1.05;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* ---------- family ---------- */
+const FAMILY={
+  sonny:{name:'Sonny',svg:`<path d="M10 100 Q14 74 50 74 Q86 74 90 100Z" fill="#d9483b"/><polygon points="50,80 53,87 60,87 54,91 56,98 50,94 44,98 46,91 40,87 47,87" fill="#ffc95c"/><circle cx="50" cy="46" r="26" fill="#f6d2b8"/><path d="M23 46 Q24 17 52 18 Q79 19 77 46 Q71 30 55 29 Q40 29 33 36 Q27 40 23 46Z" fill="#ecc96f"/><circle cx="41" cy="50" r="3.2" fill="#3d6b8f"/><circle cx="59" cy="50" r="3.2" fill="#3d6b8f"/><path d="M42 60 Q50 67 58 60" stroke="#a5523f" stroke-width="2.5" fill="none" stroke-linecap="round"/>`},
+  meadow:{name:'Meadow',svg:`<path d="M12 100 Q16 76 50 76 Q84 76 88 100Z" fill="#f3ecdd"/><circle cx="50" cy="48" r="27" fill="#f8d9c4"/><g fill="#e8c77a"><circle cx="28" cy="36" r="8"/><circle cx="36" cy="25" r="8"/><circle cx="48" cy="20" r="8"/><circle cx="60" cy="22" r="8"/><circle cx="70" cy="30" r="8"/><circle cx="75" cy="41" r="7"/><circle cx="24" cy="47" r="6"/></g><circle cx="40" cy="52" r="3.4" fill="#4b7fa3"/><circle cx="60" cy="52" r="3.4" fill="#4b7fa3"/><circle cx="33" cy="60" r="5" fill="#f5a9a0" opacity=".7"/><circle cx="67" cy="60" r="5" fill="#f5a9a0" opacity=".7"/><path d="M44 62 Q50 67 56 62" stroke="#a5523f" stroke-width="2.5" fill="none" stroke-linecap="round"/>`},
+  dada:{name:'Dada',svg:`<path d="M8 100 Q12 74 50 74 Q88 74 92 100Z" fill="#23233a"/><circle cx="50" cy="46" r="26" fill="#f2cdb0"/><path d="M25 50 Q28 76 50 76 Q72 76 75 50 Q68 62 50 62 Q32 62 25 50Z" fill="#a47a4b"/><path d="M24 44 Q22 18 50 17 Q78 18 76 44 Q70 28 52 27 Q38 27 24 44Z" fill="#b08a55"/><circle cx="41" cy="46" r="3" fill="#3d6b8f"/><circle cx="59" cy="46" r="3" fill="#3d6b8f"/><path d="M43 60 Q50 64 57 60" stroke="#f5eedf" stroke-width="2.5" fill="none" stroke-linecap="round"/>`},
+  momma:{name:'Momma',svg:`<path d="M18 52 Q14 12 50 12 Q86 12 82 52 Q84 78 88 100 L12 100 Q16 78 18 52Z" fill="#b98b5e"/><path d="M24 100 Q28 78 50 78 Q72 78 76 100Z" fill="#23233a"/><circle cx="50" cy="46" r="24" fill="#f6d2b8"/><path d="M26 44 Q30 20 50 22 Q70 20 74 44 Q64 34 50 24 Q36 34 26 44Z" fill="#b98b5e"/><circle cx="41" cy="48" r="3" fill="#5a4030"/><circle cx="59" cy="48" r="3" fill="#5a4030"/><path d="M42 58 Q50 64 58 58" stroke="#b5475a" stroke-width="2.5" fill="none" stroke-linecap="round"/>`}
+};
+function avatar(who,size){
+  const f=FAMILY[who],photo=store.get('photo_'+who,null);
+  const inner=photo?`<img src="${photo}" alt="${f.name}">`:`<svg viewBox="0 0 100 100" role="img" aria-label="${f.name}">${f.svg}</svg>`;
+  return `<span class="av" style="width:${size}px;height:${size}px">${inner}</span>`;
+}
+
+/* ---------- the twelve nights ----------
+   Story markup:  *word  = starts with tonight's sound (first letter glows)
+                  [word] = a word Sonny can sound out himself                 */
+const NIGHTS=[
+ {kind:'letter',letter:'s',title:'Super Sonny and the Sleepy Snake',sticker:'🐍',stickerName:'snake',
+  cue:'Say the sound, not the letter name. A long, hissing sssss like a snake. It is the first sound in Sonny!',
+  keys:[{who:'sonny',w:'Sonny'},{e:'🐍',w:'snake'},{e:'☀️',w:'sun'}],
+  sort:[{yes:['☀️','sun'],no:['🐶','dog']},{yes:['🧦','sock'],no:['🌙','moon']},{yes:['⭐','star'],no:['🦖','dinosaur']}],
+  story:[
+   {e:'🌙🏠',cast:['sonny'],t:`It was bedtime. But *Super *Sonny heard a *sound. *Sssss!`},
+   {e:'🐍',t:`A *small *snake was *sliding on the *stairs.`,q:`Can you make the snake sound?`},
+   {e:'🐍💤',t:`"I am *so *sleepy," *said the *snake. "But I cannot find my bed."`,q:`Where could a snake sleep?`},
+   {e:'🧦✨',cast:['sonny'],t:`*Super *Sonny had a *super idea. A *soft *sock!`},
+   {e:'🧦🐍⭐',t:`The *snake *slid inside. "*Sssso *snug," it *said. *Sweet dreams, *snake. *Sweet dreams, *Sonny.`}]},
+ {kind:'letter',letter:'a',title:'The Alligator and the Apple',sticker:'🐊',stickerName:'alligator',
+  cue:'Open your mouth wide like you are biting an apple: a, a, a. The short sound in "apple", not the name "ay".',
+  keys:[{e:'🍎',w:'apple'},{e:'🐊',w:'alligator'},{e:'🐜',w:'ant'}],
+  sort:[{yes:['🐜','ant'],no:['🐝','bee']},{yes:['🐊','alligator'],no:['🐯','tiger']},{yes:['🍎','apple'],no:['🍕','pizza']}],
+  story:[
+   {e:'🌳',cast:['sonny','meadow','dada'],t:`Sonny and Meadow were in the back yard with Dada.`},
+   {e:'🐊',t:`An *alligator came along. Snap, snap, snap!`,q:`Show me snapping alligator arms. Slow ones.`},
+   {e:'🐊💭🍎',t:`Was he *angry? No. He was hungry. "*Aaa! *Apple!" said the *alligator.`,q:`What do you think alligators eat?`},
+   {e:'🍎',cast:['meadow'],t:`Meadow had an *apple. She held it up. "*Aaa!" said Meadow.`},
+   {e:'🐊🍎💛',cast:['meadow'],t:`The *alligator took a bite. Crunch! "Thank you, Meadow," he said. *And *after that, they were friends.`}]},
+ {kind:'letter',letter:'t',title:'Tiny T-rex Cannot Sleep',sticker:'🦖',stickerName:'T-rex',
+  cue:'A quick tap of the tongue behind your teeth: t, t, t. Keep it short and whispery, not "tuh".',
+  keys:[{e:'🦖',w:'T-rex'},{e:'⛺',w:'tent'},{e:'🌮',w:'taco'}],
+  sort:[{yes:['🐯','tiger'],no:['🐍','snake']},{yes:['⛺','tent'],no:['🍎','apple']},{yes:['🐢','turtle'],no:['🐜','ant']}],
+  story:[
+   {e:'⛺🦖',t:`A *tiny *T-rex was in a *tent. *Tap, *tap, *tap went his *tail.`},
+   {e:'🦖💭',t:`"I cannot sleep," said *Tiny. "My *tummy is rumbling!"`,q:`What would a T-rex eat for a snack?`},
+   {e:'🌮🌮',cast:['momma','sonny'],t:`Momma had *two *tacos. "One for you, *Tiny. One for Sonny."`},
+   {e:'🦖🪥',t:`Munch, munch. *Tiny brushed his *teeth. All of them. That *took a long *time!`,q:`How many teeth do you think a T-rex has?`},
+   {e:'⛺💤',t:`Then *Tiny *tucked in. *Tap... *tap... went his *tail. Slower... and slower... Night night, *Tiny.`}]},
+ {kind:'blend',label:'sat',known:'sat',title:'The Dragon Who Would Not Sit',sticker:'🐉',stickerName:'dragon',
+  blend:[{w:'at',e:'👉'},{w:'sat',e:'🪑'}],
+  story:[
+   {e:'🐉',t:`A big red dragon flew into the yard. Flap, flap, flap!`},
+   {e:'🪑',cast:['dada','momma','meadow'],t:`Dada [sat]. Momma [sat]. Meadow [sat].`},
+   {e:'🐉💨',t:`But the dragon did not sit. He stomped. He roared. He zoomed!`,q:`Can you do a tiny, quiet bedtime roar?`},
+   {e:'✋',cast:['sonny'],t:`"Look [at] me," said Sonny. And Sonny [sat].`},
+   {e:'🐉🪑',cast:['sonny'],t:`The dragon looked [at] Sonny. Then, bump! The dragon [sat]. Good dragon.`}]},
+ {kind:'letter',letter:'p',title:'The Purple Monster\'s Pizza',sticker:'👾',stickerName:'purple monster',
+  cue:'Pop your lips: p, p, p. Hold a hand in front of your mouth and feel the little puff of air.',
+  keys:[{e:'🍕',w:'pizza'},{e:'🐧',w:'penguin'},{e:'🐶',w:'puppy'}],
+  sort:[{yes:['🍕','pizza'],no:['🌮','taco']},{yes:['🐧','penguin'],no:['🐍','snake']},{yes:['🐷','pig'],no:['🐜','ant']}],
+  story:[
+   {e:'🚪👾🍕',t:`Knock, knock. A *purple monster was at the door. He had a *pizza.`},
+   {e:'👾🍕',t:`"*Pizza *party!" said the monster. "But I *picked a *pizza that is too big!"`},
+   {e:'🍕',cast:['sonny','meadow','dada','momma'],t:`Sonny got a *piece. Meadow got a *piece. Dada got a *piece. Momma got a *piece.`,q:`How many pieces is that? Count on your fingers.`},
+   {e:'🐧',t:`A *penguin *popped in. "*Please, a *piece for me?"`},
+   {e:'👾💤',t:`The monster *patted his tummy. "*Perfect," he said. Then he *put on his *pajamas and went home to bed.`}]},
+ {kind:'letter',letter:'i',title:'Iggy the Itchy Iguana',sticker:'🦎',stickerName:'iguana',
+  cue:'A tiny, short sound: i, i, i, like the start of "itch". Scrunch your nose a little. Not the name "eye".',
+  keys:[{e:'🦎',w:'iguana'},{e:'🐛',w:'insect'},{e:'🤏',w:'itch'}],
+  sort:[{yes:['🦎','iguana'],no:['🐱','cat']},{yes:['🐛','insect'],no:['🐟','fish']}],
+  story:[
+   {e:'🦎',t:`*Iggy the *iguana had an *itch.`},
+   {e:'👃🦶',t:`*Is *it on his nose? No. *Is *it on his toes? No.`,q:`Where do you think the itch is?`},
+   {e:'🦎😖',t:`*It was *in the middle of his back! *Iggy could not reach *it.`},
+   {e:'✨',cast:['sonny'],t:`Super Sonny to the rescue! Scratch, scratch, scratch.`},
+   {e:'🦎💤',t:`"Aaah," said *Iggy. "The *itch *is gone." And *Iggy went *into his bed.`}]},
+ {kind:'letter',letter:'n',title:'The Noisy Nest',sticker:'🪺',stickerName:'nest',
+  cue:'Hum through your nose: nnnn. Touch your nose and feel it buzz.',
+  keys:[{e:'🌙',w:'night'},{e:'🪺',w:'nest'},{e:'👃',w:'nose'}],
+  sort:[{yes:['👃','nose'],no:['🦶','toes']},{yes:['🪺','nest'],no:['⛺','tent']},{yes:['🥜','nut'],no:['🍎','apple']}],
+  story:[
+   {e:'🌙🌳🪺',t:`It was *night. Up in a tree was a *nest. In the *nest was a baby dragon.`},
+   {e:'🐲',t:`The baby dragon was *noisy. "*No *nap! *No *nap!" he said.`},
+   {e:'🐉💋',t:`Momma dragon gave him a kiss on the *nose.`,q:`Where is your nose? Where is Dada's nose?`},
+   {e:'🎵',t:`She sang, "*Nnnn, *nnnn, *nnnn," like a hum.`,q:`Let's hum it together, very quietly.`},
+   {e:'🪺💤',t:`The baby dragon *nodded off. *Now the *nest was quiet. *Night *night.`}]},
+ {kind:'blend',label:'nap',known:'satpin',title:'Nap, Dragon, Nap',sticker:'😴',stickerName:'sleepy',
+  blend:[{w:'sit',e:'🪑'},{w:'tap',e:'👆'},{w:'pan',e:'🍳'},{w:'nap',e:'😴'}],
+  story:[
+   {e:'🐉',t:`The dragon was back. And he was not sleepy at all.`},
+   {e:'🐉🪑',cast:['sonny'],t:`Sonny said, "Dragon, [sit]." The dragon [sat].`},
+   {e:'🤚🐉',cast:['sonny'],t:`Sonny gave him a [pat]. A [pat], a [pat], a [pat].`,q:`Give your pillow a soft pat, pat, pat.`},
+   {e:'👆🐉',cast:['meadow'],t:`Meadow gave him a [tap] on the nose. Boop!`},
+   {e:'🍳🐉💤',t:`The dragon had a [nap] [in] a [pan]. A very, very big [pan].`,q:`Could you nap in a pan?`}]},
+ {kind:'letter',letter:'m',title:'Meadow and the Mini Monster',sticker:'🌙',stickerName:'moon',
+  cue:'Lips together and hum: mmmm, like something yummy. It is the first sound in Meadow and Momma!',
+  keys:[{who:'meadow',w:'Meadow'},{who:'momma',w:'Momma'},{e:'👾',w:'monster'}],
+  sort:[{yes:['🌙','moon'],no:['☀️','sun']},{yes:['👾','monster'],no:['🐉','dragon']},{yes:['🥛','milk'],no:['🍕','pizza']}],
+  story:[
+   {e:'🌙👾',cast:['meadow'],t:`*Meadow woke up in the *middle of the night. She saw a *mini *monster!`},
+   {e:'👾💧',t:`The *monster was not *mean. He was *missing his *momma.`,q:`How does the little monster feel?`},
+   {e:'💛',cast:['meadow'],t:`"*Mmm-*mmm," said *Meadow. That *means: I will help.`},
+   {e:'🌙✨👾',t:`Up in the sky, the *moon lit the way. And there was *Momma *Monster!`},
+   {e:'🤗',cast:['momma','meadow'],t:`*Momma *Monster gave him a *mighty hug. And our *Momma gave *Meadow one too. *Mwah!`}]},
+ {kind:'letter',letter:'d',title:'Dada and the Dinosaur Dance',sticker:'🦕',stickerName:'dinosaur',
+  cue:'Tap your tongue: d, d, d. Short and quick. It is the first sound in Dada!',
+  keys:[{who:'dada',w:'Dada'},{e:'🐉',w:'dragon'},{e:'🦕',w:'dinosaur'}],
+  sort:[{yes:['🦕','dinosaur'],no:['🐧','penguin']},{yes:['🚪','door'],no:['⛺','tent']},{yes:['🦆','duck'],no:['🐍','snake']}],
+  story:[
+   {e:'🚪🔔',cast:['dada'],t:`*Dada heard a *ding-*dong at the *door.`},
+   {e:'🦕🐉',t:`It was a *dinosaur and a *dragon! "*Do you want to *dance?" they said.`},
+   {e:'🦕💃',cast:['dada','sonny'],t:`*Dada *did a *dino stomp. The *dragon *did a *dip. Sonny *did a spin!`,q:`Wiggle just your fingers for a tiny bed dance.`},
+   {e:'💫',t:`They *danced and *danced until they were *dizzy.`},
+   {e:'🦕🐉💤',cast:['dada'],t:`"Time for bed," said *Dada. The *dinosaur *dozed. The *dragon *dreamed. *Done!`}]},
+ {kind:'blend',label:'dad',known:'satpinmd',title:'Sad Dragon, Mad Dragon',sticker:'🧸',stickerName:'teddy',
+  blend:[{w:'dad',who:'dada'},{w:'sad',e:'😢'},{w:'mad',e:'😠'},{w:'mat',e:'🟫'}],
+  story:[
+   {e:'🐉💧',t:`The dragon lost his teddy. The dragon was [sad].`},
+   {e:'🐉💢',t:`He stomped his feet. Now the dragon was [mad]!`,q:`What helps you when you feel mad?`},
+   {e:'🟫',cast:['dada'],t:`Dada [sat] on the [mat]. "Come [sit] and [tap]," said Dada. "A soft [tap], [tap], [tap]."`},
+   {e:'🐉🧸',cast:['sonny'],t:`The dragon [sat]. The dragon did a [tap]. And there, under the [mat], was teddy! "You did it, [dad]!" said Sonny.`},
+   {e:'🐉🧸💤',t:`The dragon was not [sad]. The dragon was not [mad]. The dragon was glad. He had a [nap].`}]},
+ {kind:'blend',label:'read!',known:'satpinmd',title:'Sonny Reads to Meadow',sticker:'🏆',stickerName:'super reader',
+  blend:[{w:'did',e:'✅'},{w:'pat',e:'🤚'},{w:'it',e:'👉'},{w:'in',e:'📥'}],
+  story:[
+   {e:'📖',cast:['sonny','meadow'],t:`Tonight, Sonny had a book. "I will read to you, Meadow," he said.`},
+   {e:'⛺',cast:['dada'],t:`Page one had a tent. Sonny read: [dad] [sat] [in] [it].`},
+   {e:'🦕',t:`Page two had a dinosaur. Sonny read: [it] [sat]. [dad] [did] [pat] [it].`},
+   {e:'🐉💤',t:`Page three had a dragon. Sonny read: [it] [did] [nap].`},
+   {e:'👏',cast:['meadow','momma','dada'],t:`Meadow clapped. Momma clapped. Dada clapped. Sonny can read!`},
+   {e:'🌙⭐',cast:['sonny'],t:`And then it was time for one more [nap]. The longest [nap] of all. Night night, super reader.`}]}
+];
+
+/* ---------- story text ---------- */
+function clean(w){return w.replace(/[^A-Za-z'-]/g,'');}
+function storyHTML(t){
+  return t.split(' ').map(tok=>{
+    let m=tok.match(/^(["(]*)\[([^\]]+)\](.*)$/);
+    if(m)return `${m[1]}<button class="w read" data-w="${m[2]}">${m[2]}</button>${m[3]}`;
+    m=tok.match(/^(["(]*)\*(.)(.*)$/);
+    if(m)return `<span class="w" data-w="${clean(m[2]+m[3])}">${m[1]}<b class="hl">${m[2]}</b>${m[3]}</span>`;
+    return `<span class="w" data-w="${clean(tok)}">${tok}</span>`;
+  }).join(' ');
+}
+const plain=t=>t.replace(/[*\[\]]/g,'');
+
+/* ---------- views ---------- */
+const views=['home','play','grown'];
+function show(v){views.forEach(id=>{$('#'+id).hidden=id!==v;});if(v==='home')renderHome();if(v==='grown')renderGrown();try{speechSynthesis.cancel();}catch(e){}}
+
+function renderHome(){
+  $('#family').innerHTML=Object.keys(FAMILY).map(k=>`<figure>${avatar(k,64)}<figcaption>${FAMILY[k].name}</figcaption></figure>`).join('');
+  let next=NIGHTS.findIndex((n,i)=>!progress.done[i]);
+  const all=next<0; if(all)next=0;
+  const N=NIGHTS[next];
+  $('#tonight').innerHTML=`<div class="row"><div class="big">${N.kind==='letter'?N.letter:N.sticker}</div>
+    <div><p class="soft">${all?'All 12 nights done! Read one again':'Tonight · Night '+(next+1)}</p><h2>${N.title}</h2>
+    <p class="soft">${N.kind==='letter'?'New sound: '+N.letter:'Slide sounds together to read words'} · about 5 minutes</p></div></div>
+    <button class="go" id="start">Start the story</button>`;
+  $('#start').onclick=()=>startNight(next);
+  const path=$('#path');path.innerHTML='';
+  NIGHTS.forEach((n,i)=>{
+    const done=!!progress.done[i];
+    const b=el(`<button class="node ${done?'done':''} ${i===next&&!all?'next':''}" aria-label="Night ${i+1}: ${n.title}"><span class="l">${done?n.sticker:(n.kind==='letter'?n.letter:n.label)}</span><span class="n">Night ${i+1}</span></button>`);
+    b.onclick=()=>startNight(i);path.appendChild(b);
+  });
+}
+
+/* ---------- a night ---------- */
+let cur=null;
+const stage=$('#stage'),nextBtn=$('#next');
+function startNight(i){
+  const N=NIGHTS[i],steps=[];
+  if(N.kind==='letter'){steps.push({t:'meet'},{t:'trace'},{t:'find'});N.sort.forEach(r=>steps.push({t:'sort',r}));}
+  else{steps.push({t:'review'});N.blend.forEach(b=>steps.push({t:'blend',b}));}
+  N.story.forEach(p=>steps.push({t:'page',p}));
+  steps.push({t:'reward'},{t:'sleep'});
+  cur={i,N,steps,at:0};show('play');renderStep();
+}
+function ready(){nextBtn.classList.remove('quiet');nextBtn.classList.add('ready');}
+function renderStep(){
+  const s=cur.steps[cur.at];
+  stage.innerHTML='';stage.scrollTop=0;
+  $('#barFill').style.width=(100*(cur.at+1)/cur.steps.length)+'%';
+  nextBtn.className='go quiet';
+  nextBtn.textContent=cur.at===cur.steps.length-1?'Lights out':'Next';
+  $('#prev').style.visibility=cur.at?'visible':'hidden';
+  STEP[s.t](s,cur.N);
+}
+nextBtn.onclick=()=>{if(cur.at<cur.steps.length-1){cur.at++;renderStep();}else show('home');};
+$('#prev').onclick=()=>{if(cur.at>0){cur.at--;renderStep();}};
+$('#quit').onclick=()=>show('home');
+const add=(html)=>{const n=el(html);stage.appendChild(n);return n;};
+const cue=(txt)=>add(`<div class="cue"><b>Grown-up</b>${txt}</div>`);
+const pic=(k,size)=>k.who?avatar(k.who,size):`<span class="pic">${k.e}</span>`;
+
+const STEP={
+  meet(s,N){
+    const L=N.letter;
+    add(`<p class="ask">Tonight's sound</p>`);
+    const card=add(`<button class="letter-card" aria-label="The letter ${L}">${L}<small>${L.toUpperCase()}</small></button>`);
+    add(`<p class="soft">Tap the letter and say its sound</p>`);
+    card.onclick=()=>{card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');ready();};
+    const keys=add(`<div class="keys"></div>`);
+    N.keys.forEach(k=>{
+      const b=el(`<button class="key">${pic(k,52)}<span><b class="hl">${k.w[0]}</b>${k.w.slice(1)}</span></button>`);
+      b.onclick=()=>{speak(k.w);b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');};
+      keys.appendChild(b);
+    });
+    cue(N.cue+' Then say each picture word and stretch the first sound.');
+  },
+  trace(s,N){
+    const L=N.letter;
+    add(`<p class="ask">Trace the <span class="hl">${L}</span> with your finger</p>`);
+    const size=Math.min(stage.clientWidth,290),dpr=Math.min(window.devicePixelRatio||1,3);
+    const wrap=add(`<div class="trace" style="width:${size+6}px;height:${size+6}px"><canvas width="${size*dpr}" height="${size*dpr}" style="width:${size}px;height:${size}px"></canvas></div>`);
+    const again=add(`<button class="mini">Start again</button>`);
+    cue('Say the sound each time his finger moves. Any wobbly line counts. Tracing links the shape to the sound.');
+    const cv=$('canvas',wrap),ctx=cv.getContext('2d');ctx.scale(dpr,dpr);
+    const off=document.createElement('canvas');off.width=off.height=size;const o=off.getContext('2d',{willReadFrequently:true});
+    const css=getComputedStyle(document.documentElement),glow=css.getPropertyValue('--glow').trim(),ink=css.getPropertyValue('--ink').trim();
+    let pts=[],hits=0,fin=false,last=null;
+    function setup(){
+      o.globalCompositeOperation='source-over';o.clearRect(0,0,size,size);
+      o.font=`700 ${Math.round(size*.82)}px Andika, "Comic Sans MS", sans-serif`;o.textAlign='center';o.fillStyle=ink;
+      const m=o.measureText(L),y=size/2+((m.actualBoundingBoxAscent||size*.5)-(m.actualBoundingBoxDescent||0))/2;
+      o.fillText(L,size/2,y);
+      const d=o.getImageData(0,0,size,size).data;pts=[];hits=0;fin=false;
+      for(let yy=4;yy<size;yy+=8)for(let x=4;x<size;x+=8)if(d[(yy*size+x)*4+3]>128)pts.push({x,y:yy,h:false});
+      ctx.clearRect(0,0,size,size);ctx.globalAlpha=.25;ctx.drawImage(off,0,0);ctx.globalAlpha=1;
+    }
+    function pos(e){const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+    function mark(p){
+      for(const q of pts){if(!q.h&&Math.abs(q.x-p.x)<17&&Math.abs(q.y-p.y)<17){q.h=true;hits++;}}
+      if(!fin&&pts.length&&hits/pts.length>=.7){
+        fin=true;o.globalCompositeOperation='source-in';o.fillStyle=glow;o.fillRect(0,0,size,size);
+        ctx.clearRect(0,0,size,size);ctx.drawImage(off,0,0);wrap.classList.add('pop');ready();
+      }
+    }
+    cv.onpointerdown=e=>{e.preventDefault();try{cv.setPointerCapture(e.pointerId);}catch(_){}last=pos(e);mark(last);};
+    cv.onpointermove=e=>{
+      if(!last||fin)return;const p=pos(e);
+      ctx.strokeStyle=glow;ctx.lineWidth=20;ctx.lineCap='round';ctx.lineJoin='round';
+      ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;mark(p);
+    };
+    cv.onpointerup=cv.onpointercancel=()=>{last=null;};
+    again.onclick=()=>{wrap.classList.remove('pop');setup();};
+    setup();
+    if(document.fonts&&document.fonts.load)document.fonts.load('700 100px Andika').then(()=>{if(!hits)setup();},()=>{});
+  },
+  find(s,N){
+    const L=N.letter;
+    add(`<p class="ask">Tap every egg with <span class="chip">${L}</span></p>`);
+    const others=shuffle('satpinmdoce'.split('').filter(c=>c!==L)).slice(0,5);
+    const grid=add(`<div class="eggs"></div>`);let left=4;
+    shuffle([L,L,L,L].concat(others)).forEach(c=>{
+      const b=el(`<button class="egg">${c}</button>`);
+      b.onclick=()=>{
+        if(b.classList.contains('hit'))return;
+        if(c===L){b.classList.add('hit');b.innerHTML=N.sticker;if(--left===0)ready();}
+        else{b.classList.remove('miss');void b.offsetWidth;b.classList.add('miss');}
+      };
+      grid.appendChild(b);
+    });
+    cue('Let him hunt. If he taps a different letter, just say "that one says..." and keep going. No wrong answers at bedtime.');
+  },
+  sort(s,N){
+    const L=N.letter,r=s.r;
+    add(`<p class="ask">Which one starts with <span class="chip">${L}</span>?</p>`);
+    const pair=add(`<div class="pair"></div>`);
+    shuffle([[r.yes,true],[r.no,false]]).forEach(([it,ok])=>{
+      const b=el(`<button class="pick"><span class="pic">${it[0]}</span><span>${it[1]}</span></button>`);
+      b.onclick=()=>{
+        speak(it[1]);
+        if(ok){b.classList.add('yes');b.lastChild.innerHTML=`<b class="hl">${it[1][0]}</b>${it[1].slice(1)}`;ready();}
+        else{b.classList.remove('no');void b.offsetWidth;b.classList.add('no');}
+      };
+      pair.appendChild(b);
+    });
+    cue(`Say both words slowly and stretch the first sound: "${r.yes[1]}... ${r.no[1]}". Hearing first sounds is the skill that comes before reading.`);
+  },
+  review(s,N){
+    add(`<p class="ask">Wake up the sounds you know</p>`);
+    const tiles=add(`<div class="tiles"></div>`);let left=N.known.length;
+    N.known.split('').forEach(c=>{
+      const b=el(`<button class="tile">${c}</button>`);
+      b.onclick=()=>{if(!b.classList.contains('lit')){b.classList.add('lit');if(--left===0)ready();}};
+      tiles.appendChild(b);
+    });
+    cue('He taps a letter, you both say its sound. If he forgets one, just tell him. Quick and cheerful.');
+  },
+  blend(s,N){
+    const b=s.b,n=b.w.length;
+    add(`<p class="ask">Slide the dragon to read the word</p>`);
+    const box=add(`<div class="blend"><div class="sounds">${b.w.split('').map(c=>`<button>${c}</button>`).join('')}</div><div class="track"><div class="thumb">🐉</div></div><div class="reveal"></div></div>`);
+    const track=$('.track',box),thumb=$('.thumb',box),letters=[...box.querySelectorAll('.sounds button')],rev=$('.reveal',box);
+    letters.forEach(l=>l.onclick=()=>{l.classList.remove('pop');void l.offsetWidth;l.classList.add('pop','lit');});
+    let fin=false,down=false;
+    function move(e){
+      if(fin)return;const r=track.getBoundingClientRect();
+      const f=Math.max(0,Math.min(1,(e.clientX-r.left-30)/(r.width-60)));
+      thumb.style.left=(f*(r.width-60))+'px';
+      letters.forEach((l,i)=>l.classList.toggle('lit',f>=(i+.35)/n));
+      if(f>=.97){
+        fin=true;$('.sounds',box).classList.add('done');
+        rev.innerHTML=`${b.who?avatar(b.who,84):`<span>${b.e||'⭐'}</span>`}`;rev.classList.add('pop');
+        speak(b.w);ready();
+      }
+    }
+    track.onpointerdown=e=>{e.preventDefault();down=true;try{track.setPointerCapture(e.pointerId);}catch(_){}move(e);};
+    track.onpointermove=e=>{if(down)move(e);};
+    track.onpointerup=track.onpointercancel=()=>{down=false;};
+    cue(`Say each sound as the dragon passes it, stretching them into each other: "${b.w.split('').join('...')}". Then say it fast: "${b.w}". If he can't blend yet, that is normal at three. You blend, he repeats.`);
+  },
+  page(s,N){
+    const p=s.p;
+    add(`<div class="scene">${(p.cast||[]).map(w=>avatar(w,76)).join('')}<span>${p.e}</span></div>`);
+    const txt=add(`<p class="text">${storyHTML(p.t)}</p>`);
+    txt.onclick=e=>{const w=e.target.closest('.w');if(!w)return;speak(w.dataset.w);w.classList.add('said');if(!w.classList.contains('read'))setTimeout(()=>w.classList.remove('said'),700);};
+    if(canSpeak&&progress.voice){const hb=add(`<button class="hear">🔊 Hear this page</button>`);hb.onclick=()=>speak(plain(p.t));}
+    const hasRead=/\[/.test(p.t);
+    if(p.q||hasRead)cue((hasRead?'Stop at each gold word and let Sonny sound it out. ':'Run your finger under the words as you read. ')+(p.q?`Ask: "${p.q}"`:''));
+    ready();
+  },
+  reward(s,N){
+    progress.done[cur.i]=true;save();
+    add(`<p class="ask">You did it, Sonny!</p>`);
+    add(`<div class="sticker">${N.sticker}</div>`);
+    add(`<p class="text" style="text-align:center">You earned the <b class="hl">${N.stickerName}</b> sticker.</p>`);
+    add(`<p class="soft">${Object.keys(progress.done).length} of ${NIGHTS.length} stickers on the trail</p>`);
+    ready();
+  },
+  sleep(s,N){
+    add(`<p class="ask">Three slow dragon breaths</p>`);
+    add(`<div class="breath">🐉</div>`);
+    add(`<p class="text" style="text-align:center">Breathe in through your nose... and softly blow out the flame.</p>`);
+    add(`<p class="soft">Night night, Sonny. See you tomorrow.</p>`);
+    ready();
+  }
+};
+
+/* ---------- grown-ups ---------- */
+function renderGrown(){
+  const body=$('#grownBody');body.innerHTML='';
+  const card=(html)=>{const c=el(`<div class="card">${html}</div>`);body.appendChild(c);return c;};
+  card(`<h2>How a night works</h2><p class="soft">One night is about five minutes. Do one, then stop, even if he asks for more. Wanting more tomorrow is the goal.</p>
+  <ul><li><b>Meet a sound.</b> One new letter sound, tied to someone or something he loves.</li><li><b>Trace it, find it, hear it.</b> Finger tracing, an egg hunt, and picking the picture that starts with the sound.</li><li><b>Story.</b> You read. Tonight's sound glows gold at the start of words.</li><li><b>Blending nights</b> (4, 8, 11, 12). He slides the dragon under the letters to push sounds together into words, then reads the gold words in the story himself.</li></ul>`);
+  card(`<h2>What helps most</h2><ul>
+  <li><b>Sounds, not letter names.</b> Say "sss", not "ess". Names can come later.</li>
+  <li><b>Keep sounds pure.</b> "mmm" not "muh", a clipped "t" not "tuh". It makes blending far easier.</li>
+  <li><b>Repeat nights.</b> Doing the same night three or four times is how it sticks. Move on when he says the sound before you do.</li>
+  <li><b>Blending takes time.</b> Many children cannot blend sounds until four or older. If he isn't ready, you blend and he echoes. Hearing first sounds and knowing a handful of letters at three and a half is a strong start.</li>
+  <li><b>Talk about the story.</b> The questions under each page matter as much as the letters. Follow his answers wherever they go.</li>
+  <li><b>Play it in the day too.</b> "I spy something that starts with sss" in the car does the same job.</li></ul>`);
+  const ph=card(`<h2>Family photos</h2><p class="soft">Swap the drawings for real faces. Photos are saved on this phone only and are never uploaded.</p>`);
+  Object.keys(FAMILY).forEach(k=>{
+    const row=el(`<div class="photo-row">${avatar(k,56)}<span class="name">${FAMILY[k].name}</span><label class="btn">Choose photo<input type="file" accept="image/*" id="photo-${k}"></label></div>`);
+    $('input',row).onchange=e=>{
+      const f=e.target.files&&e.target.files[0];if(!f)return;
+      const rd=new FileReader();
+      rd.onload=()=>{const im=new Image();im.onload=()=>{
+        const c=document.createElement('canvas');c.width=c.height=240;const s=Math.min(im.width,im.height);
+        c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,240,240);
+        const ok=store.set('photo_'+k,c.toDataURL('image/jpeg',.82));
+        renderGrown();if(!ok)$('#grownBody').prepend(el(`<p class="cue">This browser would not save the photo. The drawing will be used instead.</p>`));
+      };im.src=rd.result;};
+      rd.readAsDataURL(f);
+    };
+    if(store.get('photo_'+k,null)){const rm=el(`<button class="btn">Remove</button>`);rm.onclick=()=>{store.del('photo_'+k);renderGrown();};row.appendChild(rm);}
+    ph.appendChild(row);
+  });
+  const set=card(`<h2>Settings</h2><div class="toggle"><span>Tap a word to hear it${canSpeak?'':' (not available in this browser)'}</span><button class="btn" id="voiceBtn">${progress.voice?'On':'Off'}</button></div>
+    <div class="toggle"><span>Clear all stickers and start over</span><button class="btn" id="resetBtn">Reset</button></div>`);
+  $('#voiceBtn',set).onclick=()=>{progress.voice=!progress.voice;save();renderGrown();};
+  const rb=$('#resetBtn',set);
+  rb.onclick=()=>{if(rb.dataset.sure){progress.done={};save();renderGrown();}else{rb.dataset.sure='1';rb.textContent='Tap again to reset';}};
+}
+$('#toGrown').onclick=$('#toGrown2').onclick=()=>show('grown');
+$('#closeGrown').onclick=()=>show('home');
+
+show('home');
+})();
+</script>
