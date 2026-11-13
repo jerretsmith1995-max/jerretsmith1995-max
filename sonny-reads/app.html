@@ -9,7 +9,7 @@
   color-scheme:dark;
   --night:#15132e; --night-2:#1f1c44; --panel:#2a2658; --line:#423d80;
   --ink:#f5eedf; --ink-soft:#b9b2d4;
-  --glow:#ffc95c; --ember:#ff8f6b; --leaf:#8fe0b0;
+  --glow:#ffc95c; --ember:#ff8f6b; --leaf:#8fe0b0; --veil:rgba(21,19,46,.97);
   --display:'Fredoka','Trebuchet MS','Avenir Next',sans-serif;
   --read:'Andika','Comic Sans MS','Century Gothic',sans-serif; /* single-storey a and g, made for new readers */
 }
@@ -137,6 +137,34 @@ p{margin:0;line-height:1.5}
 .btn input{position:absolute;opacity:0;width:1px;height:1px}
 .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px}
 
+/* living things: everything he can tap moves and answers back */
+#play{position:relative}
+.buddy{width:44px;height:44px;border-radius:50%;background:var(--panel);border:2px solid var(--line);font-size:26px;flex:none;display:flex;align-items:center;justify-content:center}
+.buddy.talk{border-color:var(--glow);animation:talk .35s ease-in-out infinite}
+.actor{font-size:inherit;line-height:1.1;display:inline-flex;animation:float 3.2s ease-in-out infinite}
+.actor:nth-child(2n){animation-delay:-1.1s}
+.actor:nth-child(3n){animation-delay:-2s}
+.a-jump{animation:jump .6s!important}
+.a-spin{animation:spin .7s!important}
+.a-wiggle{animation:wob .25s 3!important}
+.a-grow{animation:grow .6s!important}
+.bit{position:fixed;left:0;top:0;pointer-events:none;font-size:20px;z-index:50}
+.hunt{font-size:15px;color:var(--ink-soft);align-self:flex-start;text-align:left}
+.hunt b{color:var(--glow)}
+.text .w{display:inline-block}
+.text .w.now{background:var(--line);color:var(--glow)}
+.text .w.got{color:var(--glow)}
+.over{position:absolute;inset:0;z-index:20;background:var(--veil);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:16px}
+.over .sounds{width:100%;max-width:340px}
+.buddies{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bud{background:var(--night-2);border:2px solid var(--line);border-radius:18px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:14px;color:var(--ink-soft)}
+.bud .pic{font-size:36px;line-height:1.1}
+.bud.on{border-color:var(--glow);color:var(--ink)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes jump{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-34px) scale(1.15)}60%{transform:translateY(0) scale(1.08,.9)}}
+@keyframes spin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.3)}100%{transform:rotate(360deg) scale(1)}}
+@keyframes grow{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
+@keyframes talk{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-4px) rotate(5deg)}}
 @keyframes pop{0%{transform:scale(.8)}55%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,201,92,.5)}50%{box-shadow:0 0 0 12px rgba(255,201,92,0)}}
@@ -153,6 +181,8 @@ p{margin:0;line-height:1.5}
     <div class="scroll">
       <div class="family" id="family"></div>
       <div class="tonight" id="tonight"></div>
+      <h3>Who reads tonight? Tap to hear them</h3>
+      <div class="buddies" id="buddies"></div>
       <h3>Sticker trail</h3>
       <div class="path" id="path"></div>
       <button class="link" id="toGrown2">How this works (for grown-ups)</button>
@@ -163,6 +193,7 @@ p{margin:0;line-height:1.5}
     <div class="top">
       <button class="x" id="quit" aria-label="Back to the start">✕</button>
       <div class="bar"><i id="barFill"></i></div>
+      <button class="buddy" id="buddy" aria-label="Story friend"></button>
     </div>
     <div class="scroll" id="stage"></div>
     <div class="foot">
@@ -197,17 +228,74 @@ const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(M
 
 /* ---------- voice (optional: the grown-up is the main voice) ---------- */
 const canSpeak='speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
-function speak(text){
-  if(!canSpeak||!progress.voice)return;
+/* Three story friends, each with their own voice. `pref` picks the best-matching voice the phone has. */
+const BUDDIES={
+  hero:{name:'Night Hero',e:'🦸',pitch:.7,rate:.82,pref:/Ralph|Aaron|Daniel|Reed|Rocko|Fred|Male/i,hi:'Hello Sonny. I am the Night Hero. Let us read.',yay:['Super reading, Sonny.','You are a reading hero.','Hero power!']},
+  monster:{name:'Grumble',e:'👾',pitch:.1,rate:.62,pref:/Albert|Grandpa|Ralph|Fred|Daniel/i,hi:'Grrr. Hello Sonny. I am Grumble. I love stories.',yay:['Grrr. Good job.','Grumble is so proud.','Monster high five!']},
+  dragon:{name:'Spark',e:'🐉',pitch:1.8,rate:.95,pref:/Junior|Bubbles|Princess|Karen|Samantha|Kathy|Female/i,hi:'Hi Sonny! I am Spark the dragon! Story time!',yay:['Wheee! You did it!','Roar! So good!','Sparkly reading, Sonny!']}
+};
+if(!BUDDIES[progress.buddy])progress.buddy='hero';
+const buddy=()=>BUDDIES[progress.buddy];
+if(canSpeak){try{speechSynthesis.getVoices();}catch(e){}}
+let speakId=0;
+function talking(on){const b=document.getElementById('buddy');if(b)b.classList.toggle('talk',on);}
+function speak(text,opt){
+  opt=opt||{};
+  if(!canSpeak||!progress.voice){if(opt.onend)opt.onend();return false;}
   try{
     speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(text);
-    const v=speechSynthesis.getVoices().find(v=>/^en[-_](CA|US|GB)/i.test(v.lang));
-    if(v)u.voice=v;
-    u.rate=.8;u.pitch=1.05;
-    speechSynthesis.speak(u);
+    const B=buddy(),id=++speakId,u=new SpeechSynthesisUtterance(text);
+    const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+    const v=vs.find(v=>B.pref.test(v.name))||vs.find(v=>/^en[-_](CA|US|GB)/i.test(v.lang))||vs[0];
+    if(v){u.voice=v;u.lang=v.lang;}
+    u.rate=B.rate;u.pitch=B.pitch;
+    u.onboundary=e=>{if(id===speakId&&opt.onword&&e.name!=='sentence')opt.onword(e.charIndex);};
+    u.onend=u.onerror=()=>{if(id!==speakId)return;talking(false);if(opt.onend)opt.onend();};
+    talking(true);speechSynthesis.speak(u);return true;
+  }catch(e){talking(false);return false;}
+}
+
+/* ---------- little sounds (soft, made in the browser) ---------- */
+let actx=null;
+function tone(f1,f2,dur,type,vol){
+  if(!progress.voice)return;
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended')actx.resume();
+    const o=actx.createOscillator(),g=actx.createGain(),t=actx.currentTime;
+    o.type=type||'sine';o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+    g.gain.setValueAtTime(vol||.1,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);
+    o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur);
   }catch(e){}
 }
+const sfx={
+  pop:(n)=>tone(520*(1+(n||0)*.2),880*(1+(n||0)*.2),.09),
+  boing:()=>tone(180,520,.22,'triangle'),
+  nope:()=>tone(300,220,.15,'triangle',.06),
+  chime:()=>{tone(880,880,.35);setTimeout(()=>tone(1320,1320,.45),110);},
+  win:()=>{[660,880,1100,1320].forEach((f,i)=>setTimeout(()=>tone(f,f,.3),i*110));}
+};
+
+/* ---------- movement ---------- */
+const calm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+function anim(n,name){
+  const moves=['jump','spin','wiggle','grow'];name=name||moves[Math.floor(Math.random()*moves.length)];
+  moves.forEach(m=>n.classList.remove('a-'+m));void n.offsetWidth;n.classList.add('a-'+name);
+}
+function burst(target,emo){
+  if(calm||!target.animate)return;
+  const r=target.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  for(let i=0;i<8;i++){
+    const b=document.createElement('span');b.className='bit';b.textContent=emo||'⭐';document.body.appendChild(b);
+    const a=Math.PI*2*i/8+Math.random()*.5,d=50+Math.random()*50;
+    b.animate([{transform:`translate(${cx-10}px,${cy-10}px) scale(.4)`,opacity:1},
+      {transform:`translate(${cx-10+Math.cos(a)*d}px,${cy-10+Math.sin(a)*d}px) scale(1.1) rotate(${Math.round(Math.random()*240-120)}deg)`,opacity:0}],
+      {duration:750,easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish=()=>b.remove();
+  }
+}
+/* what each picture says when he taps it */
+const SAYS={'🌙':'Moon. Goodnight, moon.','🏠':'Home','🐍':'Snake! Sssss!','💤':'Zzzzz. Shhh.','🧦':'Sock! So soft.','✨':'Sparkle!','⭐':'Twinkle, twinkle.','🌳':'Tree','🐊':'Alligator! Snap, snap!','💭':'Hmmmm.','🍎':'Apple! Crunch!','💛':'Love you.','⛺':'Tent','🦖':'T-rex! Rawr!','🌮':'Taco! Yum yum.','🪥':'Brush, brush, brush.','🐉':'Dragon! Roar!','🪑':'Chair. Sit down.','💨':'Zoom!','✋':'Stop!','🚪':'Knock, knock!','👾':'Monster! Blargh!','🍕':'Pizza! Yum yum.','🐧':'Penguin! Waddle, waddle.','🦎':'Iguana!','👃':'Nose. Boop!','🦶':'Toes. Tickle, tickle!','😖':'So itchy!','🪺':'Nest','🐲':'Baby dragon! Rawr!','💋':'Mwah!','🎵':'La la la.','🤚':'Pat, pat, pat.','👆':'Boop!','🍳':'Pan. Sizzle!','🤗':'Big hug!','🔔':'Ding dong!','🦕':'Dinosaur! Stomp, stomp!','💃':'Dance, dance!','💫':'Whoa. Dizzy!','🟫':'Mat','💧':'Boo hoo.','💢':'Grrrr!','🧸':'Teddy!','📖':'Book','👏':'Clap, clap! Hooray!'};
+const glyphs=t=>{try{return [...new Intl.Segmenter().segment(t)].map(x=>x.segment);}catch(e){return Array.from(t);}};
 
 /* ---------- family ---------- */
 const FAMILY={
@@ -348,7 +436,7 @@ function storyHTML(t){
     let m=tok.match(/^(["(]*)\[([^\]]+)\](.*)$/);
     if(m)return `${m[1]}<button class="w read" data-w="${m[2]}">${m[2]}</button>${m[3]}`;
     m=tok.match(/^(["(]*)\*(.)(.*)$/);
-    if(m)return `<span class="w" data-w="${clean(m[2]+m[3])}">${m[1]}<b class="hl">${m[2]}</b>${m[3]}</span>`;
+    if(m)return `<span class="w s" data-w="${clean(m[2]+m[3])}">${m[1]}<b class="hl">${m[2]}</b>${m[3]}</span>`;
     return `<span class="w" data-w="${clean(tok)}">${tok}</span>`;
   }).join(' ');
 }
@@ -368,6 +456,12 @@ function renderHome(){
     <p class="soft">${N.kind==='letter'?'New sound: '+N.letter:'Slide sounds together to read words'} · about 5 minutes</p></div></div>
     <button class="go" id="start">Start the story</button>`;
   $('#start').onclick=()=>startNight(next);
+  const bs=$('#buddies');bs.innerHTML='';
+  Object.keys(BUDDIES).forEach(k=>{
+    const B=BUDDIES[k],b=el(`<button class="bud ${k===progress.buddy?'on':''}"><span class="pic">${B.e}</span>${B.name}</button>`);
+    b.onclick=()=>{progress.buddy=k;save();[...bs.children].forEach(c=>c.classList.toggle('on',c===b));anim(b.firstChild,'jump');sfx.boing();speak(B.hi);};
+    bs.appendChild(b);
+  });
   const path=$('#path');path.innerHTML='';
   NIGHTS.forEach((n,i)=>{
     const done=!!progress.done[i];
@@ -390,6 +484,8 @@ function startNight(i){
 function ready(){nextBtn.classList.remove('quiet');nextBtn.classList.add('ready');}
 function renderStep(){
   const s=cur.steps[cur.at];
+  document.querySelectorAll('.over').forEach(o=>o.remove());
+  $('#buddy').textContent=buddy().e;
   stage.innerHTML='';stage.scrollTop=0;
   $('#barFill').style.width=(100*(cur.at+1)/cur.steps.length)+'%';
   nextBtn.className='go quiet';
@@ -400,6 +496,7 @@ function renderStep(){
 nextBtn.onclick=()=>{if(cur.at<cur.steps.length-1){cur.at++;renderStep();}else show('home');};
 $('#prev').onclick=()=>{if(cur.at>0){cur.at--;renderStep();}};
 $('#quit').onclick=()=>show('home');
+$('#buddy').onclick=()=>{const b=$('#buddy'),y=buddy().yay;anim(b,'jump');sfx.boing();burst(b);speak(y[Math.floor(Math.random()*y.length)]);};
 const add=(html)=>{const n=el(html);stage.appendChild(n);return n;};
 const cue=(txt)=>add(`<div class="cue"><b>Grown-up</b>${txt}</div>`);
 const pic=(k,size)=>k.who?avatar(k.who,size):`<span class="pic">${k.e}</span>`;
@@ -410,11 +507,11 @@ const STEP={
     add(`<p class="ask">Tonight's sound</p>`);
     const card=add(`<button class="letter-card" aria-label="The letter ${L}">${L}<small>${L.toUpperCase()}</small></button>`);
     add(`<p class="soft">Tap the letter and say its sound</p>`);
-    card.onclick=()=>{card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');ready();};
+    card.onclick=()=>{card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');sfx.pop();burst(card,'✨');ready();};
     const keys=add(`<div class="keys"></div>`);
     N.keys.forEach(k=>{
       const b=el(`<button class="key">${pic(k,52)}<span><b class="hl">${k.w[0]}</b>${k.w.slice(1)}</span></button>`);
-      b.onclick=()=>{speak(k.w);b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');};
+      b.onclick=()=>{speak(k.w);anim(b.firstChild);sfx.boing();};
       keys.appendChild(b);
     });
     cue(N.cue+' Then say each picture word and stretch the first sound.');
@@ -444,7 +541,7 @@ const STEP={
       for(const q of pts){if(!q.h&&Math.abs(q.x-p.x)<17&&Math.abs(q.y-p.y)<17){q.h=true;hits++;}}
       if(!fin&&pts.length&&hits/pts.length>=.7){
         fin=true;o.globalCompositeOperation='source-in';o.fillStyle=glow;o.fillRect(0,0,size,size);
-        ctx.clearRect(0,0,size,size);ctx.drawImage(off,0,0);wrap.classList.add('pop');ready();
+        ctx.clearRect(0,0,size,size);ctx.drawImage(off,0,0);wrap.classList.add('pop');sfx.win();burst(wrap);ready();
       }
     }
     cv.onpointerdown=e=>{e.preventDefault();try{cv.setPointerCapture(e.pointerId);}catch(_){}last=pos(e);mark(last);};
@@ -467,8 +564,8 @@ const STEP={
       const b=el(`<button class="egg">${c}</button>`);
       b.onclick=()=>{
         if(b.classList.contains('hit'))return;
-        if(c===L){b.classList.add('hit');b.innerHTML=N.sticker;if(--left===0)ready();}
-        else{b.classList.remove('miss');void b.offsetWidth;b.classList.add('miss');}
+        if(c===L){b.classList.add('hit');b.innerHTML=N.sticker;burst(b);if(--left===0){sfx.win();ready();}else sfx.boing();}
+        else{sfx.nope();b.classList.remove('miss');void b.offsetWidth;b.classList.add('miss');}
       };
       grid.appendChild(b);
     });
@@ -482,8 +579,8 @@ const STEP={
       const b=el(`<button class="pick"><span class="pic">${it[0]}</span><span>${it[1]}</span></button>`);
       b.onclick=()=>{
         speak(it[1]);
-        if(ok){b.classList.add('yes');b.lastChild.innerHTML=`<b class="hl">${it[1][0]}</b>${it[1].slice(1)}`;ready();}
-        else{b.classList.remove('no');void b.offsetWidth;b.classList.add('no');}
+        if(ok){sfx.chime();burst(b);anim(b.firstChild,'jump');b.classList.add('yes');b.lastChild.innerHTML=`<b class="hl">${it[1][0]}</b>${it[1].slice(1)}`;ready();}
+        else{sfx.nope();b.classList.remove('no');void b.offsetWidth;b.classList.add('no');}
       };
       pair.appendChild(b);
     });
@@ -494,7 +591,7 @@ const STEP={
     const tiles=add(`<div class="tiles"></div>`);let left=N.known.length;
     N.known.split('').forEach(c=>{
       const b=el(`<button class="tile">${c}</button>`);
-      b.onclick=()=>{if(!b.classList.contains('lit')){b.classList.add('lit');if(--left===0)ready();}};
+      b.onclick=()=>{if(!b.classList.contains('lit')){b.classList.add('lit');sfx.pop(N.known.length-left);burst(b,'✨');if(--left===0){sfx.win();ready();}}};
       tiles.appendChild(b);
     });
     cue('He taps a letter, you both say its sound. If he forgets one, just tell him. Quick and cheerful.');
@@ -504,7 +601,7 @@ const STEP={
     add(`<p class="ask">Slide the dragon to read the word</p>`);
     const box=add(`<div class="blend"><div class="sounds">${b.w.split('').map(c=>`<button>${c}</button>`).join('')}</div><div class="track"><div class="thumb">🐉</div></div><div class="reveal"></div></div>`);
     const track=$('.track',box),thumb=$('.thumb',box),letters=[...box.querySelectorAll('.sounds button')],rev=$('.reveal',box);
-    letters.forEach(l=>l.onclick=()=>{l.classList.remove('pop');void l.offsetWidth;l.classList.add('pop','lit');});
+    letters.forEach((l,i)=>l.onclick=()=>{l.classList.remove('pop');void l.offsetWidth;l.classList.add('pop','lit');sfx.pop(i);});
     let fin=false,down=false;
     function move(e){
       if(fin)return;const r=track.getBoundingClientRect();
@@ -514,7 +611,7 @@ const STEP={
       if(f>=.97){
         fin=true;$('.sounds',box).classList.add('done');
         rev.innerHTML=`${b.who?avatar(b.who,84):`<span>${b.e||'⭐'}</span>`}`;rev.classList.add('pop');
-        speak(b.w);ready();
+        sfx.chime();burst(rev);speak(b.w);ready();
       }
     }
     track.onpointerdown=e=>{e.preventDefault();down=true;try{track.setPointerCapture(e.pointerId);}catch(_){}move(e);};
@@ -523,19 +620,49 @@ const STEP={
     cue(`Say each sound as the dragon passes it, stretching them into each other: "${b.w.split('').join('...')}". Then say it fast: "${b.w}". If he can't blend yet, that is normal at three. You blend, he repeats.`);
   },
   page(s,N){
-    const p=s.p;
-    add(`<div class="scene">${(p.cast||[]).map(w=>avatar(w,76)).join('')}<span>${p.e}</span></div>`);
+    const p=s.p,L=N.letter;
+    const scene=add(`<div class="scene">${(p.cast||[]).map(w=>`<button class="actor" data-say="${FAMILY[w].name}!">${avatar(w,76)}</button>`).join('')}${glyphs(p.e).map(g=>`<button class="actor" data-say="${SAYS[g]||''}">${g}</button>`).join('')}</div>`);
+    scene.onclick=e=>{const a=e.target.closest('.actor');if(!a)return;anim(a);sfx.boing();burst(a);if(a.dataset.say)speak(a.dataset.say);};
     const txt=add(`<p class="text">${storyHTML(p.t)}</p>`);
-    txt.onclick=e=>{const w=e.target.closest('.w');if(!w)return;speak(w.dataset.w);w.classList.add('said');if(!w.classList.contains('read'))setTimeout(()=>w.classList.remove('said'),700);};
-    if(canSpeak&&progress.voice){const hb=add(`<button class="hear">🔊 Hear this page</button>`);hb.onclick=()=>speak(plain(p.t));}
-    const hasRead=/\[/.test(p.t);
-    if(p.q||hasRead)cue((hasRead?'Stop at each gold word and let Sonny sound it out. ':'Run your finger under the words as you read. ')+(p.q?`Ask: "${p.q}"`:''));
-    ready();
+    const words=[...txt.querySelectorAll('.w')],gold=words.filter(w=>w.classList.contains('read')),starred=words.filter(w=>w.classList.contains('s'));
+    let found=0,readN=0,hunt=null;
+    if(L&&starred.length){hunt=add(`<p class="hunt">Tap the words that start with <b>${L}</b> &nbsp;⭐ <span>0</span> of ${starred.length}</p>`);txt.after(hunt);}
+    txt.onclick=e=>{
+      const w=e.target.closest('.w');if(!w)return;
+      if(w.classList.contains('read')){
+        soundOut(w.dataset.w,()=>{if(!w.classList.contains('said')){w.classList.add('said');if(++readN===gold.length){sfx.win();ready();}}});
+        return;
+      }
+      speak(w.dataset.w);anim(w,'jump');
+      if(w.classList.contains('s')&&!w.classList.contains('got')){
+        w.classList.add('got');burst(w);sfx.pop(found);$('span',hunt).textContent=++found;
+        if(found===starred.length){sfx.win();anim(hunt,'jump');ready();}
+      }
+    };
+    if(canSpeak&&progress.voice){
+      const hb=add(`<button class="hear">${buddy().e} ${buddy().name}, read it to me</button>`);
+      hb.onclick=()=>{
+        const str=plain(p.t);let pos=0;
+        const offs=words.map(w=>{const i=str.indexOf(w.dataset.w,pos);if(i>=0)pos=i+w.dataset.w.length;return i;});
+        const mark=i=>words.forEach((w,j)=>w.classList.toggle('now',j===i));
+        let heard=false,k=0,timer=null;
+        const tick=()=>{if(heard||k>=words.length)return;mark(k);timer=setTimeout(tick,(230+words[k].dataset.w.length*60)/buddy().rate);k++;};
+        const ok=speak(str,{
+          onword:ci=>{heard=true;clearTimeout(timer);let i=-1;offs.forEach((o,j)=>{if(o>=0&&o<=ci)i=j;});mark(i);},
+          onend:()=>{clearTimeout(timer);mark(-1);}
+        });
+        if(ok)tick();
+      };
+    }
+    cue((gold.length?'Tap a gold word to open it up. He taps each letter while you say its sound together, then it snaps into the word. ':'Run your finger under the words as you read. Tap any picture or word and it answers back. ')+(p.q?`Ask: "${p.q}"`:''));
+    if(!gold.length&&!hunt)ready();
   },
   reward(s,N){
     progress.done[cur.i]=true;save();
     add(`<p class="ask">You did it, Sonny!</p>`);
-    add(`<div class="sticker">${N.sticker}</div>`);
+    const st=add(`<button class="sticker actor">${N.sticker}</button>`);
+    st.onclick=()=>{anim(st);sfx.boing();burst(st);};
+    sfx.win();setTimeout(()=>{burst(st);speak(buddy().yay[0]);},350);
     add(`<p class="text" style="text-align:center">You earned the <b class="hl">${N.stickerName}</b> sticker.</p>`);
     add(`<p class="soft">${Object.keys(progress.done).length} of ${NIGHTS.length} stickers on the trail</p>`);
     ready();
@@ -549,12 +676,36 @@ const STEP={
   }
 };
 
+/* ---------- sounding out a gold word ---------- */
+function soundOut(word,done){
+  document.querySelectorAll('.over').forEach(o=>o.remove());
+  const w=word.toLowerCase();
+  const ov=el(`<div class="over"><p class="ask">Tap each sound</p><div class="sounds">${w.split('').map(c=>`<button>${c}</button>`).join('')}</div><div class="reveal"></div><button class="mini">Close</button></div>`);
+  $('#play').appendChild(ov);
+  const ls=[...ov.querySelectorAll('.sounds button')];let left=ls.length,fin=false;
+  ov.lastChild.onclick=()=>ov.remove();
+  ls.forEach((l,i)=>l.onclick=()=>{
+    l.classList.remove('pop');void l.offsetWidth;l.classList.add('pop');sfx.pop(i);
+    if(fin||l.classList.contains('lit'))return;
+    l.classList.add('lit');burst(l,'✨');
+    if(--left===0){
+      fin=true;
+      setTimeout(()=>{
+        if(!ov.isConnected)return;
+        $('.sounds',ov).classList.add('done');$('.ask',ov).textContent=w;$('.reveal',ov).textContent='⭐';
+        sfx.chime();burst($('.sounds',ov));speak(w);done();
+        setTimeout(()=>ov.remove(),1900);
+      },450);
+    }
+  });
+}
+
 /* ---------- grown-ups ---------- */
 function renderGrown(){
   const body=$('#grownBody');body.innerHTML='';
   const card=(html)=>{const c=el(`<div class="card">${html}</div>`);body.appendChild(c);return c;};
   card(`<h2>How a night works</h2><p class="soft">One night is about five minutes. Do one, then stop, even if he asks for more. Wanting more tomorrow is the goal.</p>
-  <ul><li><b>Meet a sound.</b> One new letter sound, tied to someone or something he loves.</li><li><b>Trace it, find it, hear it.</b> Finger tracing, an egg hunt, and picking the picture that starts with the sound.</li><li><b>Story.</b> You read. Tonight's sound glows gold at the start of words.</li><li><b>Blending nights</b> (4, 8, 11, 12). He slides the dragon under the letters to push sounds together into words, then reads the gold words in the story himself.</li></ul>`);
+  <ul><li><b>Meet a sound.</b> One new letter sound, tied to someone or something he loves.</li><li><b>Trace it, find it, hear it.</b> Finger tracing, an egg hunt, and picking the picture that starts with the sound.</li><li><b>Story.</b> You read, or tap the story friend to have them read while the words light up. He can tap every picture and word. Tonight's sound glows gold, and he hunts for the words that start with it.</li><li><b>Blending nights</b> (4, 8, 11, 12). He slides the dragon under the letters to push sounds together into words, then taps the gold words in the story to open them up and sound them out letter by letter.</li></ul>`);
   card(`<h2>What helps most</h2><ul>
   <li><b>Sounds, not letter names.</b> Say "sss", not "ess". Names can come later.</li>
   <li><b>Keep sounds pure.</b> "mmm" not "muh", a clipped "t" not "tuh". It makes blending far easier.</li>
@@ -579,7 +730,7 @@ function renderGrown(){
     if(store.get('photo_'+k,null)){const rm=el(`<button class="btn">Remove</button>`);rm.onclick=()=>{store.del('photo_'+k);renderGrown();};row.appendChild(rm);}
     ph.appendChild(row);
   });
-  const set=card(`<h2>Settings</h2><div class="toggle"><span>Tap a word to hear it${canSpeak?'':' (not available in this browser)'}</span><button class="btn" id="voiceBtn">${progress.voice?'On':'Off'}</button></div>
+  const set=card(`<h2>Settings</h2><div class="toggle"><span>Voices and sounds${canSpeak?'':' (voices are not available in this browser)'}</span><button class="btn" id="voiceBtn">${progress.voice?'On':'Off'}</button></div>
     <div class="toggle"><span>Clear all stickers and start over</span><button class="btn" id="resetBtn">Reset</button></div>`);
   $('#voiceBtn',set).onclick=()=>{progress.voice=!progress.voice;save();renderGrown();};
   const rb=$('#resetBtn',set);
