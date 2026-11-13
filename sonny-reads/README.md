@@ -32,6 +32,8 @@ Why it is built this way:
 ## Files
 
 - `app.html` is the app (page body, styles and script in one file).
+- `audio/` holds the recorded story-friend voices (Night Hero, Grumble and Spark), made with ElevenLabs. If they can't load, the app falls back to the phone's own voice.
+- `tools/` re-records the voices after a story changes: `manifest.js` lists every line, `record.py` records them.
 - `build.sh` wraps it into `index.html`, a standalone page you can open or host anywhere.
 
 Stickers and optional family photos are saved in the phone's browser only. No photos are stored in this repository.

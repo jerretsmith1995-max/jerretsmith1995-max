@@ -251,7 +251,7 @@ function speak(text,opt){
   opt=opt||{};
   if(!canSpeak||!progress.voice){if(opt.onend)opt.onend();return false;}
   try{
-    speechSynthesis.cancel();
+    stopAudio();speechSynthesis.cancel();
     const B=buddy(),id=++speakId,u=new SpeechSynthesisUtterance(text);
     const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
     const v=vs.find(v=>B.pref.test(v.name))||vs.find(v=>/^en[-_](CA|US|GB)/i.test(v.lang))||vs[0];
@@ -261,6 +261,39 @@ function speak(text,opt){
     u.onend=u.onerror=()=>{if(id!==speakId)return;talking(false);if(opt.onend)opt.onend();};
     talking(true);speechSynthesis.speak(u);return true;
   }catch(e){talking(false);return false;}
+}
+
+/* ---------- recorded voices ----------
+   Each friend has one recording per story page (with the time of every word)
+   and one long recording, bits.mp3, holding every single word and phrase.
+   If the recordings can't be loaded, the phone's own voice is used instead. */
+let AUD=null;
+try{fetch('audio/index.json').then(r=>r.ok?r.json():null).then(j=>{AUD=j;}).catch(()=>{});}catch(e){}
+const players={};let playing=null,playId=0;
+function getAudio(url){let a=players[url];if(!a){a=players[url]=new Audio();a.preload='auto';a.src=url;}return a;}
+function stopAudio(){playId++;if(playing){try{playing.pause();}catch(e){}playing=null;}talking(false);}
+function playSeg(url,from,to,opt){
+  opt=opt||{};stopAudio();try{speechSynthesis.cancel();}catch(e){}
+  const a=getAudio(url),id=playId;let seeked=false;playing=a;
+  const fail=()=>{if(id!==playId)return;stopAudio();if(opt.onfail)opt.onfail();};
+  const seek=()=>{try{a.currentTime=Math.max(0,from);}catch(e){}a.muted=false;seeked=true;};
+  if(a.readyState>=1)seek();else{a.muted=true;a.addEventListener('loadedmetadata',()=>{if(id===playId)seek();},{once:true});}
+  a.onerror=fail;
+  try{const pr=a.play();if(pr&&pr.catch)pr.catch(fail);}catch(e){fail();return;}
+  talking(true);
+  (function loop(){
+    if(id!==playId)return;
+    if(seeked){const t=a.currentTime;if(opt.ontime)opt.ontime(t);if(a.ended||(to!=null&&t>=to)){stopAudio();if(opt.onend)opt.onend();return;}}
+    requestAnimationFrame(loop);
+  })();
+}
+const recorded=()=>(AUD&&progress.voice&&AUD[progress.buddy])||null;
+/* say a word ('w:sat'), a picture phrase ('s:Boop!') or a friend's own line ('l:hi') */
+function say(key,text,opt){
+  const d=recorded(),seg=d&&d.bits[key];
+  if(!seg)return speak(text,opt);
+  playSeg(`audio/${progress.buddy}/bits.mp3`,seg[0],seg[1],{onend:opt&&opt.onend,onfail:()=>speak(text,opt)});
+  return true;
 }
 
 /* ---------- little sounds (soft, made in the browser) ---------- */
@@ -452,7 +485,7 @@ const plain=t=>t.replace(/[*\[\]]/g,'');
 
 /* ---------- views ---------- */
 const views=['home','play','grown'];
-function show(v){views.forEach(id=>{$('#'+id).hidden=id!==v;});if(v==='home')renderHome();if(v==='grown')renderGrown();try{speechSynthesis.cancel();}catch(e){}}
+function show(v){views.forEach(id=>{$('#'+id).hidden=id!==v;});if(v==='home')renderHome();if(v==='grown')renderGrown();stopAudio();try{speechSynthesis.cancel();}catch(e){}}
 
 function renderHome(){
   $('#family').innerHTML=Object.keys(FAMILY).map(k=>`<figure>${avatar(k,64)}<figcaption>${FAMILY[k].name}</figcaption></figure>`).join('');
@@ -467,7 +500,7 @@ function renderHome(){
   const bs=$('#buddies');bs.innerHTML='';
   Object.keys(BUDDIES).forEach(k=>{
     const B=BUDDIES[k],b=el(`<button class="bud ${k===progress.buddy?'on':''}"><span class="pic">${B.e}</span>${B.name}</button>`);
-    b.onclick=()=>{progress.buddy=k;save();[...bs.children].forEach(c=>c.classList.toggle('on',c===b));anim(b.firstChild,'jump');sfx.boing();speak(B.hi);};
+    b.onclick=()=>{progress.buddy=k;save();[...bs.children].forEach(c=>c.classList.toggle('on',c===b));anim(b.firstChild,'jump');sfx.boing();say('l:hi',B.hi);};
     bs.appendChild(b);
   });
   const path=$('#path');path.innerHTML='';
@@ -492,7 +525,7 @@ function startNight(i){
 function ready(){nextBtn.classList.remove('quiet');nextBtn.classList.add('ready');}
 function renderStep(){
   const s=cur.steps[cur.at];
-  document.querySelectorAll('.over').forEach(o=>o.remove());
+  document.querySelectorAll('.over').forEach(o=>o.remove());stopAudio();
   $('#buddy').textContent=buddy().e;
   stage.innerHTML='';stage.scrollTop=0;
   $('#barFill').style.width=(100*(cur.at+1)/cur.steps.length)+'%';
@@ -504,7 +537,7 @@ function renderStep(){
 nextBtn.onclick=()=>{if(cur.at<cur.steps.length-1){cur.at++;renderStep();}else show('home');};
 $('#prev').onclick=()=>{if(cur.at>0){cur.at--;renderStep();}};
 $('#quit').onclick=()=>show('home');
-$('#buddy').onclick=()=>{const b=$('#buddy'),y=buddy().yay;anim(b,'jump');sfx.boing();burst(b);speak(y[Math.floor(Math.random()*y.length)]);};
+$('#buddy').onclick=()=>{const b=$('#buddy'),y=buddy().yay,n=Math.floor(Math.random()*y.length);anim(b,'jump');sfx.boing();burst(b);say('l:yay'+n,y[n]);};
 const add=(html)=>{const n=el(html);stage.appendChild(n);return n;};
 const cue=(txt)=>add(`<div class="cue"><b>Grown-up</b>${txt}</div>`);
 const pic=(k,size)=>k.who?avatar(k.who,size):`<span class="pic">${k.e}</span>`;
@@ -519,7 +552,7 @@ const STEP={
     const keys=add(`<div class="keys"></div>`);
     N.keys.forEach(k=>{
       const b=el(`<button class="key">${pic(k,52)}<span><b class="hl">${k.w[0]}</b>${k.w.slice(1)}</span></button>`);
-      b.onclick=()=>{speak(k.w);anim(b.firstChild);sfx.boing();};
+      b.onclick=()=>{say('w:'+k.w.toLowerCase(),k.w);anim(b.firstChild);sfx.boing();};
       keys.appendChild(b);
     });
     cue(N.cue+' Then say each picture word and stretch the first sound.');
@@ -586,7 +619,7 @@ const STEP={
     shuffle([[r.yes,true],[r.no,false]]).forEach(([it,ok])=>{
       const b=el(`<button class="pick"><span class="pic">${it[0]}</span><span>${it[1]}</span></button>`);
       b.onclick=()=>{
-        speak(it[1]);
+        say('w:'+it[1].toLowerCase(),it[1]);
         if(ok){sfx.chime();burst(b);anim(b.firstChild,'jump');b.classList.add('yes');b.lastChild.innerHTML=`<b class="hl">${it[1][0]}</b>${it[1].slice(1)}`;ready();}
         else{sfx.nope();b.classList.remove('no');void b.offsetWidth;b.classList.add('no');}
       };
@@ -619,7 +652,7 @@ const STEP={
       if(f>=.97){
         fin=true;$('.sounds',box).classList.add('done');
         rev.innerHTML=`${b.who?avatar(b.who,84):`<span>${b.e||'⭐'}</span>`}`;rev.classList.add('pop');
-        sfx.chime();burst(rev);speak(b.w);ready();
+        sfx.chime();burst(rev);say('w:'+b.w,b.w);ready();
       }
     }
     track.onpointerdown=e=>{e.preventDefault();down=true;try{track.setPointerCapture(e.pointerId);}catch(_){}move(e);};
@@ -630,10 +663,13 @@ const STEP={
   page(s,N){
     const p=s.p,L=N.letter;
     const scene=add(`<div class="scene">${(p.cast||[]).map(w=>`<button class="actor" data-say="${FAMILY[w].name}!">${avatar(w,76)}</button>`).join('')}${glyphs(p.e).map(g=>`<button class="actor" data-say="${SAYS[g]||''}">${g}</button>`).join('')}</div>`);
-    scene.onclick=e=>{const a=e.target.closest('.actor');if(!a)return;anim(a);sfx.boing();burst(a);if(a.dataset.say)speak(a.dataset.say);};
+    scene.onclick=e=>{const a=e.target.closest('.actor');if(!a)return;anim(a);sfx.boing();burst(a);if(a.dataset.say)say('s:'+a.dataset.say,a.dataset.say);};
     const txt=add(`<p class="text">${storyHTML(p.t)}</p>`);
     const words=[...txt.querySelectorAll('.w')],gold=words.filter(w=>w.classList.contains('read')),starred=words.filter(w=>w.classList.contains('s'));
     let found=0,readN=0,hunt=null;
+    const pid=`n${cur.i+1}p${N.story.indexOf(p)+1}`,rec=recorded(),times=rec&&rec.pages[pid],clip=`audio/${progress.buddy}/${pid}.mp3`;
+    if(times){getAudio(clip);getAudio(`audio/${progress.buddy}/bits.mp3`);}
+    const sayWord=w=>{const t=times&&times[words.indexOf(w)];if(t)playSeg(clip,t[0]-.03,t[1]+.04,{onfail:()=>speak(w.dataset.w)});else speak(w.dataset.w);};
     if(L&&starred.length){hunt=add(`<p class="hunt">Tap the words that start with <b>${L}</b> &nbsp;⭐ <span>0</span> of ${starred.length}</p>`);txt.after(hunt);}
     txt.onclick=e=>{
       const w=e.target.closest('.w');if(!w)return;
@@ -641,18 +677,18 @@ const STEP={
         soundOut(w.dataset.w,()=>{if(!w.classList.contains('said')){w.classList.add('said');if(++readN===gold.length){sfx.win();ready();}}});
         return;
       }
-      speak(w.dataset.w);anim(w,'jump');
+      sayWord(w);anim(w,'jump');
       if(w.classList.contains('s')&&!w.classList.contains('got')){
         w.classList.add('got');burst(w);sfx.pop(found);$('span',hunt).textContent=++found;
         if(found===starred.length){sfx.win();anim(hunt,'jump');ready();}
       }
     };
-    if(canSpeak&&progress.voice){
+    if((canSpeak||times)&&progress.voice){
       const hb=add(`<button class="hear">${buddy().e} ${buddy().name}, read it to me</button>`);
-      hb.onclick=()=>{
+      const mark=i=>words.forEach((w,j)=>w.classList.toggle('now',j===i));
+      const phoneRead=()=>{
         const str=plain(p.t);let pos=0;
         const offs=words.map(w=>{const i=str.indexOf(w.dataset.w,pos);if(i>=0)pos=i+w.dataset.w.length;return i;});
-        const mark=i=>words.forEach((w,j)=>w.classList.toggle('now',j===i));
         let heard=false,k=0,timer=null;
         const tick=()=>{if(heard||k>=words.length)return;mark(k);timer=setTimeout(tick,(230+words[k].dataset.w.length*60)/buddy().rate);k++;};
         const ok=speak(str,{
@@ -660,6 +696,10 @@ const STEP={
           onend:()=>{clearTimeout(timer);mark(-1);}
         });
         if(ok)tick();
+      };
+      hb.onclick=()=>{
+        if(!times){phoneRead();return;}
+        playSeg(clip,0,null,{ontime:t=>{let i=-1;times.forEach((x,j)=>{if(x&&x[0]<=t+.05)i=j;});mark(i);},onend:()=>mark(-1),onfail:()=>{mark(-1);phoneRead();}});
       };
     }
     cue((gold.length?'Tap a gold word to open it up. He taps each letter while you say its sound together, then it snaps into the word. ':'Run your finger under the words as you read. Tap any picture or word and it answers back. ')+(p.q?`Ask: "${p.q}"`:''));
@@ -670,7 +710,7 @@ const STEP={
     add(`<p class="ask">You did it, Sonny!</p>`);
     const st=add(`<button class="sticker actor">${N.sticker}</button>`);
     st.onclick=()=>{anim(st);sfx.boing();burst(st);};
-    sfx.win();setTimeout(()=>{burst(st);speak(buddy().yay[0]);},350);
+    sfx.win();setTimeout(()=>{burst(st);say('l:yay0',buddy().yay[0]);},350);
     add(`<p class="text" style="text-align:center">You earned the <b class="hl">${N.stickerName}</b> sticker.</p>`);
     add(`<p class="soft">${Object.keys(progress.done).length} of ${NIGHTS.length} stickers on the trail</p>`);
     ready();
@@ -701,7 +741,7 @@ function soundOut(word,done){
       setTimeout(()=>{
         if(!ov.isConnected)return;
         $('.sounds',ov).classList.add('done');$('.ask',ov).textContent=w;$('.reveal',ov).textContent='⭐';
-        sfx.chime();burst($('.sounds',ov));speak(w);done();
+        sfx.chime();burst($('.sounds',ov));say('w:'+w,w);done();
         setTimeout(()=>ov.remove(),1900);
       },450);
     }
@@ -738,7 +778,7 @@ function renderGrown(){
     if(store.get('photo_'+k,null)){const rm=el(`<button class="btn">Remove</button>`);rm.onclick=()=>{store.del('photo_'+k);renderGrown();};row.appendChild(rm);}
     ph.appendChild(row);
   });
-  const set=card(`<h2>Settings</h2><div class="toggle"><span>Voices and sounds${canSpeak?'':' (voices are not available in this browser)'}</span><button class="btn" id="voiceBtn">${progress.voice?'On':'Off'}</button></div>
+  const set=card(`<h2>Settings</h2><div class="toggle"><span>Voices and sounds</span><button class="btn" id="voiceBtn">${progress.voice?'On':'Off'}</button></div>
     <div class="toggle"><span>Clear all stickers and start over</span><button class="btn" id="resetBtn">Reset</button></div>`);
   $('#voiceBtn',set).onclick=()=>{progress.voice=!progress.voice;save();renderGrown();};
   const rb=$('#resetBtn',set);
